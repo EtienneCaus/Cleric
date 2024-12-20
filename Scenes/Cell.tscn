@@ -1,0 +1,130 @@
+[gd_scene load_steps=22 format=3 uid="uid://cio61nnk32tfy"]
+
+[ext_resource type="Script" path="res://Scripts/Cell.cs" id="1_hvfb8"]
+[ext_resource type="Texture2D" uid="uid://2h31degc6gb3" path="res://Tiles/StoneFloor.png" id="2_xfft3"]
+[ext_resource type="Texture2D" uid="uid://4nqy8lv5kmlk" path="res://Tiles/StoneWall.png" id="3_nf5m4"]
+[ext_resource type="Script" path="res://Scripts/Wall.cs" id="4_u7gfm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_un0p7"]
+size = Vector3(1, 0.01, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5sly2"]
+albedo_texture = ExtResource("2_xfft3")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_y5wne"]
+material = SubResource("StandardMaterial3D_5sly2")
+size = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lc41j"]
+albedo_texture = ExtResource("2_xfft3")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xlitu"]
+lightmap_size_hint = Vector2i(7, 7)
+material = SubResource("StandardMaterial3D_lc41j")
+flip_faces = true
+size = Vector2(1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w7auf"]
+size = Vector3(0.01, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vkggo"]
+albedo_texture = ExtResource("3_nf5m4")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_sx4p6"]
+material = SubResource("StandardMaterial3D_vkggo")
+flip_faces = true
+size = Vector2(1, 1)
+orientation = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2ioqh"]
+size = Vector3(1, 1, 0.01)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rtj6f"]
+albedo_texture = ExtResource("3_nf5m4")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_w8rop"]
+material = SubResource("StandardMaterial3D_rtj6f")
+flip_faces = true
+size = Vector2(1, 1)
+orientation = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cy5ap"]
+size = Vector3(0.01, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f1bu5"]
+albedo_texture = ExtResource("3_nf5m4")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_h3xqy"]
+material = SubResource("StandardMaterial3D_f1bu5")
+size = Vector2(1, 1)
+orientation = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oj346"]
+size = Vector3(1, 1, 0.01)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6d4ws"]
+albedo_texture = ExtResource("3_nf5m4")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dp4r0"]
+material = SubResource("StandardMaterial3D_6d4ws")
+size = Vector2(1, 1)
+orientation = 2
+
+[node name="Cell" type="StaticBody3D"]
+script = ExtResource("1_hvfb8")
+
+[node name="Floor" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_un0p7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("PlaneMesh_y5wne")
+skeleton = NodePath("../..")
+
+[node name="Ceiling" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_un0p7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ceiling"]
+mesh = SubResource("PlaneMesh_xlitu")
+skeleton = NodePath("../..")
+
+[node name="East" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0)
+shape = SubResource("BoxShape3D_w7auf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="East"]
+mesh = SubResource("PlaneMesh_sx4p6")
+skeleton = NodePath("../..")
+
+[node name="South" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.5)
+shape = SubResource("BoxShape3D_2ioqh")
+
+[node name="Wall" type="MeshInstance3D" parent="South"]
+mesh = SubResource("PlaneMesh_w8rop")
+skeleton = NodePath("../..")
+script = ExtResource("4_u7gfm")
+
+[node name="West" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, 0)
+shape = SubResource("BoxShape3D_cy5ap")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="West"]
+transform = Transform3D(1, 0, 0, 0, 0.999993, -0.00380481, 0, 0.00380481, 0.999993, 0, 0, 0)
+mesh = SubResource("PlaneMesh_h3xqy")
+skeleton = NodePath("../..")
+
+[node name="North" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.5)
+shape = SubResource("BoxShape3D_oj346")
+
+[node name="Wall" type="MeshInstance3D" parent="North"]
+mesh = SubResource("PlaneMesh_dp4r0")
+skeleton = NodePath("../..")
+script = ExtResource("4_u7gfm")

@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://cikm8p0mw5v0l"]
+
+[ext_resource type="Script" path="res://Scripts/Player.cs" id="1_0x7mc"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_w0pvk"]
+radius = 0.16
+height = 0.8
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_g66yq"]
+points = PackedVector3Array(0.151602, 0.258651, 0.045747, -0.154505, -0.27108, -0.0248191, -0.141844, -0.281153, -0.059825, -0.131182, 0.307128, -0.0603179, 0.0687479, -0.268549, -0.141395, 0.03419, -0.272009, 0.15249, -0.0716587, 0.269973, 0.139597, 0.0223172, 0.271516, -0.154751, 0.141541, -0.309409, 0.0225067, 0.141119, 0.296603, -0.0487128, -0.0953949, -0.294131, 0.116394, 0.0462956, 0.321143, 0.129558, -0.0499651, -0.389734, -0.025602, -0.071308, -0.256919, -0.141435, -0.152916, 0.244958, 0.04537, -0.0499652, 0.389735, -0.025602, 0.1131, -0.228717, 0.1131, 0.1509, -0.257462, -0.0480706, -0.0935261, 0.253681, -0.128104, 0.103799, 0.268582, -0.118049, 0.0566704, 0.231797, 0.149422, 0.0475686, -0.39088, 0.0231338, 0.0836275, 0.376009, -0.00126985, -0.138929, -0.229399, 0.0790189, 0.0348706, -0.361584, -0.0976956, -0.0494982, 0.373906, 0.0710573, 0.0348704, 0.361582, -0.097695, -0.152595, 0.232771, -0.0478108, -0.0480716, -0.257468, 0.150903, 0.0350359, -0.363238, 0.0955969, -0.0248179, -0.271067, -0.154497, 0.127232, 0.26873, 0.0921995)
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_0x7mc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+mesh = SubResource("CapsuleMesh_w0pvk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+shape = SubResource("ConvexPolygonShape3D_g66yq")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.62442, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Head"]
+spot_attenuation = 2.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Head"]
+omni_attenuation = 2.0

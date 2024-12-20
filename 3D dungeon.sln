@@ -1,0 +1,19 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3D dungeon", "3D dungeon.csproj", "{F3293679-5FE8-43D1-9670-02CE2ADA19DB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Debug|Any CPU = Debug|Any CPU
+	ExportDebug|Any CPU = ExportDebug|Any CPU
+	ExportRelease|Any CPU = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F3293679-5FE8-43D1-9670-02CE2ADA19DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3293679-5FE8-43D1-9670-02CE2ADA19DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3293679-5FE8-43D1-9670-02CE2ADA19DB}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{F3293679-5FE8-43D1-9670-02CE2ADA19DB}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{F3293679-5FE8-43D1-9670-02CE2ADA19DB}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{F3293679-5FE8-43D1-9670-02CE2ADA19DB}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+	EndGlobalSection
+EndGlobal

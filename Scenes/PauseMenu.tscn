@@ -1,0 +1,242 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhft66sfnbfkj"]
+
+[ext_resource type="Script" path="res://Scripts/PauseMenu.cs" id="1_5g214"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5g214")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -256.0
+offset_right = 256.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="Title" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "3D DUNGEON EXAMPLE
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯"
+horizontal_alignment = 1
+
+[node name="SeedLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Seed"
+horizontal_alignment = 3
+
+[node name="Seed" type="LineEdit" parent="PanelContainer/VBoxContainer/SeedLabel"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "-random-"
+alignment = 2
+flat = true
+
+[node name="SizeLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Size"
+horizontal_alignment = 3
+
+[node name="Size" type="LineEdit" parent="PanelContainer/VBoxContainer/SizeLabel"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "100"
+alignment = 2
+flat = true
+
+[node name="MultiplierLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Multiplier"
+horizontal_alignment = 3
+
+[node name="Multiplier" type="LineEdit" parent="PanelContainer/VBoxContainer/MultiplierLabel"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "4"
+alignment = 2
+flat = true
+
+[node name="CorridorsLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "corridors_length"
+horizontal_alignment = 3
+
+[node name="Corridors" type="LineEdit" parent="PanelContainer/VBoxContainer/CorridorsLabel"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "4"
+alignment = 2
+flat = true
+
+[node name="HallwaysLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "hallways_chance    %   "
+horizontal_alignment = 3
+
+[node name="Hallways" type="LineEdit" parent="PanelContainer/VBoxContainer/HallwaysLabel"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+alignment = 2
+flat = true
+
+[node name="RoomsLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "rooms_chances		%		"
+horizontal_alignment = 3
+
+[node name="Rooms" type="LineEdit" parent="PanelContainer/VBoxContainer/RoomsLabel"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "100"
+alignment = 2
+flat = true
+
+[node name="rsMinLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "rooms_size_min"
+horizontal_alignment = 3
+
+[node name="rsMin" type="LineEdit" parent="PanelContainer/VBoxContainer/rsMinLabel"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "2"
+alignment = 2
+flat = true
+
+[node name="rsMaxLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "rooms_size_max"
+horizontal_alignment = 3
+
+[node name="rsMax" type="LineEdit" parent="PanelContainer/VBoxContainer/rsMaxLabel"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "4"
+alignment = 2
+flat = true
+
+[node name="CenterLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Center"
+horizontal_alignment = 3
+
+[node name="Center" type="Button" parent="PanelContainer/VBoxContainer/CenterLabel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -41.0
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 0
+grow_vertical = 2
+toggle_mode = true
+text = "false"
+flat = true
+
+[node name="CavernLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Cavern"
+horizontal_alignment = 3
+
+[node name="Cavern" type="Button" parent="PanelContainer/VBoxContainer/CavernLabel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -41.0
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 0
+grow_vertical = 2
+toggle_mode = true
+text = "false"
+flat = true
+
+[node name="Restart" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Start
+"
+flat = true
+
+[node name="Quit" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit
+"
+flat = true
+
+[connection signal="text_changed" from="PanelContainer/VBoxContainer/SeedLabel/Seed" to="." method="_on_seed_text_changed"]
+[connection signal="text_submitted" from="PanelContainer/VBoxContainer/SeedLabel/Seed" to="." method="_on_seed_text_submitted"]
+[connection signal="text_changed" from="PanelContainer/VBoxContainer/SizeLabel/Size" to="." method="_on_size_text_changed"]
+[connection signal="text_changed" from="PanelContainer/VBoxContainer/MultiplierLabel/Multiplier" to="." method="_on_multiplier_text_changed"]
+[connection signal="text_changed" from="PanelContainer/VBoxContainer/CorridorsLabel/Corridors" to="." method="_on_corridors_text_changed"]
+[connection signal="text_changed" from="PanelContainer/VBoxContainer/HallwaysLabel/Hallways" to="." method="_on_hallways_text_changed"]
+[connection signal="text_changed" from="PanelContainer/VBoxContainer/RoomsLabel/Rooms" to="." method="_on_rooms_text_changed"]
+[connection signal="text_changed" from="PanelContainer/VBoxContainer/rsMinLabel/rsMin" to="." method="_on_rs_min_text_changed"]
+[connection signal="text_changed" from="PanelContainer/VBoxContainer/rsMaxLabel/rsMax" to="." method="_on_rs_max_text_changed"]
+[connection signal="toggled" from="PanelContainer/VBoxContainer/CenterLabel/Center" to="." method="_on_center_toggled"]
+[connection signal="toggled" from="PanelContainer/VBoxContainer/CavernLabel/Cavern" to="." method="_on_cavern_toggled"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
