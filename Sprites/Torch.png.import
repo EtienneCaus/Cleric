@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://ct2rwvyrtdn8o"
+path="res://.godot/imported/Torch.png-1c09d1bdebd6a1b0e48eecb32419387a.image"
+
+[deps]
+
+source_file="res://Sprites/Torch.png"
+dest_files=["res://.godot/imported/Torch.png-1c09d1bdebd6a1b0e48eecb32419387a.image"]
+
+[params]
+
