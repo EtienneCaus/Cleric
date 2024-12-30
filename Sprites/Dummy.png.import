@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://crgxspihqkwvt"
+path="res://.godot/imported/Dummy.png-7cc398410d74dd71f065c83c1c452fec.image"
+
+[deps]
+
+source_file="res://Sprites/Dummy.png"
+dest_files=["res://.godot/imported/Dummy.png-7cc398410d74dd71f065c83c1c452fec.image"]
+
+[params]
+
