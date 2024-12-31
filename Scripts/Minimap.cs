@@ -27,7 +27,10 @@ public partial class Minimap : Node2D
 
         foreach(Vector2I tile in cells)
         {                                   //If the cell is close enough and there's no cells there already...
-            if(!discoveredCells.Contains(tile) && tile.DistanceTo(myGridPosition) <= 3)
+            if(!discoveredCells.Contains(tile) && tile.DistanceTo(myGridPosition) <= 3 &&
+            (discoveredCells.Contains(tile + Vector2I.Right) || discoveredCells.Contains(tile + Vector2I.Left)
+                || discoveredCells.Contains(tile + Vector2I.Up) || discoveredCells.Contains(tile + Vector2I.Down) ||
+                tile.DistanceTo(myGridPosition) == 0))  //Prevents discovering cells through walls
             {
                 if(tileMap_full.GetCellAtlasCoords(tile) == new Vector2I(1, 0))
                     GetNode<TileMapLayer>("TileMapLayer").SetCell(new Vector2I(tile.X, tile.Y), 0, new Vector2I(1,0));

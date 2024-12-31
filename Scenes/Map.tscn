@@ -3,19 +3,21 @@
 [ext_resource type="Script" path="res://Scripts/Map.cs" id="1_c6k7a"]
 [ext_resource type="Texture2D" uid="uid://bkcf40rgwawn3" path="res://Tiles/TileMap.png" id="2_ltxlf"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_131yq"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mjuug"]
 texture = ExtResource("2_ltxlf")
 texture_region_size = Vector2i(8, 8)
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_5ysm8"]
+[sub_resource type="TileSet" id="TileSet_cfqkc"]
 tile_size = Vector2i(8, 8)
-sources/0 = SubResource("TileSetAtlasSource_131yq")
+sources/0 = SubResource("TileSetAtlasSource_mjuug")
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_c6k7a")
 
 [node name="MapCreator" type="TileMapLayer" parent="."]
-tile_set = SubResource("TileSet_5ysm8")
+tile_set = SubResource("TileSet_cfqkc")

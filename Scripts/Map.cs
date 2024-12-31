@@ -35,6 +35,8 @@ public partial class Map : Node2D
                 if(GetNode<TileMapLayer>("MapCreator").GetCellAtlasCoords(position) == new Vector2I(-1, -1))    //If there's no tile...
                 {
                     GetNode<TileMapLayer>("MapCreator").SetCell(position, 0, new Vector2I(0,0));    //Sets down a new tile
+                    if(rnd.Next(100)<Globals.ENEMY_SPAWN)
+                        GetNode<TileMapLayer>("MapCreator").SetCell(position, 0, new Vector2I(4,0));    //Set down a dummy
                     tmpSteps--;
                 }
                 
@@ -81,6 +83,8 @@ public partial class Map : Node2D
                 if(GetNode<TileMapLayer>("MapCreator").GetCellAtlasCoords(newStep) == new Vector2I(-1, -1))
                 {
                     GetNode<TileMapLayer>("MapCreator").SetCell(newStep, 0, new Vector2I(0,0));
+                    if(rnd.Next(100)<Globals.ENEMY_ROOMS)
+                        GetNode<TileMapLayer>("MapCreator").SetCell(newStep, 0, new Vector2I(4,0));    //Set down a dummy
                     steps++;
                 }
             }
