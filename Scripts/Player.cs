@@ -15,12 +15,17 @@ public partial class Player : CharacterBody3D
 	public const float BobAmplitude = 0.04f;
 	float timeBob = 0f;
 	public Node3D head;
+	AnimationPlayer anim;
+	RayCast3D raycast;
 	Camera3D camera, weaponCam;
 	SpotLight3D spotLight;
 
     public override void _Ready()
     {
 		head = GetNode<Node3D>("Head");	//Set the head and camera
+		anim = GetNode<AnimationPlayer>("AnimationPlayer");
+		raycast = GetNode<RayCast3D>("Head/Camera3D/RayCast3D");
+
 		camera = GetNode<Camera3D>("Head/Camera3D");
 		weaponCam = GetNode<Camera3D>("Head/Camera3D/SubViewportContainer/SubViewport/Camera3D");
 		GetNode<SubViewport>("Head/Camera3D/SubViewportContainer/SubViewport").Size = DisplayServer.WindowGetSize();
@@ -112,6 +117,7 @@ public partial class Player : CharacterBody3D
 
 		Velocity = velocity;
 		MoveAndSlide();
+		WeaponHit();
 	}
 
 	Vector3 HeadBob(float time)
@@ -143,5 +149,23 @@ public partial class Player : CharacterBody3D
 		position.X = tile.X;
 		position.Z = tile.Y;
 		Position = position;
+	}
+
+	public void WeaponHit()
+	{
+		Node target = new();
+
+		if(Input.IsActionPressed("fire"))
+		{
+			if(!anim.IsPlaying() && raycast.IsColliding())
+			{
+				target = raycast.GetCollider() as Node;
+				if(target.IsInGroup("Enemy"))
+					target.QueueFree();
+			}
+			anim.Play("Weapon_Hit");
+		}
+		//else
+		//	anim.Stop();
 	}
 }
