@@ -50,10 +50,22 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector3(0, 0.12, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Head/Camera3D/RayCast3D:enabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_ahj65"]
 resource_name = "Weapon_Hit"
-length = 0.3
+length = 0.300003
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -89,6 +101,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0.12, 0), Vector3(0, -0.18, 0), Vector3(0, -0.18, 0), Vector3(0, 0.12, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Head/Camera3D/RayCast3D:enabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cklpw"]
@@ -137,6 +161,7 @@ layers = 2
 skeleton = NodePath("../../../../../SpotLight3D")
 
 [node name="RayCast3D" type="RayCast3D" parent="Head/Camera3D"]
+enabled = false
 target_position = Vector3(0, 0, -0.5)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Head"]

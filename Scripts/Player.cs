@@ -153,19 +153,19 @@ public partial class Player : CharacterBody3D
 
 	public void WeaponHit()
 	{
-		Node target = new();
+		Dummy target = new();
 
 		if(Input.IsActionPressed("fire"))
 		{
-			if(!anim.IsPlaying() && raycast.IsColliding())
-			{
-				target = raycast.GetCollider() as Node;
-				if(target.IsInGroup("Enemy"))
-					target.QueueFree();
-			}
 			anim.Play("Weapon_Hit");
 		}
 		//else
 		//	anim.Stop();
+		if(anim.IsPlaying() && raycast.IsColliding())
+		{
+			target = raycast.GetCollider() as Dummy;
+			if(target != null && target.IsInGroup("Enemy"))
+				target.GetHit();
+		}
 	}
 }
