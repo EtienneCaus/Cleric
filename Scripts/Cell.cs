@@ -42,7 +42,7 @@ public partial class Cell : StaticBody3D
 
 		if(tileMap.GetCellAtlasCoords(myGridPosition) == new Vector2I(4, 0))	//Dummy
 		{
-			StaticBody3D dummy = ResourceLoader.Load<PackedScene>("res://Scenes/Dummy.tscn").Instantiate() as StaticBody3D;
+			CharacterBody3D dummy = ResourceLoader.Load<PackedScene>("res://Scenes/Dummy.tscn").Instantiate() as CharacterBody3D;
 			AddChild(dummy);
 			dummy.Position = new Vector3(Position.X*Globals.GRID_SIZE, 0, Position.Y*Globals.GRID_SIZE);
 		}

@@ -165,7 +165,7 @@ public partial class Player : CharacterBody3D
 		{
 			target = raycast.GetCollider() as Dummy;
 			if(target != null && target.IsInGroup("Enemy"))
-				target.GetHit();
+				target.GetHit(25);
 		}
 	}
 }
