@@ -8,25 +8,25 @@ public partial class PauseMenu : Control
     Button center, cavern;
     public override void _Ready()
 	{
-        seed = GetNode<LineEdit>("PanelContainer/VBoxContainer/SeedLabel/Seed");
+        seed = GetNode<LineEdit>("PanelContainer/DungeonSettings/SeedLabel/Seed");
         seed.Text = Globals.SEED.ToString();
-        size = GetNode<LineEdit>("PanelContainer/VBoxContainer/SizeLabel/Size");
+        size = GetNode<LineEdit>("PanelContainer/DungeonSettings/SizeLabel/Size");
         size.Text = Globals.STEPS.ToString();
-        multiplier = GetNode<LineEdit>("PanelContainer/VBoxContainer/MultiplierLabel/Multiplier");
+        multiplier = GetNode<LineEdit>("PanelContainer/DungeonSettings/MultiplierLabel/Multiplier");
         multiplier.Text = Globals.WALKERS.ToString();
-        corridors = GetNode<LineEdit>("PanelContainer/VBoxContainer/CorridorsLabel/Corridors");
+        corridors = GetNode<LineEdit>("PanelContainer/DungeonSettings/CorridorsLabel/Corridors");
         corridors.Text = Globals.CORRIDORS_LENGTH.ToString();
-        hallways = GetNode<LineEdit>("PanelContainer/VBoxContainer/HallwaysLabel/Hallways");
+        hallways = GetNode<LineEdit>("PanelContainer/DungeonSettings/HallwaysLabel/Hallways");
         hallways.Text = Globals.HALLWAYS_CHANCES.ToString();
-        rooms = GetNode<LineEdit>("PanelContainer/VBoxContainer/RoomsLabel/Rooms");
+        rooms = GetNode<LineEdit>("PanelContainer/DungeonSettings/RoomsLabel/Rooms");
         rooms.Text = Globals.ROOMS_CHANCES.ToString();
-        rsMin = GetNode<LineEdit>("PanelContainer/VBoxContainer/rsMinLabel/rsMin");
+        rsMin = GetNode<LineEdit>("PanelContainer/DungeonSettings/rsMinLabel/rsMin");
         rsMin.Text = Globals.ROOMS_SIZE_MIN.ToString();
-        rsMax = GetNode<LineEdit>("PanelContainer/VBoxContainer/rsMaxLabel/rsMax");
+        rsMax = GetNode<LineEdit>("PanelContainer/DungeonSettings/rsMaxLabel/rsMax");
         rsMax.Text = Globals.ROOMS_SIZE_MAX.ToString();
-        center = GetNode<Button>("PanelContainer/VBoxContainer/CenterLabel/Center");
+        center = GetNode<Button>("PanelContainer/DungeonSettings/CenterLabel/Center");
         center.Text = Globals.CENTER_ON.ToString();
-        cavern = GetNode<Button>("PanelContainer/VBoxContainer/CavernLabel/Cavern");
+        cavern = GetNode<Button>("PanelContainer/DungeonSettings/CavernLabel/Cavern");
         cavern.Text = Globals.CAVERN.ToString();
 
 	}
@@ -42,6 +42,8 @@ public partial class PauseMenu : Control
         GetTree().Paused = true;
         Visible = true;
         Input.MouseMode = Input.MouseModeEnum.Visible;
+        GetNode<Button>("PanelContainer/DungeonSettings/Restart").GrabFocus();
+
     }
 
     public override void _Process(double delta)
@@ -67,46 +69,128 @@ public partial class PauseMenu : Control
     {
         int.TryParse(str, out Globals.SEED);
     }
-    public void _on_seed_text_submitted(string str)
+    /*public void _on_seed_text_submitted(string str)
     {
         rnd = new Random();
         Globals.SEED = rnd.Next();
         seed.Text = Globals.SEED.ToString();
+    }*/
+
+    public void _on_seed_gui_input(InputEvent inputEvent)
+    {
+        if(Input.IsActionJustPressed("ui_accept"))
+        {
+            rnd = new Random();
+            Globals.SEED = rnd.Next();
+            seed.Text = Globals.SEED.ToString();
+        }
     }
 
     public void _on_size_text_changed(string str)
     {
         int.TryParse(str, out Globals.STEPS);
     }
+    public void _on_size_gui_input(InputEvent inputEvent)
+    {
+        if(Input.IsActionJustPressed("ui_right"))
+            Globals.STEPS += 10;
+        else if(Input.IsActionJustPressed("ui_left"))
+            Globals.STEPS -= 10;
+        size.Text = Globals.STEPS.ToString();
+    }
 
     public void _on_multiplier_text_changed(string str)
     {
         int.TryParse(str, out Globals.WALKERS);
+    }
+    public void _on_multiplier_gui_input(InputEvent inputEvent)
+    {
+        if(Input.IsActionJustPressed("ui_right"))
+            Globals.WALKERS++;
+        else if(Input.IsActionJustPressed("ui_left"))
+            Globals.WALKERS--;
+        multiplier.Text = Globals.WALKERS.ToString();
     }
 
     public void _on_corridors_text_changed(string str)
     {
         int.TryParse(str, out Globals.CORRIDORS_LENGTH);
     }
+    public void _on_corridors_gui_input(InputEvent inputEvent)
+    {
+        if(Input.IsActionJustPressed("ui_right"))
+            Globals.CORRIDORS_LENGTH++;
+        else if(Input.IsActionJustPressed("ui_left"))
+            Globals.CORRIDORS_LENGTH--;
+        corridors.Text = Globals.CORRIDORS_LENGTH.ToString();
+    }
 
     public void _on_hallways_text_changed(string str)
     {
         int.TryParse(str, out Globals.HALLWAYS_CHANCES);
+    }
+    public void _on_hallways_gui_input(InputEvent inputEvent)
+    {
+        if(Input.IsActionJustPressed("ui_right"))
+        {
+            Globals.HALLWAYS_CHANCES += 5;
+            if(Globals.HALLWAYS_CHANCES > 100)
+                Globals.HALLWAYS_CHANCES = 100;
+        }
+        else if(Input.IsActionJustPressed("ui_left"))
+        {
+            Globals.HALLWAYS_CHANCES -= 5;
+            if(Globals.HALLWAYS_CHANCES < 0)
+                Globals.HALLWAYS_CHANCES = 0;
+        }
+        hallways.Text = Globals.HALLWAYS_CHANCES.ToString();
     }
 
     public void _on_rooms_text_changed(string str)
     {
         int.TryParse(str, out Globals.ROOMS_CHANCES);
     }
+    public void _on_rooms_gui_input(InputEvent inputEvent)
+    {
+        if(Input.IsActionJustPressed("ui_right"))
+        {
+            Globals.ROOMS_CHANCES += 5;
+            if(Globals.ROOMS_CHANCES > 100)
+                Globals.ROOMS_CHANCES = 100;
+        }  
+        else if(Input.IsActionJustPressed("ui_left"))
+        {
+            Globals.ROOMS_CHANCES -= 5;
+            if(Globals.ROOMS_CHANCES < 0)
+                Globals.ROOMS_CHANCES = 0;
+        }
+        rooms.Text = Globals.ROOMS_CHANCES.ToString();
+    }
 
     public void _on_rs_min_text_changed(string str)
     {
         int.TryParse(str, out Globals.ROOMS_SIZE_MIN);
     }
+    public void _on_rs_min_gui_input(InputEvent inputEvent)
+    {
+        if(Input.IsActionJustPressed("ui_right"))
+            Globals.ROOMS_SIZE_MIN++;
+        else if(Input.IsActionJustPressed("ui_left"))
+            Globals.ROOMS_SIZE_MIN--;
+        rsMin.Text = Globals.ROOMS_SIZE_MIN.ToString();
+    }
 
     public void _on_rs_max_text_changed(string str)
     {
         int.TryParse(str, out Globals.ROOMS_SIZE_MAX);
+    }
+    public void _on_rs_max_gui_input(InputEvent inputEvent)
+    {
+        if(Input.IsActionJustPressed("ui_right"))
+            Globals.ROOMS_SIZE_MAX++;
+        else if(Input.IsActionJustPressed("ui_left"))
+            Globals.ROOMS_SIZE_MAX--;
+        rsMax.Text = Globals.ROOMS_SIZE_MAX.ToString();
     }
 
     public void _on_center_toggled(bool state)

@@ -8,7 +8,7 @@ public partial class Player : CharacterBody3D
 	public const float WalkSpeed = 3.0f;
 	public const float SprintSpeed = 5.0f;
 	public const float JumpVelocity = 2f;
-	public const float Sensitivity = 0.005f;
+	public const float Sensitivity = 0.002f;
 
 	//Bob variables
 	public const float BobFrequency = 2.0f;
@@ -76,7 +76,7 @@ public partial class Player : CharacterBody3D
 
 
 		//Moves the Camera
-		head.RotateY(-CameraDir.X * Sensitivity * 20);
+		head.RotateY(-CameraDir.X * Sensitivity * 30);
 		camera.RotateX(-CameraDir.Y * Sensitivity * 10);	//Bouge la caméra du joueur et empêche de dépasser le 90°
 		camera.Rotation = new Vector3(Clamp(camera.Rotation.X, DegToRad(-90), DegToRad(90)), camera.Rotation.Y, camera.Rotation.Z);
 		spotLight.Rotation = camera.Rotation;

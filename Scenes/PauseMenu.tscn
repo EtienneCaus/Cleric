@@ -26,23 +26,23 @@ offset_bottom = 256.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+[node name="DungeonSettings" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
 
-[node name="Title" type="Label" parent="PanelContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="PanelContainer/DungeonSettings"]
 layout_mode = 2
-text = "3D DUNGEON EXAMPLE
+text = "DUNGEON SETTINGS
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯"
 horizontal_alignment = 1
 
-[node name="SeedLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+[node name="SeedLabel" type="Label" parent="PanelContainer/DungeonSettings"]
 layout_mode = 2
 text = "Seed"
 horizontal_alignment = 3
 
-[node name="Seed" type="LineEdit" parent="PanelContainer/VBoxContainer/SeedLabel"]
+[node name="Seed" type="LineEdit" parent="PanelContainer/DungeonSettings/SeedLabel"]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -50,16 +50,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbor_top = NodePath("../../Quit")
+focus_neighbor_bottom = NodePath("../../SizeLabel/Size")
 text = "-random-"
 alignment = 2
 flat = true
 
-[node name="SizeLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+[node name="SizeLabel" type="Label" parent="PanelContainer/DungeonSettings"]
 layout_mode = 2
 text = "Size"
 horizontal_alignment = 3
 
-[node name="Size" type="LineEdit" parent="PanelContainer/VBoxContainer/SizeLabel"]
+[node name="Size" type="LineEdit" parent="PanelContainer/DungeonSettings/SizeLabel"]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -67,16 +69,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbor_top = NodePath("../../SeedLabel/Seed")
+focus_neighbor_bottom = NodePath("../../MultiplierLabel/Multiplier")
 text = "100"
 alignment = 2
 flat = true
 
-[node name="MultiplierLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+[node name="MultiplierLabel" type="Label" parent="PanelContainer/DungeonSettings"]
 layout_mode = 2
 text = "Multiplier"
 horizontal_alignment = 3
 
-[node name="Multiplier" type="LineEdit" parent="PanelContainer/VBoxContainer/MultiplierLabel"]
+[node name="Multiplier" type="LineEdit" parent="PanelContainer/DungeonSettings/MultiplierLabel"]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -84,16 +88,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbor_top = NodePath("../../SizeLabel/Size")
+focus_neighbor_bottom = NodePath("../../CorridorsLabel/Corridors")
 text = "4"
 alignment = 2
 flat = true
 
-[node name="CorridorsLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+[node name="CorridorsLabel" type="Label" parent="PanelContainer/DungeonSettings"]
 layout_mode = 2
 text = "corridors_length"
 horizontal_alignment = 3
 
-[node name="Corridors" type="LineEdit" parent="PanelContainer/VBoxContainer/CorridorsLabel"]
+[node name="Corridors" type="LineEdit" parent="PanelContainer/DungeonSettings/CorridorsLabel"]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -101,16 +107,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbor_top = NodePath("../../MultiplierLabel/Multiplier")
+focus_neighbor_bottom = NodePath("../../HallwaysLabel/Hallways")
 text = "4"
 alignment = 2
 flat = true
 
-[node name="HallwaysLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+[node name="HallwaysLabel" type="Label" parent="PanelContainer/DungeonSettings"]
 layout_mode = 2
 text = "hallways_chance    %   "
 horizontal_alignment = 3
 
-[node name="Hallways" type="LineEdit" parent="PanelContainer/VBoxContainer/HallwaysLabel"]
+[node name="Hallways" type="LineEdit" parent="PanelContainer/DungeonSettings/HallwaysLabel"]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -118,16 +126,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbor_top = NodePath("../../CorridorsLabel/Corridors")
+focus_neighbor_bottom = NodePath("../../RoomsLabel/Rooms")
 text = "0"
 alignment = 2
 flat = true
 
-[node name="RoomsLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+[node name="RoomsLabel" type="Label" parent="PanelContainer/DungeonSettings"]
 layout_mode = 2
 text = "rooms_chances		%		"
 horizontal_alignment = 3
 
-[node name="Rooms" type="LineEdit" parent="PanelContainer/VBoxContainer/RoomsLabel"]
+[node name="Rooms" type="LineEdit" parent="PanelContainer/DungeonSettings/RoomsLabel"]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -135,16 +145,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbor_top = NodePath("../../HallwaysLabel/Hallways")
+focus_neighbor_bottom = NodePath("../../rsMinLabel/rsMin")
 text = "100"
 alignment = 2
 flat = true
 
-[node name="rsMinLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+[node name="rsMinLabel" type="Label" parent="PanelContainer/DungeonSettings"]
 layout_mode = 2
 text = "rooms_size_min"
 horizontal_alignment = 3
 
-[node name="rsMin" type="LineEdit" parent="PanelContainer/VBoxContainer/rsMinLabel"]
+[node name="rsMin" type="LineEdit" parent="PanelContainer/DungeonSettings/rsMinLabel"]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -152,16 +164,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbor_top = NodePath("../../RoomsLabel/Rooms")
+focus_neighbor_bottom = NodePath("../../rsMaxLabel/rsMax")
 text = "2"
 alignment = 2
 flat = true
 
-[node name="rsMaxLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+[node name="rsMaxLabel" type="Label" parent="PanelContainer/DungeonSettings"]
 layout_mode = 2
 text = "rooms_size_max"
 horizontal_alignment = 3
 
-[node name="rsMax" type="LineEdit" parent="PanelContainer/VBoxContainer/rsMaxLabel"]
+[node name="rsMax" type="LineEdit" parent="PanelContainer/DungeonSettings/rsMaxLabel"]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -169,16 +183,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbor_top = NodePath("../../rsMinLabel/rsMin")
+focus_neighbor_bottom = NodePath("../../CenterLabel/Center")
 text = "4"
 alignment = 2
 flat = true
 
-[node name="CenterLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+[node name="CenterLabel" type="Label" parent="PanelContainer/DungeonSettings"]
 layout_mode = 2
 text = "Center"
 horizontal_alignment = 3
 
-[node name="Center" type="Button" parent="PanelContainer/VBoxContainer/CenterLabel"]
+[node name="Center" type="Button" parent="PanelContainer/DungeonSettings/CenterLabel"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -190,16 +206,18 @@ offset_top = -15.5
 offset_bottom = 15.5
 grow_horizontal = 0
 grow_vertical = 2
+focus_neighbor_top = NodePath("../../rsMaxLabel/rsMax")
+focus_neighbor_bottom = NodePath("../../CavernLabel/Cavern")
 toggle_mode = true
 text = "false"
 flat = true
 
-[node name="CavernLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+[node name="CavernLabel" type="Label" parent="PanelContainer/DungeonSettings"]
 layout_mode = 2
 text = "Cavern"
 horizontal_alignment = 3
 
-[node name="Cavern" type="Button" parent="PanelContainer/VBoxContainer/CavernLabel"]
+[node name="Cavern" type="Button" parent="PanelContainer/DungeonSettings/CavernLabel"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -211,32 +229,46 @@ offset_top = -15.5
 offset_bottom = 15.5
 grow_horizontal = 0
 grow_vertical = 2
+focus_neighbor_top = NodePath("../../CenterLabel/Center")
+focus_neighbor_bottom = NodePath("../../Restart")
 toggle_mode = true
 text = "false"
 flat = true
 
-[node name="Restart" type="Button" parent="PanelContainer/VBoxContainer"]
+[node name="Restart" type="Button" parent="PanelContainer/DungeonSettings"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../CavernLabel/Cavern")
+focus_neighbor_bottom = NodePath("../Quit")
 text = "Start
 "
 flat = true
 
-[node name="Quit" type="Button" parent="PanelContainer/VBoxContainer"]
+[node name="Quit" type="Button" parent="PanelContainer/DungeonSettings"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Restart")
+focus_neighbor_bottom = NodePath("../SeedLabel/Seed")
 text = "Quit
 "
 flat = true
 
-[connection signal="text_changed" from="PanelContainer/VBoxContainer/SeedLabel/Seed" to="." method="_on_seed_text_changed"]
-[connection signal="text_submitted" from="PanelContainer/VBoxContainer/SeedLabel/Seed" to="." method="_on_seed_text_submitted"]
-[connection signal="text_changed" from="PanelContainer/VBoxContainer/SizeLabel/Size" to="." method="_on_size_text_changed"]
-[connection signal="text_changed" from="PanelContainer/VBoxContainer/MultiplierLabel/Multiplier" to="." method="_on_multiplier_text_changed"]
-[connection signal="text_changed" from="PanelContainer/VBoxContainer/CorridorsLabel/Corridors" to="." method="_on_corridors_text_changed"]
-[connection signal="text_changed" from="PanelContainer/VBoxContainer/HallwaysLabel/Hallways" to="." method="_on_hallways_text_changed"]
-[connection signal="text_changed" from="PanelContainer/VBoxContainer/RoomsLabel/Rooms" to="." method="_on_rooms_text_changed"]
-[connection signal="text_changed" from="PanelContainer/VBoxContainer/rsMinLabel/rsMin" to="." method="_on_rs_min_text_changed"]
-[connection signal="text_changed" from="PanelContainer/VBoxContainer/rsMaxLabel/rsMax" to="." method="_on_rs_max_text_changed"]
-[connection signal="toggled" from="PanelContainer/VBoxContainer/CenterLabel/Center" to="." method="_on_center_toggled"]
-[connection signal="toggled" from="PanelContainer/VBoxContainer/CavernLabel/Cavern" to="." method="_on_cavern_toggled"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="gui_input" from="PanelContainer/DungeonSettings/SeedLabel/Seed" to="." method="_on_seed_gui_input"]
+[connection signal="text_changed" from="PanelContainer/DungeonSettings/SeedLabel/Seed" to="." method="_on_seed_text_changed"]
+[connection signal="text_submitted" from="PanelContainer/DungeonSettings/SeedLabel/Seed" to="." method="_on_seed_text_submitted"]
+[connection signal="gui_input" from="PanelContainer/DungeonSettings/SizeLabel/Size" to="." method="_on_size_gui_input"]
+[connection signal="text_changed" from="PanelContainer/DungeonSettings/SizeLabel/Size" to="." method="_on_size_text_changed"]
+[connection signal="gui_input" from="PanelContainer/DungeonSettings/MultiplierLabel/Multiplier" to="." method="_on_multiplier_gui_input"]
+[connection signal="text_changed" from="PanelContainer/DungeonSettings/MultiplierLabel/Multiplier" to="." method="_on_multiplier_text_changed"]
+[connection signal="gui_input" from="PanelContainer/DungeonSettings/CorridorsLabel/Corridors" to="." method="_on_corridors_gui_input"]
+[connection signal="text_changed" from="PanelContainer/DungeonSettings/CorridorsLabel/Corridors" to="." method="_on_corridors_text_changed"]
+[connection signal="gui_input" from="PanelContainer/DungeonSettings/HallwaysLabel/Hallways" to="." method="_on_hallways_gui_input"]
+[connection signal="text_changed" from="PanelContainer/DungeonSettings/HallwaysLabel/Hallways" to="." method="_on_hallways_text_changed"]
+[connection signal="gui_input" from="PanelContainer/DungeonSettings/RoomsLabel/Rooms" to="." method="_on_rooms_gui_input"]
+[connection signal="text_changed" from="PanelContainer/DungeonSettings/RoomsLabel/Rooms" to="." method="_on_rooms_text_changed"]
+[connection signal="gui_input" from="PanelContainer/DungeonSettings/rsMinLabel/rsMin" to="." method="_on_rs_min_gui_input"]
+[connection signal="text_changed" from="PanelContainer/DungeonSettings/rsMinLabel/rsMin" to="." method="_on_rs_min_text_changed"]
+[connection signal="gui_input" from="PanelContainer/DungeonSettings/rsMaxLabel/rsMax" to="." method="_on_rs_max_gui_input"]
+[connection signal="text_changed" from="PanelContainer/DungeonSettings/rsMaxLabel/rsMax" to="." method="_on_rs_max_text_changed"]
+[connection signal="toggled" from="PanelContainer/DungeonSettings/CenterLabel/Center" to="." method="_on_center_toggled"]
+[connection signal="toggled" from="PanelContainer/DungeonSettings/CavernLabel/Cavern" to="." method="_on_cavern_toggled"]
+[connection signal="pressed" from="PanelContainer/DungeonSettings/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="PanelContainer/DungeonSettings/Quit" to="." method="_on_quit_pressed"]
