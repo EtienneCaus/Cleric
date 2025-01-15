@@ -93,10 +93,16 @@ public partial class PauseMenu : Control
     public void _on_size_gui_input(InputEvent inputEvent)
     {
         if(Input.IsActionJustPressed("ui_right"))
+        {
             Globals.STEPS += 10;
+            size.Text = Globals.STEPS.ToString();
+        }    
         else if(Input.IsActionJustPressed("ui_left"))
+        {
             Globals.STEPS -= 10;
-        size.Text = Globals.STEPS.ToString();
+            size.Text = Globals.STEPS.ToString();
+        }
+        
     }
 
     public void _on_multiplier_text_changed(string str)
@@ -106,10 +112,15 @@ public partial class PauseMenu : Control
     public void _on_multiplier_gui_input(InputEvent inputEvent)
     {
         if(Input.IsActionJustPressed("ui_right"))
+        {
             Globals.WALKERS++;
+            multiplier.Text = Globals.WALKERS.ToString();
+        }           
         else if(Input.IsActionJustPressed("ui_left"))
+        {
             Globals.WALKERS--;
-        multiplier.Text = Globals.WALKERS.ToString();
+            multiplier.Text = Globals.WALKERS.ToString();
+        }
     }
 
     public void _on_corridors_text_changed(string str)
@@ -119,10 +130,15 @@ public partial class PauseMenu : Control
     public void _on_corridors_gui_input(InputEvent inputEvent)
     {
         if(Input.IsActionJustPressed("ui_right"))
+        {
             Globals.CORRIDORS_LENGTH++;
+            corridors.Text = Globals.CORRIDORS_LENGTH.ToString();
+        }          
         else if(Input.IsActionJustPressed("ui_left"))
+        {
             Globals.CORRIDORS_LENGTH--;
-        corridors.Text = Globals.CORRIDORS_LENGTH.ToString();
+            corridors.Text = Globals.CORRIDORS_LENGTH.ToString();
+        }
     }
 
     public void _on_hallways_text_changed(string str)
@@ -136,14 +152,15 @@ public partial class PauseMenu : Control
             Globals.HALLWAYS_CHANCES += 5;
             if(Globals.HALLWAYS_CHANCES > 100)
                 Globals.HALLWAYS_CHANCES = 100;
+            hallways.Text = Globals.HALLWAYS_CHANCES.ToString();
         }
         else if(Input.IsActionJustPressed("ui_left"))
         {
             Globals.HALLWAYS_CHANCES -= 5;
             if(Globals.HALLWAYS_CHANCES < 0)
                 Globals.HALLWAYS_CHANCES = 0;
+            hallways.Text = Globals.HALLWAYS_CHANCES.ToString();
         }
-        hallways.Text = Globals.HALLWAYS_CHANCES.ToString();
     }
 
     public void _on_rooms_text_changed(string str)
@@ -157,14 +174,15 @@ public partial class PauseMenu : Control
             Globals.ROOMS_CHANCES += 5;
             if(Globals.ROOMS_CHANCES > 100)
                 Globals.ROOMS_CHANCES = 100;
+            rooms.Text = Globals.ROOMS_CHANCES.ToString();
         }  
         else if(Input.IsActionJustPressed("ui_left"))
         {
             Globals.ROOMS_CHANCES -= 5;
             if(Globals.ROOMS_CHANCES < 0)
                 Globals.ROOMS_CHANCES = 0;
+            rooms.Text = Globals.ROOMS_CHANCES.ToString();
         }
-        rooms.Text = Globals.ROOMS_CHANCES.ToString();
     }
 
     public void _on_rs_min_text_changed(string str)
@@ -174,10 +192,15 @@ public partial class PauseMenu : Control
     public void _on_rs_min_gui_input(InputEvent inputEvent)
     {
         if(Input.IsActionJustPressed("ui_right"))
+        {
             Globals.ROOMS_SIZE_MIN++;
+            rsMin.Text = Globals.ROOMS_SIZE_MIN.ToString();
+        }   
         else if(Input.IsActionJustPressed("ui_left"))
+        {
             Globals.ROOMS_SIZE_MIN--;
-        rsMin.Text = Globals.ROOMS_SIZE_MIN.ToString();
+            rsMin.Text = Globals.ROOMS_SIZE_MIN.ToString();
+        }
     }
 
     public void _on_rs_max_text_changed(string str)
@@ -187,10 +210,15 @@ public partial class PauseMenu : Control
     public void _on_rs_max_gui_input(InputEvent inputEvent)
     {
         if(Input.IsActionJustPressed("ui_right"))
+        {
             Globals.ROOMS_SIZE_MAX++;
+            rsMax.Text = Globals.ROOMS_SIZE_MAX.ToString();
+        }   
         else if(Input.IsActionJustPressed("ui_left"))
+        {
             Globals.ROOMS_SIZE_MAX--;
-        rsMax.Text = Globals.ROOMS_SIZE_MAX.ToString();
+            rsMax.Text = Globals.ROOMS_SIZE_MAX.ToString();
+        }
     }
 
     public void _on_center_toggled(bool state)
