@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bkcf40rgwawn3" path="res://Tiles/TileMap.png" id="5_e5wbd"]
 [ext_resource type="Texture2D" uid="uid://dl4eat57i60aw" path="res://Tiles/Cursor.png" id="6_2gruk"]
 [ext_resource type="PackedScene" uid="uid://dhft66sfnbfkj" path="res://Scenes/PauseMenu.tscn" id="7_2boqy"]
+[ext_resource type="Script" path="res://Scripts/Label.cs" id="8_o02by"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_spbl5"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -36,13 +37,6 @@ texture_region_size = Vector2i(8, 8)
 [sub_resource type="TileSet" id="TileSet_1luwj"]
 tile_size = Vector2i(8, 8)
 sources/0 = SubResource("TileSetAtlasSource_aqcxo")
-
-[sub_resource type="GDScript" id="GDScript_xpta3"]
-script/source = "extends Label
-
-func _process(_delta: float) -> void:
-	set_text(\"FPS %d\" % Engine.get_frames_per_second())
-"
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_o0kab")
@@ -94,8 +88,7 @@ rotation_smoothing_enabled = true
 visible = false
 
 [node name="Label" type="Label" parent="UI"]
-visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 text = "FPS"
-script = SubResource("GDScript_xpta3")
+script = ExtResource("8_o02by")

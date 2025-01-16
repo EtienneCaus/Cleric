@@ -17,6 +17,8 @@ public partial class Globals : Node
     public static int ROOMS_SIZE_MAX = 4;  //Maximum size of rooms
     public static bool CENTER_ON = false;   //Creates a center connection
     public static bool CAVERN = false;  //Set the map generation mode to Caverns
-    public static int ENEMY_SPAWN = 20;
-    public static int ENEMY_ROOMS = 20;
+    public static int ENEMY_SPAWN = 20; //Enemy spawn rate in corridors/caverns
+    public static int ENEMY_ROOMS = 20; //Enemy spawn rate in rooms
+
+    public static int LEVEL = 0; //Starting level
 }

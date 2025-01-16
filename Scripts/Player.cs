@@ -16,7 +16,7 @@ public partial class Player : CharacterBody3D
 	float timeBob = 0f;
 	public Node3D head;
 	AnimationPlayer anim;
-	RayCast3D raycast;
+	RayCast3D raycast, rayinteract;
 	Camera3D camera, weaponCam;
 	SpotLight3D spotLight;
 
@@ -25,6 +25,7 @@ public partial class Player : CharacterBody3D
 		head = GetNode<Node3D>("Head");	//Set the head and camera
 		anim = GetNode<AnimationPlayer>("AnimationPlayer");
 		raycast = GetNode<RayCast3D>("Head/Camera3D/RayCast3D");
+		rayinteract = GetNode<RayCast3D>("Head/Camera3D/RayInteract");
 
 		camera = GetNode<Camera3D>("Head/Camera3D");
 		weaponCam = GetNode<Camera3D>("Head/Camera3D/SubViewportContainer/SubViewport/Camera3D");
@@ -118,6 +119,11 @@ public partial class Player : CharacterBody3D
 		Velocity = velocity;
 		MoveAndSlide();
 		WeaponHit();
+
+		if(Input.IsActionJustPressed("interact") && rayinteract.IsColliding())
+		{
+			Interact(rayinteract.GetCollider());
+		}
 	}
 
 	Vector3 HeadBob(float time)
@@ -166,6 +172,15 @@ public partial class Player : CharacterBody3D
 			target = raycast.GetCollider() as Dummy;
 			if(target != null && target.IsInGroup("Enemy"))
 				target.GetHit(25);
+		}
+	}
+
+	public void Interact(GodotObject obj)
+	{
+		GD.Print(obj.GetType());
+		if(obj.GetType().ToString() == "Cell")
+		{
+			((Cell)obj).Interact();
 		}
 	}
 }
