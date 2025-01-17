@@ -51,7 +51,7 @@ public partial class Cell : StaticBody3D
 		{
 			CharacterBody3D dummy = ResourceLoader.Load<PackedScene>("res://Scenes/Dummy.tscn").Instantiate() as CharacterBody3D;
 			AddChild(dummy);
-			dummy.Position = new Vector3(Position.X*Globals.GRID_SIZE, 0, Position.Y*Globals.GRID_SIZE);
+			dummy.Position = new Vector3((GlobalPosition.X - Position.X)*Globals.GRID_SIZE, 0, (GlobalPosition.Y - Position.Y)*Globals.GRID_SIZE);
 		}
 	}
 

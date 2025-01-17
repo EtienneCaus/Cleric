@@ -4,7 +4,7 @@ using System;
 public partial class PauseMenu : Control
 {
     static Random rnd = new Random();
-    LineEdit seed, size, multiplier, corridors, hallways, rooms, rsMin, rsMax;
+    LineEdit seed, size, multiplier, corridors, hallways, rooms, rsMin, rsMax, espawn, esroom;
     Button center, cavern;
     public override void _Ready()
 	{
@@ -28,7 +28,10 @@ public partial class PauseMenu : Control
         center.Text = Globals.CENTER_ON.ToString();
         cavern = GetNode<Button>("PanelContainer/DungeonSettings/CavernLabel/Cavern");
         cavern.Text = Globals.CAVERN.ToString();
-
+        espawn = GetNode<LineEdit>("PanelContainer/DungeonSettings/EnemySpawnLabel/EnemySpawn");
+        espawn.Text = Globals.ENEMY_SPAWN.ToString();
+        esroom = GetNode<LineEdit>("PanelContainer/DungeonSettings/EnemyRoomLabel/EnemyRoom");
+        esroom.Text = Globals.ENEMY_ROOMS.ToString();
 	}
     public void resume()
     {
@@ -42,8 +45,10 @@ public partial class PauseMenu : Control
         GetTree().Paused = true;
         Visible = true;
         Input.MouseMode = Input.MouseModeEnum.Visible;
-        GetNode<Button>("PanelContainer/DungeonSettings/Restart").GrabFocus();
-
+        GetNode<VBoxContainer>("PanelContainer/MainMenu").Visible = true;
+        GetNode<VBoxContainer>("PanelContainer/DungeonSettings").Visible = false;
+        GetNode<VBoxContainer>("PanelContainer/Options").Visible = false;
+        GetNode<Button>("PanelContainer/MainMenu/Start").GrabFocus();
     }
 
     public override void _Process(double delta)
@@ -54,13 +59,42 @@ public partial class PauseMenu : Control
             resume();
     }
 
+    public void _on_start_pressed()
+    {
+        GetNode<VBoxContainer>("PanelContainer/MainMenu").Visible = false;
+        GetNode<VBoxContainer>("PanelContainer/DungeonSettings").Visible = true;
+        GetNode<VBoxContainer>("PanelContainer/Options").Visible = false;
+        GetNode<Button>("PanelContainer/DungeonSettings/Restart").GrabFocus();
+    }
+    public void _on_options_pressed()
+    {
+        GetNode<VBoxContainer>("PanelContainer/MainMenu").Visible = false;
+        GetNode<VBoxContainer>("PanelContainer/DungeonSettings").Visible = false;
+        GetNode<VBoxContainer>("PanelContainer/Options").Visible = true;
+        GetNode<Button>("PanelContainer/Options/Back").GrabFocus();
+        GetNode<HSlider>("PanelContainer/Options/SensibilityLabel/Sensibility").Value = Globals.Sensitivity * 6000;
+    }
+    public void _on_back_pressed()
+    {
+        GetNode<VBoxContainer>("PanelContainer/MainMenu").Visible = true;
+        GetNode<VBoxContainer>("PanelContainer/DungeonSettings").Visible = false;
+        GetNode<VBoxContainer>("PanelContainer/Options").Visible = false;
+        GetNode<Button>("PanelContainer/MainMenu/Start").GrabFocus();
+    }
+
     public void _on_quit_pressed()
     {
         GetTree().Quit();
     }
 
+    public void _on_sensibility_drag_ended(bool changed)
+    {
+        Globals.Sensitivity = (float)GetNode<HSlider>("PanelContainer/Options/SensibilityLabel/Sensibility").Value / 6000;
+    }
+    //----------------------------------------------------------------------------------------------------------
     public void _on_restart_pressed()
     {
+        Globals.LEVEL = 0;
         resume();
         GetTree().ReloadCurrentScene(); //Recharge le jeu
     }
@@ -69,12 +103,6 @@ public partial class PauseMenu : Control
     {
         int.TryParse(str, out Globals.SEED);
     }
-    /*public void _on_seed_text_submitted(string str)
-    {
-        rnd = new Random();
-        Globals.SEED = rnd.Next();
-        seed.Text = Globals.SEED.ToString();
-    }*/
 
     public void _on_seed_gui_input(InputEvent inputEvent)
     {
@@ -231,5 +259,51 @@ public partial class PauseMenu : Control
     {
         Globals.CAVERN = state;
         cavern.Text = Globals.CAVERN.ToString();
+    }
+
+    public void _on_enemy_spawn_text_changed(string str)
+    {
+        int.TryParse(str, out Globals.ENEMY_SPAWN);
+    }
+
+    public void _on_enemy_spawn_gui_input(InputEvent inputEvent)
+    {
+        if(Input.IsActionJustPressed("ui_right"))
+        {
+            Globals.ENEMY_SPAWN += 5;
+            if(Globals.ENEMY_SPAWN > 100)
+                Globals.ENEMY_SPAWN = 100;
+            espawn.Text = Globals.ENEMY_SPAWN.ToString();
+        }  
+        else if(Input.IsActionJustPressed("ui_left"))
+        {
+            Globals.ENEMY_SPAWN -= 5;
+            if(Globals.ENEMY_SPAWN < 0)
+                Globals.ENEMY_SPAWN = 0;
+            espawn.Text = Globals.ENEMY_SPAWN.ToString();
+        }
+    }
+
+    public void _on_enemy_room_text_changed(string str)
+    {
+        int.TryParse(str, out Globals.ENEMY_ROOMS);
+    }
+
+    public void _on_enemy_room_gui_input(InputEvent inputEvent)
+    {
+        if(Input.IsActionJustPressed("ui_right"))
+        {
+            Globals.ENEMY_ROOMS += 5;
+            if(Globals.ENEMY_ROOMS > 100)
+                Globals.ENEMY_ROOMS = 100;
+            esroom.Text = Globals.ENEMY_ROOMS.ToString();
+        }  
+        else if(Input.IsActionJustPressed("ui_left"))
+        {
+            Globals.ENEMY_ROOMS -= 5;
+            if(Globals.ENEMY_ROOMS < 0)
+                Globals.ENEMY_ROOMS = 0;
+            esroom.Text = Globals.ENEMY_ROOMS.ToString();
+        }
     }
 }
