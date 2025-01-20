@@ -385,6 +385,7 @@ flat = true
 [connection signal="pressed" from="PanelContainer/MainMenu/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="PanelContainer/MainMenu/Quit" to="." method="_on_quit_pressed"]
 [connection signal="drag_ended" from="PanelContainer/Options/SensibilityLabel/Sensibility" to="." method="_on_sensibility_drag_ended"]
+[connection signal="value_changed" from="PanelContainer/Options/SensibilityLabel/Sensibility" to="." method="_on_sensibility_value_changed"]
 [connection signal="pressed" from="PanelContainer/Options/Back" to="." method="_on_back_pressed"]
 [connection signal="gui_input" from="PanelContainer/DungeonSettings/SeedLabel/Seed" to="." method="_on_seed_gui_input"]
 [connection signal="text_changed" from="PanelContainer/DungeonSettings/SeedLabel/Seed" to="." method="_on_seed_text_changed"]

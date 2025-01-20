@@ -9,5 +9,6 @@ public partial class Dummy : Enemy
 		gotHit = GetNode<Timer>("GotHit");
 		fireHit = GetNode<Timer>("FireHit");
 		health = 100;
+		//flamability = 10;
 	}
 }

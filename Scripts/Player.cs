@@ -19,6 +19,8 @@ public partial class Player : CharacterBody3D
 	RayCast3D raycast, rayinteract;
 	Camera3D camera, weaponCam;
 	SpotLight3D spotLight;
+	float damage;
+	string type;
 
     public override void _Ready()
     {
@@ -111,10 +113,16 @@ public partial class Player : CharacterBody3D
 		transBob.Origin = HeadBob(timeBob);	//Perform Headbobs
 		camera.Transform = transBob;	//Change the Origin of the Camera
 
-		MeshInstance3D torch = GetNode<MeshInstance3D>("Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/Torch");
-		Transform3D transWeapon = torch.Transform;
-		transWeapon.Origin = WeaponBob(timeBob);
-		torch.Transform = transWeapon;
+		Node3D rightHand = GetNode<Node3D>("Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/RightHand");
+		Node3D leftHand = GetNode<Node3D>("Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/LeftHand");
+		//Right Hand
+		Transform3D transWeapon = rightHand.Transform;
+		transWeapon.Origin = WeaponBob(timeBob, true);
+		rightHand.Transform = transWeapon;
+		//Left Hand
+		transWeapon = leftHand.Transform;
+		transWeapon.Origin = WeaponBob(timeBob, false);
+		leftHand.Transform = transWeapon;
 
 		Velocity = velocity;
 		MoveAndSlide();
@@ -136,13 +144,16 @@ public partial class Player : CharacterBody3D
 
 		return position;
 	}
-	Vector3 WeaponBob(float time)
+	Vector3 WeaponBob(float time, bool mainHand)
 	{
 		Vector3 position = Vector3.Zero;
 
 		//Moves the head in a sine wave, ie. up and down
 		position.Y = Sin(time * BobFrequency) * (BobAmplitude / 2) - 0.2f;
-		position.X = Cos(time * BobFrequency / 2) * (BobAmplitude / 2) + 0.2f;
+		if(mainHand)	//if Right Hand
+			position.X = Cos(time * BobFrequency / 2) * (BobAmplitude / 2) + 0.2f;
+		else			//if Left Hand
+			position.X = Cos(time * BobFrequency / 2) * (BobAmplitude / 2) - 0.2f;
 		position.Z = -0.25f;
 
 		return position;
@@ -159,19 +170,29 @@ public partial class Player : CharacterBody3D
 
 	public void WeaponHit()
 	{
-		Dummy target = new();
+		Enemy target;
 
-		if(Input.IsActionPressed("fire"))
+		if(!anim.IsPlaying())
 		{
-			anim.Play("Weapon_Hit");
+			if(Input.IsActionPressed("fire"))
+			{
+				anim.Play("Mace_Hit");
+				damage = 20;
+				type = "blunt";
+			}
+			else if(Input.IsActionPressed("altfire"))
+			{
+				anim.Play("Alt_Weapon_Hit");
+				damage = 10;
+				type = "fire";
+			}
 		}
-		//else
 		//	anim.Stop();
 		if(anim.IsPlaying() && raycast.IsColliding())
 		{
-			target = raycast.GetCollider() as Dummy;
+			target = raycast.GetCollider() as Enemy;
 			if(target != null && target.IsInGroup("Enemy"))
-				target.GetHit(25);
+				target.GetHit(damage, type);
 		}
 	}
 

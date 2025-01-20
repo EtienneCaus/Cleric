@@ -88,6 +88,7 @@ rotation_smoothing_enabled = true
 visible = false
 
 [node name="Label" type="Label" parent="UI"]
+visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 text = "FPS"

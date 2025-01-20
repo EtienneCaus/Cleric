@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cikm8p0mw5v0l"]
+[gd_scene load_steps=11 format=3 uid="uid://cikm8p0mw5v0l"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_0x7mc"]
 [ext_resource type="PackedScene" uid="uid://cqtj36b4lpvly" path="res://Scenes/Torch.tscn" id="2_06wmx"]
+[ext_resource type="PackedScene" uid="uid://c1yqtrs0aqsqt" path="res://Scenes/Mace.tscn" id="2_c3wh7"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xqjxd"]
 radius = 0.16
@@ -12,83 +13,32 @@ rings = 0
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5aprd"]
 points = PackedVector3Array(-2.71201e-05, 0.189937, 0.16, 0.138537, 0.189937, 0.08, -2.71201e-05, 0.35, 0, -0.138564, 0.189937, 0.08, -2.71201e-05, -0.190006, 0.16, 0.138537, -0.190006, 0.08, 0.138537, 0.189937, -0.08, -2.71201e-05, 0.189937, -0.16, -0.138564, 0.189937, -0.08, -0.138564, -0.190006, 0.08, -2.71201e-05, -0.35, 0, 0.138537, -0.190006, -0.08, -2.71201e-05, -0.190006, -0.16, -0.138564, -0.190006, -0.08)
 
-[sub_resource type="Animation" id="Animation_jkjlw"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_2jptx"]
+resource_name = "Alt_Weapon_Hit"
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/Torch:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.195354, -0.153909, -0.295489)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/Torch:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.197527, -1.73731, 0.0714104)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Head/OmniLight3D:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0.12, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Head/Camera3D/RayCast3D:enabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_ahj65"]
-resource_name = "Weapon_Hit"
-length = 0.300003
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/Torch:position")
+tracks/0/path = NodePath("Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/LeftHand:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.233333, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0.195354, -0.153909, -0.295489), Vector3(0.195, 0, -0.295), Vector3(-0.09, -0.13, -0.295), Vector3(-0.2, -0.26, -0.295), Vector3(-0.27, -0.51, -0.295), Vector3(0.195, -0.464, -0.295), Vector3(0.195, -0.219, -0.255)]
+"values": [Vector3(-0.195, -0.154, -0.295), Vector3(-0.195, 0, -0.295), Vector3(0.09, -0.13, -0.295), Vector3(0.2, -0.26, -0.295), Vector3(0.27, -0.51, -0.295), Vector3(-0.195, -0.464, -0.295), Vector3(-0.195, -0.219, -0.255)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/Torch:rotation")
+tracks/1/path = NodePath("Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/LeftHand:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.233333, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.197527, -1.73731, 0.0714104), Vector3(-0.197527, -1.73731, 0.0714104), Vector3(0.527089, -2.0944, 0.263545), Vector3(1.53065, -2.00713, 0.202458), Vector3(1.53065, -2.00713, 0.202458), Vector3(0.563741, -1.7366, 0.0715585), Vector3(-0.197527, -1.73731, 0.0714104)]
+"values": [Vector3(0.197222, -1.4015, 0.0715585), Vector3(0.197222, -1.4015, 0.0715585), Vector3(-0.0750492, -2.24275, 0.623083), Vector3(-1.53065, -2.00713, 1.08909), Vector3(-1.53065, -2.00713, 1.08909), Vector3(-1.37532, -0.193732, -0.0785398), Vector3(0.197222, -1.4015, 0.0715585)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -115,8 +65,177 @@ tracks/3/keys = {
 "values": [false, true, false, false]
 }
 
+[sub_resource type="Animation" id="Animation_jkjlw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/OmniLight3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.12, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D/RayCast3D:enabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/RightHand:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.195, -0.154, -0.295)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/RightHand:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.197222, -1.7366, 0.0715585)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/LeftHand:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.197222, -1.4015, 0.0715585)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/LeftHand:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.195, -0.154, -0.295)]
+}
+
+[sub_resource type="Animation" id="Animation_ahj65"]
+resource_name = "Weapon_Hit"
+length = 0.300003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/OmniLight3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.233333, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.12, 0), Vector3(0, -0.18, 0), Vector3(0, -0.18, 0), Vector3(0, 0.12, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D/RayCast3D:enabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/RightHand:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(-0.00052087, 0.0328124, 0.0666667, 0.1, 0.133333, 0.233333, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.197527, -1.73731, 0.0714104), Vector3(-0.197527, -1.73731, 0.0714104), Vector3(0.527089, -2.0944, 0.263545), Vector3(1.53065, -2.00713, 0.202458), Vector3(1.53065, -2.00713, 0.202458), Vector3(0.563741, -1.7366, 0.0715585), Vector3(-0.197527, -1.73731, 0.0714104)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/RightHand:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(-0.00052087, 0.0328124, 0.0661458, 0.1, 0.133333, 0.233333, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.195354, -0.153909, -0.295489), Vector3(0.195, 0, -0.295), Vector3(-0.09, -0.13, -0.295), Vector3(-0.2, -0.26, -0.295), Vector3(-0.27, -0.51, -0.295), Vector3(0.195, -0.464, -0.295), Vector3(0.195, -0.219, -0.255)]
+}
+
+[sub_resource type="Animation" id="Animation_oigyp"]
+resource_name = "Mace_Hit"
+length = 0.333337
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/RightHand:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.1, 0.133333, 0.166667, 0.266667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.197527, -1.73731, 0.0714104), Vector3(-0.197527, -1.73731, 0.0714104), Vector3(0.431096, -1.2706, 0.390954), Vector3(0.954695, -1.14145, 0.898845), Vector3(1.55683, -1.13621, 0.733038), Vector3(1.55683, -1.13621, 0.733038), Vector3(-0.197527, -1.73731, 0.0714104)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/RightHand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.1, 0.133333, 0.166667, 0.266667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.195354, -0.153909, -0.295489), Vector3(0.195, 0, -0.295), Vector3(-0.12, -0.111, -0.295), Vector3(-0.148, -0.274, -0.295), Vector3(-0.304, -0.531, -0.295), Vector3(0.195, -0.531, -0.295), Vector3(0.195, -0.219, -0.255)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head/Camera3D/RayCast3D:enabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cklpw"]
 _data = {
+"Alt_Weapon_Hit": SubResource("Animation_2jptx"),
+"Mace_Hit": SubResource("Animation_oigyp"),
 "RESET": SubResource("Animation_jkjlw"),
 "Weapon_Hit": SubResource("Animation_ahj65")
 }
@@ -155,10 +274,21 @@ render_target_update_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52, 0)
 cull_mask = 2
 
-[node name="Torch" parent="Head/Camera3D/SubViewportContainer/SubViewport/Camera3D" instance=ExtResource("2_06wmx")]
-transform = Transform3D(-0.151515, 0.204863, -0.966992, 0.0699623, 0.978056, 0.196245, 0.985976, -0.0379191, -0.162522, 0.195354, -0.153909, -0.295489)
+[node name="RightHand" type="Node3D" parent="Head/Camera3D/SubViewportContainer/SubViewport/Camera3D"]
+transform = Transform3D(-0.150805, 0.204564, -0.967166, 0.0701114, 0.978105, 0.195946, 0.986074, -0.0382598, -0.161846, 0.195, -0.154, -0.295)
+
+[node name="Mace" parent="Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/RightHand" instance=ExtResource("2_c3wh7")]
+
+[node name="Torch" parent="Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/RightHand" instance=ExtResource("2_06wmx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
+visible = false
 layers = 2
-skeleton = NodePath("../../../../../SpotLight3D")
+skeleton = NodePath("../../../../../../SpotLight3D")
+
+[node name="LeftHand" type="Node3D" parent="Head/Camera3D/SubViewportContainer/SubViewport/Camera3D"]
+transform = Transform3D(0.154248, -0.204697, -0.966595, 0.0701114, 0.978105, -0.195946, 0.985541, -0.0375451, 0.165223, -0.195, -0.154, -0.295)
+
+[node name="Torch" parent="Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/LeftHand" instance=ExtResource("2_06wmx")]
 
 [node name="RayCast3D" type="RayCast3D" parent="Head/Camera3D"]
 enabled = false

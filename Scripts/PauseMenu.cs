@@ -87,9 +87,9 @@ public partial class PauseMenu : Control
         GetTree().Quit();
     }
 
-    public void _on_sensibility_drag_ended(bool changed)
+    public void _on_sensibility_value_changed(float sensitivity)
     {
-        Globals.Sensitivity = (float)GetNode<HSlider>("PanelContainer/Options/SensibilityLabel/Sensibility").Value / 6000;
+        Globals.Sensitivity = sensitivity / 6000;
     }
     //----------------------------------------------------------------------------------------------------------
     public void _on_restart_pressed()
