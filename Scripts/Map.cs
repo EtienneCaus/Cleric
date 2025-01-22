@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 
 public partial class Map : Node2D
 {
@@ -29,6 +30,7 @@ public partial class Map : Node2D
         {
             if(Globals.CENTER_ON) //Puts the walker at the center of the dungeon each walker rotation
                 position = Vector2I.Zero;
+            direction = Vector2I.Up;
             int tmpSteps = steps;
             while(tmpSteps > 0)
             {

@@ -126,7 +126,10 @@ public partial class Player : CharacterBody3D
 
 		Velocity = velocity;
 		MoveAndSlide();
-		WeaponHit();
+		if(Globals.STAMINA > 0)
+			WeaponHit();
+		if(Globals.STAMINA < 100)
+			Globals.STAMINA++;
 
 		if(Input.IsActionJustPressed("interact") && rayinteract.IsColliding())
 		{
@@ -174,14 +177,16 @@ public partial class Player : CharacterBody3D
 
 		if(!anim.IsPlaying())
 		{
-			if(Input.IsActionPressed("fire"))
+			if(Input.IsActionPressed("fire") && Globals.STAMINA > 60)
 			{
+				Globals.STAMINA -= 60;
 				anim.Play("Mace_Hit");
 				damage = 20;
 				type = "blunt";
 			}
-			else if(Input.IsActionPressed("altfire"))
+			else if(Input.IsActionPressed("altfire") && Globals.STAMINA > 30)
 			{
+				Globals.STAMINA -= 30;
 				anim.Play("Alt_Weapon_Hit");
 				damage = 10;
 				type = "fire";

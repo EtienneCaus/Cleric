@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bwq7pgo4tfwcc"]
+[gd_scene load_steps=19 format=3 uid="uid://bwq7pgo4tfwcc"]
 
 [ext_resource type="Script" path="res://Scripts/World.cs" id="1_o0kab"]
 [ext_resource type="PackedScene" uid="uid://fotxqhf5oe0q" path="res://Scenes/Map.tscn" id="2_bweca"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bkcf40rgwawn3" path="res://Tiles/TileMap.png" id="5_e5wbd"]
 [ext_resource type="Texture2D" uid="uid://dl4eat57i60aw" path="res://Tiles/Cursor.png" id="6_2gruk"]
 [ext_resource type="PackedScene" uid="uid://dhft66sfnbfkj" path="res://Scenes/PauseMenu.tscn" id="7_2boqy"]
+[ext_resource type="Script" path="res://Scripts/Hud.cs" id="7_ubf3b"]
 [ext_resource type="Script" path="res://Scripts/Label.cs" id="8_o02by"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_spbl5"]
@@ -37,6 +38,18 @@ texture_region_size = Vector2i(8, 8)
 [sub_resource type="TileSet" id="TileSet_1luwj"]
 tile_size = Vector2i(8, 8)
 sources/0 = SubResource("TileSetAtlasSource_aqcxo")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_07ovn"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7peye"]
+bg_color = Color(0.752941, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7hhn5"]
+bg_color = Color(0, 0.752941, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c2pkv"]
+bg_color = Color(0, 0, 0.752941, 1)
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_o0kab")
@@ -83,6 +96,60 @@ texture = ExtResource("6_2gruk")
 [node name="Camera2D" type="Camera2D" parent="UI/SubViewportContainer/SubViewport/Minimap/Cursor"]
 ignore_rotation = false
 rotation_smoothing_enabled = true
+
+[node name="HUD" type="SubViewport" parent="UI/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(256, 256)
+render_target_update_mode = 4
+
+[node name="HUD" type="SubViewportContainer" parent="UI"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -256.0
+offset_right = 256.0
+grow_vertical = 0
+script = ExtResource("7_ubf3b")
+
+[node name="SubViewport" type="SubViewport" parent="UI/HUD"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(256, 256)
+render_target_update_mode = 4
+
+[node name="HealthBar" type="ProgressBar" parent="UI/HUD/SubViewport"]
+offset_left = 30.0
+offset_top = 80.0
+offset_right = 60.0
+offset_bottom = 236.0
+theme_override_styles/background = SubResource("StyleBoxFlat_07ovn")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7peye")
+value = 100.0
+fill_mode = 3
+show_percentage = false
+
+[node name="StaminaBar" type="ProgressBar" parent="UI/HUD/SubViewport"]
+offset_left = 80.0
+offset_top = 80.0
+offset_right = 110.0
+offset_bottom = 236.0
+theme_override_styles/background = SubResource("StyleBoxFlat_07ovn")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7hhn5")
+value = 100.0
+fill_mode = 3
+show_percentage = false
+
+[node name="ManaBar" type="ProgressBar" parent="UI/HUD/SubViewport"]
+offset_left = 130.0
+offset_top = 80.0
+offset_right = 160.0
+offset_bottom = 236.0
+theme_override_styles/background = SubResource("StyleBoxFlat_07ovn")
+theme_override_styles/fill = SubResource("StyleBoxFlat_c2pkv")
+value = 100.0
+fill_mode = 3
+show_percentage = false
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("7_2boqy")]
 visible = false
