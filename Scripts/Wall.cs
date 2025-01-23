@@ -15,5 +15,10 @@ public partial class Wall : MeshInstance3D
             Material material = ResourceLoader.Load<Material>("res://Materials/StoneExit.tres");
             SetSurfaceOverrideMaterial(0, material);
         }
+        if(wall == 3)
+        {
+            Material material = ResourceLoader.Load<Material>("res://Materials/StoneTorch.tres");
+            SetSurfaceOverrideMaterial(0, material);
+        }
     }
 }

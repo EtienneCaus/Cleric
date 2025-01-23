@@ -53,6 +53,12 @@ public partial class Cell : StaticBody3D
 			AddChild(dummy);
 			dummy.Position = new Vector3((GlobalPosition.X - Position.X)*Globals.GRID_SIZE, 0, (GlobalPosition.Y - Position.Y)*Globals.GRID_SIZE);
 		}
+		else if(tileMap.GetCellAtlasCoords(myGridPosition) == new Vector2I(5, 0))	//Torch
+		{
+			Area3D item = ResourceLoader.Load<PackedScene>("res://Scenes/Items.tscn").Instantiate() as Area3D;
+			AddChild(item);
+			item.Position = new Vector3((GlobalPosition.X - Position.X)*Globals.GRID_SIZE, 0, (GlobalPosition.Y - Position.Y)*Globals.GRID_SIZE);
+		}
 	}
 
 	public void Interact()

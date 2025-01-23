@@ -98,9 +98,10 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0)
 shape = SubResource("BoxShape3D_w7auf")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="East"]
+[node name="Wall" type="MeshInstance3D" parent="East"]
 mesh = SubResource("PlaneMesh_sx4p6")
 skeleton = NodePath("../..")
+script = ExtResource("4_u7gfm")
 
 [node name="South" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.5)
@@ -115,10 +116,11 @@ script = ExtResource("4_u7gfm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, 0)
 shape = SubResource("BoxShape3D_cy5ap")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="West"]
+[node name="Wall" type="MeshInstance3D" parent="West"]
 transform = Transform3D(1, 0, 0, 0, 0.999993, -0.00380481, 0, 0.00380481, 0.999993, 0, 0, 0)
 mesh = SubResource("PlaneMesh_h3xqy")
 skeleton = NodePath("../..")
+script = ExtResource("4_u7gfm")
 
 [node name="North" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.5)

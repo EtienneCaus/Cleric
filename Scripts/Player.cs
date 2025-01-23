@@ -177,16 +177,16 @@ public partial class Player : CharacterBody3D
 
 		if(!anim.IsPlaying())
 		{
-			if(Input.IsActionPressed("fire") && Globals.STAMINA > 60)
+			if(Input.IsActionPressed("fire") && Globals.STAMINA > 50)
 			{
-				Globals.STAMINA -= 60;
+				Globals.STAMINA -= 50;
 				anim.Play("Mace_Hit");
 				damage = 20;
 				type = "blunt";
 			}
-			else if(Input.IsActionPressed("altfire") && Globals.STAMINA > 30)
+			else if(Input.IsActionPressed("altfire") && Globals.STAMINA > 25)
 			{
-				Globals.STAMINA -= 30;
+				Globals.STAMINA -= 25;
 				anim.Play("Alt_Weapon_Hit");
 				damage = 10;
 				type = "fire";
