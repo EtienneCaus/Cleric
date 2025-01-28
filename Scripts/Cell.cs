@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using static Godot.Mathf;
 
 public partial class Cell : StaticBody3D
 {
@@ -55,9 +56,41 @@ public partial class Cell : StaticBody3D
 		}
 		else if(tileMap.GetCellAtlasCoords(myGridPosition) == new Vector2I(5, 0))	//Torch
 		{
-			Area3D item = ResourceLoader.Load<PackedScene>("res://Scenes/Items.tscn").Instantiate() as Area3D;
-			AddChild(item);
-			item.Position = new Vector3((GlobalPosition.X - Position.X)*Globals.GRID_SIZE, 0, (GlobalPosition.Y - Position.Y)*Globals.GRID_SIZE);
+			Area3D walltorch = ResourceLoader.Load<PackedScene>("res://Scenes/Items.tscn").Instantiate() as Area3D;
+			type = 3;
+
+			if(!cellList.Contains(myGridPosition + Vector2I.Up))
+			{
+				northFace.GetChild<Wall>(0).SetWall(3);	//southFace.Texture = Torch
+				walltorch.GetChild<Node3D>(2).Position = new Vector3(0,0.5f,-0.44f);
+				walltorch.GetChild<Node3D>(2).Rotation = new Vector3(DegToRad(30),DegToRad(0),0);
+			}
+			else if(!cellList.Contains(myGridPosition + Vector2I.Down))
+			{
+				southFace.GetChild<Wall>(0).SetWall(3);
+				walltorch.GetChild<Node3D>(2).Position = new Vector3(0,0.5f,0.44f);
+				walltorch.GetChild<Node3D>(2).Rotation = new Vector3(DegToRad(30),DegToRad(180),0);
+			}
+			else if(!cellList.Contains(myGridPosition + Vector2I.Right))
+			{
+				eastFace.GetChild<Wall>(0).SetWall(3);
+				walltorch.GetChild<Node3D>(2).Position = new Vector3(0.44f,0.5f,0);
+				walltorch.GetChild<Node3D>(2).Rotation = new Vector3(DegToRad(30),DegToRad(270),0);
+			}
+			else if(!cellList.Contains(myGridPosition + Vector2I.Left))
+			{
+				westFace.GetChild<Wall>(0).SetWall(3);
+				walltorch.GetChild<Node3D>(2).Position = new Vector3(-0.44f,0.5f,0);
+				walltorch.GetChild<Node3D>(2).Rotation = new Vector3(DegToRad(30),DegToRad(90),0);
+			}
+			else
+				type = 0;
+
+			if(type == 3)
+			{
+				walltorch.Position = new Vector3((GlobalPosition.X - Position.X)*Globals.GRID_SIZE, 0, (GlobalPosition.Y - Position.Y)*Globals.GRID_SIZE);
+				AddChild(walltorch);
+			}
 		}
 	}
 
