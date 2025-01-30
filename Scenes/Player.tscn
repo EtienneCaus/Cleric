@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cikm8p0mw5v0l"]
+[gd_scene load_steps=15 format=3 uid="uid://cikm8p0mw5v0l"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_0x7mc"]
 [ext_resource type="PackedScene" uid="uid://cqtj36b4lpvly" path="res://Scenes/Torch.tscn" id="2_06wmx"]
 [ext_resource type="PackedScene" uid="uid://c1yqtrs0aqsqt" path="res://Scenes/Mace.tscn" id="2_c3wh7"]
+[ext_resource type="PackedScene" uid="uid://cfkokgdoepdsg" path="res://Scenes/Shield.tscn" id="4_qdcta"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xqjxd"]
 radius = 0.16
@@ -180,6 +181,91 @@ tracks/5/keys = {
 "values": [Vector3(-0.195, -0.154, -0.295)]
 }
 
+[sub_resource type="Animation" id="Animation_2ip48"]
+resource_name = "ShieldBlock"
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/LeftHand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.06, -0.14, -0.295)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/LeftHand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 0.0715585)]
+}
+
+[sub_resource type="Animation" id="Animation_alx5i"]
+resource_name = "ShieldBlock_In"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/LeftHand:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.197222, -1.4015, 0.0715585), Vector3(0, -1.5708, 0.0715585)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/LeftHand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.195, -0.154, -0.295), Vector3(-0.06, -0.14, -0.295)]
+}
+
+[sub_resource type="Animation" id="Animation_cti2a"]
+resource_name = "ShieldBlock_Out"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/LeftHand:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 0.0715585), Vector3(0.197222, -1.4015, 0.0715585)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/LeftHand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.06, -0.14, -0.295), Vector3(-0.195, -0.154, -0.295)]
+}
+
 [sub_resource type="Animation" id="Animation_ahj65"]
 resource_name = "Weapon_Hit"
 length = 0.300003
@@ -237,6 +323,9 @@ _data = {
 "Alt_Weapon_Hit": SubResource("Animation_2jptx"),
 "Mace_Hit": SubResource("Animation_oigyp"),
 "RESET": SubResource("Animation_jkjlw"),
+"ShieldBlock": SubResource("Animation_2ip48"),
+"ShieldBlock_In": SubResource("Animation_alx5i"),
+"ShieldBlock_Out": SubResource("Animation_cti2a"),
 "Weapon_Hit": SubResource("Animation_ahj65")
 }
 
@@ -277,18 +366,21 @@ cull_mask = 2
 [node name="RightHand" type="Node3D" parent="Head/Camera3D/SubViewportContainer/SubViewport/Camera3D"]
 transform = Transform3D(-0.150805, 0.204564, -0.967166, 0.0701114, 0.978105, 0.195946, 0.986074, -0.0382598, -0.161846, 0.195, -0.154, -0.295)
 
-[node name="Mace" parent="Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/RightHand" instance=ExtResource("2_c3wh7")]
-
 [node name="Torch" parent="Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/RightHand" instance=ExtResource("2_06wmx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
 visible = false
-layers = 2
 skeleton = NodePath("../../../../../../SpotLight3D")
+
+[node name="Mace" parent="Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/RightHand" instance=ExtResource("2_c3wh7")]
 
 [node name="LeftHand" type="Node3D" parent="Head/Camera3D/SubViewportContainer/SubViewport/Camera3D"]
 transform = Transform3D(0.154248, -0.204697, -0.966595, 0.0701114, 0.978105, -0.195946, 0.985541, -0.0375451, 0.165223, -0.195, -0.154, -0.295)
 
 [node name="Torch" parent="Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/LeftHand" instance=ExtResource("2_06wmx")]
+visible = false
+
+[node name="Shield" parent="Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/LeftHand" instance=ExtResource("4_qdcta")]
+layers = 2
 
 [node name="RayCast3D" type="RayCast3D" parent="Head/Camera3D"]
 enabled = false
@@ -305,11 +397,10 @@ spot_attenuation = 2.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12, 0)
-light_energy = 0.5
+light_energy = 0.1
 light_specular = 0.0
 shadow_enabled = true
 omni_range = 3.0
-omni_attenuation = 2.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

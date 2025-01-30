@@ -22,6 +22,9 @@ public partial class Player : CharacterBody3D
 	float damage;
 	string type;
 
+	string altFireMode = "ShieldBlock";
+	bool isBlocking = false;
+
     public override void _Ready()
     {
 		head = GetNode<Node3D>("Head");	//Set the head and camera
@@ -175,7 +178,7 @@ public partial class Player : CharacterBody3D
 	{
 		Enemy target;
 
-		if(!anim.IsPlaying())
+		if(!anim.IsPlaying())	//If no animation is playing
 		{
 			if(Input.IsActionPressed("fire") && Globals.STAMINA > 50)
 			{
@@ -184,20 +187,45 @@ public partial class Player : CharacterBody3D
 				damage = 20;
 				type = "blunt";
 			}
-			else if(Input.IsActionPressed("altfire") && Globals.STAMINA > 25)
+			else if(Input.IsActionPressed("altfire"))
 			{
-				Globals.STAMINA -= 25;
-				anim.Play("Alt_Weapon_Hit");
-				damage = 10;
-				type = "fire";
+				if (altFireMode == "Torch" && Globals.STAMINA > 25)
+				{
+					Globals.STAMINA -= 25;
+					anim.Play("Alt_Weapon_Hit");
+					damage = 10;
+					type = "fire";
+				}
+				else if(altFireMode == "ShieldBlock")
+				{
+					if(!isBlocking)
+					{
+						isBlocking = true;
+						anim.Play("ShieldBlock_In");
+					}
+					else
+					{
+						anim.Play("ShieldBlock");
+					}
+				}
 			}
 		}
-		//	anim.Stop();
-		if(anim.IsPlaying() && raycast.IsColliding())
+		else	//If animation playing
 		{
-			target = raycast.GetCollider() as Enemy;
-			if(target != null && target.IsInGroup("Enemy"))
-				target.GetHit(damage, type);
+			if(raycast.IsColliding())
+			{
+				target = raycast.GetCollider() as Enemy;
+				if(target != null && target.IsInGroup("Enemy"))
+					target.GetHit(damage, type);
+			}
+		}
+		if(altFireMode == "ShieldBlock" && isBlocking)
+		{
+			if(!Input.IsActionPressed("altfire"))
+			{
+				anim.Play("ShieldBlock_Out");
+				isBlocking = false;
+			}
 		}
 	}
 
