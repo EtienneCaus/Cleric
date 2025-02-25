@@ -345,7 +345,6 @@ shape = SubResource("ConvexPolygonShape3D_5aprd")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
-cull_mask = 1048573
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Head/Camera3D"]
 anchors_preset = 15
@@ -377,9 +376,9 @@ skeleton = NodePath("../../../../../../SpotLight3D")
 transform = Transform3D(0.154248, -0.204697, -0.966595, 0.0701114, 0.978105, -0.195946, 0.985541, -0.0375451, 0.165223, -0.195, -0.154, -0.295)
 
 [node name="Torch" parent="Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/LeftHand" instance=ExtResource("2_06wmx")]
-visible = false
 
 [node name="Shield" parent="Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/LeftHand" instance=ExtResource("4_qdcta")]
+visible = false
 layers = 2
 
 [node name="RayCast3D" type="RayCast3D" parent="Head/Camera3D"]
@@ -397,7 +396,7 @@ spot_attenuation = 2.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12, 0)
-light_energy = 0.1
+light_energy = 0.5
 light_specular = 0.0
 shadow_enabled = true
 omni_range = 3.0

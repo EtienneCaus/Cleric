@@ -5,8 +5,8 @@ using static Godot.Mathf;
 public partial class Player : CharacterBody3D
 {
 	float speed;
-	public const float WalkSpeed = 3.0f;
-	public const float SprintSpeed = 5.0f;
+	public const float WalkSpeed = 2.4f; //2.6f; //3.0f;
+	public const float SprintSpeed = 4.0f; //5.0f;
 	public const float JumpVelocity = 2f;
 	//public const float Sensitivity = 0.002f;
 
@@ -22,7 +22,7 @@ public partial class Player : CharacterBody3D
 	float damage;
 	string type;
 
-	string altFireMode = "ShieldBlock";
+	string altFireMode = "Torch";
 	bool isBlocking = false;
 
     public override void _Ready()
@@ -116,6 +116,10 @@ public partial class Player : CharacterBody3D
 		transBob.Origin = HeadBob(timeBob);	//Perform Headbobs
 		camera.Transform = transBob;	//Change the Origin of the Camera
 
+		GetNode<Camera3D>("Head/Camera3D/SubViewportContainer/SubViewport/Camera3D").Rotation = head.Rotation;
+		GetNode<Camera3D>("Head/Camera3D/SubViewportContainer/SubViewport/Camera3D").Position = head.Position;
+		GetNode<Camera3D>("Head/Camera3D/SubViewportContainer/SubViewport/Camera3D").Transform = head.Transform;
+
 		Node3D rightHand = GetNode<Node3D>("Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/RightHand");
 		Node3D leftHand = GetNode<Node3D>("Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/LeftHand");
 		//Right Hand
@@ -137,6 +141,24 @@ public partial class Player : CharacterBody3D
 		if(Input.IsActionJustPressed("interact") && rayinteract.IsColliding())
 		{
 			Interact(rayinteract.GetCollider());
+		}
+
+		if(Input.IsActionJustPressed("weapon"))
+		{
+			if(altFireMode == "Torch")
+			{
+				GetNode<Node3D>("Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/LeftHand/Torch").Visible = false;
+				GetNode<Node3D>("Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/LeftHand/Shield").Visible = true;
+				altFireMode = "ShieldBlock";
+				GetNode<OmniLight3D>("Head/OmniLight3D").LightEnergy = 0.1f;
+			}
+			else if(altFireMode == "ShieldBlock")
+			{
+				GetNode<Node3D>("Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/LeftHand/Torch").Visible = true;
+				GetNode<Node3D>("Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/LeftHand/Shield").Visible = false;
+				altFireMode = "Torch";
+				GetNode<OmniLight3D>("Head/OmniLight3D").LightEnergy = 0.5f;
+			}
 		}
 	}
 
@@ -182,7 +204,7 @@ public partial class Player : CharacterBody3D
 		{
 			if(Input.IsActionPressed("fire") && Globals.STAMINA > 50)
 			{
-				Globals.STAMINA -= 50;
+				Globals.STAMINA -= 30;
 				anim.Play("Mace_Hit");
 				damage = 20;
 				type = "blunt";
@@ -191,7 +213,7 @@ public partial class Player : CharacterBody3D
 			{
 				if (altFireMode == "Torch" && Globals.STAMINA > 25)
 				{
-					Globals.STAMINA -= 25;
+					Globals.STAMINA -= 15;
 					anim.Play("Alt_Weapon_Hit");
 					damage = 10;
 					type = "fire";
