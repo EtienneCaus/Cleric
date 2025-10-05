@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://bhn1po4fijev8"
+path="res://.godot/imported/Skeleton.png-5f7a9ec16a611d0baaf3e5af92a76c99.image"
+
+[deps]
+
+source_file="res://Sprites/Skeleton.png"
+dest_files=["res://.godot/imported/Skeleton.png-5f7a9ec16a611d0baaf3e5af92a76c99.image"]
+
+[params]
+

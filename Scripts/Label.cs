@@ -5,6 +5,6 @@ public partial class Label : Godot.Label
 {
     public override void _Process(double delta)
 	{
-        Text = "LEVEL " + Globals.LEVEL + "\nFPS " + Engine.GetFramesPerSecond();
+        Text = "FPS " + Engine.GetFramesPerSecond() + "\nLEVEL " + Globals.LEVEL + "\nGOLD " + Globals.GOLD;
     }
 }

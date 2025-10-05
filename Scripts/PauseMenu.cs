@@ -72,7 +72,7 @@ public partial class PauseMenu : Control
         GetNode<VBoxContainer>("PanelContainer/DungeonSettings").Visible = false;
         GetNode<VBoxContainer>("PanelContainer/Options").Visible = true;
         GetNode<Button>("PanelContainer/Options/Back").GrabFocus();
-        GetNode<HSlider>("PanelContainer/Options/SensibilityLabel/Sensibility").Value = Globals.Sensitivity * 6000;
+        GetNode<HSlider>("PanelContainer/Options/SensibilityLabel/Sensibility").Value = Globals.Sensitivity * 12000;
     }
     public void _on_back_pressed()
     {
@@ -89,12 +89,16 @@ public partial class PauseMenu : Control
 
     public void _on_sensibility_value_changed(float sensitivity)
     {
-        Globals.Sensitivity = sensitivity / 6000;
+        Globals.Sensitivity = sensitivity / 12000;
     }
     //----------------------------------------------------------------------------------------------------------
     public void _on_restart_pressed()
     {
-        Globals.LEVEL = 0;
+        Globals.LEVEL = 1;
+        Globals.HEALTH = 100;
+        Globals.STAMINA = 100;
+        Globals.MANA = 100;
+        Globals.GOLD = 0;
         resume();
         GetTree().ReloadCurrentScene(); //Recharge le jeu
     }

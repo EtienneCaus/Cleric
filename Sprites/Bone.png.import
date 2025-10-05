@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://c64icwv8lx6eu"
+path="res://.godot/imported/Bone.png-a93b96011cc997a93b9af20f64e71af5.image"
+
+[deps]
+
+source_file="res://Sprites/Bone.png"
+dest_files=["res://.godot/imported/Bone.png-a93b96011cc997a93b9af20f64e71af5.image"]
+
+[params]
+

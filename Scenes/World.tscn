@@ -1,14 +1,14 @@
 [gd_scene load_steps=19 format=3 uid="uid://bwq7pgo4tfwcc"]
 
-[ext_resource type="Script" path="res://Scripts/World.cs" id="1_o0kab"]
+[ext_resource type="Script" uid="uid://b7o2yytad4xp8" path="res://Scripts/World.cs" id="1_o0kab"]
 [ext_resource type="PackedScene" uid="uid://fotxqhf5oe0q" path="res://Scenes/Map.tscn" id="2_bweca"]
 [ext_resource type="PackedScene" uid="uid://cikm8p0mw5v0l" path="res://Scenes/Player.tscn" id="2_rpgmy"]
-[ext_resource type="Script" path="res://Scripts/Minimap.cs" id="4_78u08"]
+[ext_resource type="Script" uid="uid://dtxwgcm3qagr1" path="res://Scripts/Minimap.cs" id="4_78u08"]
 [ext_resource type="Texture2D" uid="uid://bkcf40rgwawn3" path="res://Tiles/TileMap.png" id="5_e5wbd"]
 [ext_resource type="Texture2D" uid="uid://dl4eat57i60aw" path="res://Tiles/Cursor.png" id="6_2gruk"]
 [ext_resource type="PackedScene" uid="uid://dhft66sfnbfkj" path="res://Scenes/PauseMenu.tscn" id="7_2boqy"]
-[ext_resource type="Script" path="res://Scripts/Hud.cs" id="7_ubf3b"]
-[ext_resource type="Script" path="res://Scripts/Label.cs" id="8_o02by"]
+[ext_resource type="Script" uid="uid://yk0w86ju7aqg" path="res://Scripts/Hud.cs" id="7_ubf3b"]
+[ext_resource type="Script" uid="uid://poa1g8rpwpjb" path="res://Scripts/Label.cs" id="8_o02by"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_spbl5"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -155,7 +155,6 @@ show_percentage = false
 visible = false
 
 [node name="Label" type="Label" parent="UI"]
-visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 text = "FPS"

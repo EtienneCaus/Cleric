@@ -20,14 +20,16 @@ public partial class Globals : Node
     public static int ENEMY_SPAWN = 5; //Enemy spawn rate in corridors/caverns
     public static int ENEMY_ROOMS = 10; //Enemy spawn rate in rooms
 
-    public static int LEVEL = 0; //Starting level
-    
+    public static int LEVEL = 1; //Starting level
+
     //--------------------------------------------------------------------------------
-    
+
     public static float Sensitivity = 0.002f;
 
     //--------------------------------------------------------------------------------
 
+    public static double HEALTH = 100;
     public static double STAMINA = 100;
-
+    public static double MANA = 100;
+    public static int GOLD = 0;
 }

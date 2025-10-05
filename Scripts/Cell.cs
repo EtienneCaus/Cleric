@@ -23,74 +23,86 @@ public partial class Cell : StaticBody3D
 
 	public void UpdateFaces(TileMapLayer tileMap)
 	{
-		Godot.Collections.Array<Vector2I> cellList = tileMap.GetUsedCells();	//Turns the tilemap into a list of used cells
+		Godot.Collections.Array<Vector2I> cellList = tileMap.GetUsedCells();    //Turns the tilemap into a list of used cells
 
-		Vector2I myGridPosition = new Vector2I((int)Position.X/Globals.GRID_SIZE, (int)Position.Z/Globals.GRID_SIZE);
-		if(cellList.Contains(myGridPosition + Vector2I.Right))
+		Vector2I myGridPosition = new Vector2I((int)Position.X / Globals.GRID_SIZE, (int)Position.Z / Globals.GRID_SIZE);
+		if (cellList.Contains(myGridPosition + Vector2I.Right))
 			eastFace.QueueFree();
-		if(cellList.Contains(myGridPosition + Vector2I.Left))
+		if (cellList.Contains(myGridPosition + Vector2I.Left))
 			westFace.QueueFree();
-		if(cellList.Contains(myGridPosition + Vector2I.Down))
+		if (cellList.Contains(myGridPosition + Vector2I.Down))
 			southFace.QueueFree();
-		if(cellList.Contains(myGridPosition + Vector2I.Up))
+		if (cellList.Contains(myGridPosition + Vector2I.Up))
 			northFace.QueueFree();
-		//topFace.QueueFree(); // -> FOR LARGE CAVERNS
+		topFace.QueueFree(); // -> FOR LARGE CAVERNS
 
-		if(tileMap.GetCellAtlasCoords(myGridPosition) == new Vector2I(1, 0))
+		if (tileMap.GetCellAtlasCoords(myGridPosition) == new Vector2I(1, 0))
 		{
 			southFace.GetChild<Wall>(0).SetWall(1); //southFace.Texture = entrance
 			type = 1;
-		}			
+		}
 
-		if(tileMap.GetCellAtlasCoords(myGridPosition) == new Vector2I(2, 0))
+		if (tileMap.GetCellAtlasCoords(myGridPosition) == new Vector2I(2, 0))
 		{
-			northFace.GetChild<Wall>(0).SetWall(2);	//southFace.Texture = exit
+			northFace.GetChild<Wall>(0).SetWall(2); //southFace.Texture = exit
 			type = 2;
 		}
 
-		if(tileMap.GetCellAtlasCoords(myGridPosition) == new Vector2I(4, 0))	//Dummy
+		if (tileMap.GetCellAtlasCoords(myGridPosition) == new Vector2I(4, 0))   //Dummy
 		{
-			CharacterBody3D dummy = ResourceLoader.Load<PackedScene>("res://Scenes/Dummy.tscn").Instantiate() as CharacterBody3D;
+			CharacterBody3D dummy;
+			Random rnd = new Random();
+			if (rnd.Next(0, Globals.LEVEL) < 1)
+				dummy = ResourceLoader.Load<PackedScene>("res://Scenes/Dummy.tscn").Instantiate() as CharacterBody3D;
+			else
+				dummy = ResourceLoader.Load<PackedScene>("res://Scenes/Skeleton.tscn").Instantiate() as CharacterBody3D;
 			AddChild(dummy);
-			dummy.Position = new Vector3((GlobalPosition.X - Position.X)*Globals.GRID_SIZE, 0, (GlobalPosition.Y - Position.Y)*Globals.GRID_SIZE);
+			dummy.Position = new Vector3((GlobalPosition.X - Position.X) * Globals.GRID_SIZE, 0, (GlobalPosition.Y - Position.Y) * Globals.GRID_SIZE);
 		}
-		else if(tileMap.GetCellAtlasCoords(myGridPosition) == new Vector2I(5, 0))	//Torch
+		else if (tileMap.GetCellAtlasCoords(myGridPosition) == new Vector2I(5, 0))  //Torch
 		{
 			Area3D walltorch = ResourceLoader.Load<PackedScene>("res://Scenes/Items.tscn").Instantiate() as Area3D;
 			type = 3;
 
-			if(!cellList.Contains(myGridPosition + Vector2I.Up))
+			if (!cellList.Contains(myGridPosition + Vector2I.Up))
 			{
-				northFace.GetChild<Wall>(0).SetWall(3);	//southFace.Texture = Torch
-				walltorch.GetChild<Node3D>(2).Position = new Vector3(0,0.5f,-0.44f);
-				walltorch.GetChild<Node3D>(2).Rotation = new Vector3(DegToRad(30),DegToRad(0),0);
+				northFace.GetChild<Wall>(0).SetWall(3); //southFace.Texture = Torch
+				walltorch.GetChild<Node3D>(2).Position = new Vector3(0, 0.5f, -0.44f);
+				walltorch.GetChild<Node3D>(2).Rotation = new Vector3(DegToRad(30), DegToRad(0), 0);
 			}
-			else if(!cellList.Contains(myGridPosition + Vector2I.Down))
+			else if (!cellList.Contains(myGridPosition + Vector2I.Down))
 			{
 				southFace.GetChild<Wall>(0).SetWall(3);
-				walltorch.GetChild<Node3D>(2).Position = new Vector3(0,0.5f,0.44f);
-				walltorch.GetChild<Node3D>(2).Rotation = new Vector3(DegToRad(30),DegToRad(180),0);
+				walltorch.GetChild<Node3D>(2).Position = new Vector3(0, 0.5f, 0.44f);
+				walltorch.GetChild<Node3D>(2).Rotation = new Vector3(DegToRad(30), DegToRad(180), 0);
 			}
-			else if(!cellList.Contains(myGridPosition + Vector2I.Right))
+			else if (!cellList.Contains(myGridPosition + Vector2I.Right))
 			{
 				eastFace.GetChild<Wall>(0).SetWall(3);
-				walltorch.GetChild<Node3D>(2).Position = new Vector3(0.44f,0.5f,0);
-				walltorch.GetChild<Node3D>(2).Rotation = new Vector3(DegToRad(30),DegToRad(270),0);
+				walltorch.GetChild<Node3D>(2).Position = new Vector3(0.44f, 0.5f, 0);
+				walltorch.GetChild<Node3D>(2).Rotation = new Vector3(DegToRad(30), DegToRad(270), 0);
 			}
-			else if(!cellList.Contains(myGridPosition + Vector2I.Left))
+			else if (!cellList.Contains(myGridPosition + Vector2I.Left))
 			{
 				westFace.GetChild<Wall>(0).SetWall(3);
-				walltorch.GetChild<Node3D>(2).Position = new Vector3(-0.44f,0.5f,0);
-				walltorch.GetChild<Node3D>(2).Rotation = new Vector3(DegToRad(30),DegToRad(90),0);
+				walltorch.GetChild<Node3D>(2).Position = new Vector3(-0.44f, 0.5f, 0);
+				walltorch.GetChild<Node3D>(2).Rotation = new Vector3(DegToRad(30), DegToRad(90), 0);
 			}
 			else
 				type = 0;
 
-			if(type == 3)
+			if (type == 3)
 			{
-				walltorch.Position = new Vector3((GlobalPosition.X - Position.X)*Globals.GRID_SIZE, 0, (GlobalPosition.Y - Position.Y)*Globals.GRID_SIZE);
+				walltorch.Position = new Vector3((GlobalPosition.X - Position.X) * Globals.GRID_SIZE, 0, (GlobalPosition.Y - Position.Y) * Globals.GRID_SIZE);
 				AddChild(walltorch);
 			}
+		}
+		else if (tileMap.GetCellAtlasCoords(myGridPosition) == new Vector2I(6, 0))  //Gold
+		{
+			Area3D gold = ResourceLoader.Load<PackedScene>("res://Scenes/Items.tscn").Instantiate() as Area3D;
+			gold.GetNode<Node3D>("Torch").Visible = false;
+			gold.GetNode<Node3D>("Gold").Visible = true;
+			AddChild(gold);
 		}
 	}
 

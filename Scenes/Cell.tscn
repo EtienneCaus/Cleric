@@ -1,9 +1,9 @@
 [gd_scene load_steps=22 format=3 uid="uid://cio61nnk32tfy"]
 
-[ext_resource type="Script" path="res://Scripts/Cell.cs" id="1_hvfb8"]
+[ext_resource type="Script" uid="uid://cjacr2l2xoil0" path="res://Scripts/Cell.cs" id="1_hvfb8"]
 [ext_resource type="Texture2D" uid="uid://2h31degc6gb3" path="res://Tiles/StoneFloor.png" id="2_xfft3"]
 [ext_resource type="Texture2D" uid="uid://4nqy8lv5kmlk" path="res://Tiles/StoneWall.png" id="3_nf5m4"]
-[ext_resource type="Script" path="res://Scripts/Wall.cs" id="4_u7gfm"]
+[ext_resource type="Script" uid="uid://hp8fkvdsip0i" path="res://Scripts/Wall.cs" id="4_u7gfm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_un0p7"]
 size = Vector3(1, 0.01, 1)
