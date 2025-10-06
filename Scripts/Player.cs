@@ -146,9 +146,14 @@ public partial class Player : CharacterBody3D
 			transWeapon = leftHand.Transform;
 			transWeapon.Origin = WeaponBob(timeBob, false);
 			leftHand.Transform = transWeapon;
-			
+
 			Velocity = velocity;
 			MoveAndSlide();
+
+			if (inputDir != Vector2.Zero && (Input.IsActionPressed("sprint") || isSprinting))
+			{
+				Globals.STAMINA--;
+			}
 
 			if (Globals.STAMINA > 0)
 				WeaponHit();
@@ -165,6 +170,7 @@ public partial class Player : CharacterBody3D
 
 			if (Input.IsActionJustPressed("weapon"))
 			{
+				anim.Play("AltHandIn");
 				if (altFireMode == "Torch")
 				{
 					GetNode<Node3D>("Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/LeftHand/Torch").Visible = false;
@@ -184,6 +190,11 @@ public partial class Player : CharacterBody3D
 			{
 				Globals.MANA -= 80;
 				Globals.HEALTH += 40;
+				if (Globals.HEALTH > 100)
+				{
+					Globals.MANA += (Globals.HEALTH - 100) * 2;	//refunds the lost mana
+					Globals.HEALTH = 100;
+				}
 			}
 		}
 	}

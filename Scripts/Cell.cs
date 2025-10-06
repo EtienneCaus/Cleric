@@ -34,7 +34,7 @@ public partial class Cell : StaticBody3D
 			southFace.QueueFree();
 		if (cellList.Contains(myGridPosition + Vector2I.Up))
 			northFace.QueueFree();
-		topFace.QueueFree(); // -> FOR LARGE CAVERNS
+		//topFace.QueueFree(); // -> FOR LARGE CAVERNS
 
 		if (tileMap.GetCellAtlasCoords(myGridPosition) == new Vector2I(1, 0))
 		{

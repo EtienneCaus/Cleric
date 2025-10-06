@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cikm8p0mw5v0l"]
+[gd_scene load_steps=19 format=3 uid="uid://cikm8p0mw5v0l"]
 
 [ext_resource type="Script" uid="uid://b2xv2p24lwhjs" path="res://Scripts/Player.cs" id="1_0x7mc"]
 [ext_resource type="PackedScene" uid="uid://cqtj36b4lpvly" path="res://Scenes/Torch.tscn" id="2_06wmx"]
@@ -239,7 +239,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_alx5i"]
 resource_name = "ShieldBlock_In"
-length = 0.07
+length = 0.06
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -247,7 +247,7 @@ tracks/0/path = NodePath("Head/Camera3D/SubViewportContainer/SubViewport/Camera3
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.07),
+"times": PackedFloat32Array(0, 0.06),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0.197222, -1.4015, 0.0715585), Vector3(0, -1.5708, 0.0715585)]
@@ -259,7 +259,7 @@ tracks/1/path = NodePath("Head/Camera3D/SubViewportContainer/SubViewport/Camera3
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.07),
+"times": PackedFloat32Array(0, 0.06),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(-0.195, -0.154, -0.295), Vector3(-0.06, -0.18, -0.295)]
@@ -357,8 +357,25 @@ tracks/3/keys = {
 "values": [Vector3(0.195354, -0.153909, -0.295489), Vector3(0.195, 0, -0.295), Vector3(-0.09, -0.13, -0.295), Vector3(-0.2, -0.26, -0.295), Vector3(-0.27, -0.51, -0.295), Vector3(0.195, -0.464, -0.295), Vector3(0.195, -0.219, -0.255)]
 }
 
+[sub_resource type="Animation" id="Animation_52ee3"]
+resource_name = "AltHandIn"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/LeftHand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.37, -0.329, -0.295), Vector3(-0.245, -0.209, -0.295)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cklpw"]
 _data = {
+&"AltHandIn": SubResource("Animation_52ee3"),
 &"Alt_Weapon_Hit": SubResource("Animation_2jptx"),
 &"Mace_Hit": SubResource("Animation_oigyp"),
 &"RESET": SubResource("Animation_jkjlw"),
@@ -403,7 +420,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52, 0)
 cull_mask = 2
 
 [node name="RightHand" type="Node3D" parent="Head/Camera3D/SubViewportContainer/SubViewport/Camera3D"]
-transform = Transform3D(-0.15080516, 0.20456436, -0.9671661, 0.07011143, 0.9781047, 0.19594584, 0.986074, -0.038259767, -0.16184556, 0.195, -0.154, -0.295)
+transform = Transform3D(-0.15080516, 0.20456433, -0.9671661, 0.07011143, 0.9781046, 0.19594584, 0.986074, -0.038259763, -0.16184556, 0.195, -0.154, -0.295)
 
 [node name="Torch" parent="Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/RightHand" instance=ExtResource("2_06wmx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
@@ -413,7 +430,7 @@ skeleton = NodePath("../../../../../../SpotLight3D")
 [node name="Mace" parent="Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/RightHand" instance=ExtResource("2_c3wh7")]
 
 [node name="LeftHand" type="Node3D" parent="Head/Camera3D/SubViewportContainer/SubViewport/Camera3D"]
-transform = Transform3D(0.15424816, -0.20469677, -0.9665951, 0.07011142, 0.9781048, -0.19594586, 0.9855409, -0.037545074, 0.16522253, -0.195, -0.154, -0.295)
+transform = Transform3D(0.15424816, -0.20469674, -0.9665951, 0.07011142, 0.9781047, -0.19594586, 0.9855409, -0.037545066, 0.16522253, -0.195, -0.154, -0.295)
 
 [node name="Torch" parent="Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/LeftHand" instance=ExtResource("2_06wmx")]
 

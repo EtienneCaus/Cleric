@@ -37,9 +37,23 @@ text = "CLÉRIC
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯"
 horizontal_alignment = 1
 
-[node name="Start" type="Button" parent="PanelContainer/MainMenu"]
+[node name="RestartLevel" type="Button" parent="PanelContainer/MainMenu"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Quit")
+focus_neighbor_bottom = NodePath("../Continue")
+text = "Restart"
+flat = true
+
+[node name="Continue" type="Button" parent="PanelContainer/MainMenu"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../RestartLevel")
+focus_neighbor_bottom = NodePath("../Start")
+text = "Continue"
+flat = true
+
+[node name="Start" type="Button" parent="PanelContainer/MainMenu"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Continue")
 focus_neighbor_bottom = NodePath("../Options")
 text = "New Game
 "
@@ -55,7 +69,7 @@ flat = true
 [node name="Quit" type="Button" parent="PanelContainer/MainMenu"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Options")
-focus_neighbor_bottom = NodePath("../Start")
+focus_neighbor_bottom = NodePath("../RestartLevel")
 text = "Quit
 "
 flat = true
@@ -105,6 +119,9 @@ grow_horizontal = 2
 grow_vertical = 2
 focus_neighbor_top = NodePath("../../SensibilityLabel/Sensibility")
 focus_neighbor_bottom = NodePath("../../Back")
+max_value = 1.0
+step = 0.01
+value = 1.0
 
 [node name="Back" type="Button" parent="PanelContainer/Options"]
 layout_mode = 2
@@ -318,12 +335,13 @@ offset_bottom = 15.5
 grow_horizontal = 0
 grow_vertical = 2
 focus_neighbor_top = NodePath("../../CenterLabel/Center")
-focus_neighbor_bottom = NodePath("../../EnemySpawnLabel/EnemySpawn")
+focus_neighbor_bottom = NodePath("../../Next")
 toggle_mode = true
 text = "false"
 flat = true
 
 [node name="EnemySpawnLabel" type="Label" parent="PanelContainer/DungeonSettings"]
+visible = false
 layout_mode = 2
 text = "enemy_spawn     %   "
 horizontal_alignment = 3
@@ -336,13 +354,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-focus_neighbor_top = NodePath("../../CavernLabel/Cavern")
+focus_neighbor_top = NodePath("../../Back")
 focus_neighbor_bottom = NodePath("../../EnemyRoomLabel/EnemyRoom")
 text = "5"
 alignment = 2
 flat = true
 
 [node name="EnemyRoomLabel" type="Label" parent="PanelContainer/DungeonSettings"]
+visible = false
 layout_mode = 2
 text = "enemy_sp_rooms     %    "
 horizontal_alignment = 3
@@ -356,9 +375,54 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_neighbor_top = NodePath("../../EnemySpawnLabel/EnemySpawn")
-focus_neighbor_bottom = NodePath("../../Restart")
+focus_neighbor_bottom = NodePath("../../TorchesLabel/Torches")
 text = "10"
 alignment = 2
+flat = true
+
+[node name="TorchesLabel" type="Label" parent="PanelContainer/DungeonSettings"]
+visible = false
+layout_mode = 2
+text = "torches_spawn  			   %    "
+horizontal_alignment = 3
+
+[node name="Torches" type="LineEdit" parent="PanelContainer/DungeonSettings/TorchesLabel"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_top = NodePath("../../EnemyRoomLabel/EnemyRoom")
+focus_neighbor_bottom = NodePath("../../GoldLabel/Gold")
+text = "10"
+alignment = 2
+flat = true
+
+[node name="GoldLabel" type="Label" parent="PanelContainer/DungeonSettings"]
+visible = false
+layout_mode = 2
+text = "gold_spawn							     %    "
+horizontal_alignment = 3
+
+[node name="Gold" type="LineEdit" parent="PanelContainer/DungeonSettings/GoldLabel"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_top = NodePath("../../TorchesLabel/Torches")
+focus_neighbor_bottom = NodePath("../../Next")
+text = "5"
+alignment = 2
+flat = true
+
+[node name="Next" type="Button" parent="PanelContainer/DungeonSettings"]
+layout_mode = 2
+text = "Next"
 flat = true
 
 [node name="Line" type="Label" parent="PanelContainer/DungeonSettings"]
@@ -368,7 +432,7 @@ horizontal_alignment = 1
 
 [node name="Restart" type="Button" parent="PanelContainer/DungeonSettings"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../EnemyRoomLabel/EnemyRoom")
+focus_neighbor_top = NodePath("../Next")
 focus_neighbor_bottom = NodePath("../Back")
 text = "Start"
 flat = true
@@ -381,11 +445,14 @@ text = "Back
 "
 flat = true
 
+[connection signal="pressed" from="PanelContainer/MainMenu/RestartLevel" to="." method="_on_restart_level_pressed"]
+[connection signal="pressed" from="PanelContainer/MainMenu/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="PanelContainer/MainMenu/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="PanelContainer/MainMenu/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="PanelContainer/MainMenu/Quit" to="." method="_on_quit_pressed"]
 [connection signal="drag_ended" from="PanelContainer/Options/SensibilityLabel/Sensibility" to="." method="_on_sensibility_drag_ended"]
 [connection signal="value_changed" from="PanelContainer/Options/SensibilityLabel/Sensibility" to="." method="_on_sensibility_value_changed"]
+[connection signal="value_changed" from="PanelContainer/Options/SoundLabel/Sound" to="." method="_on_sound_value_changed"]
 [connection signal="pressed" from="PanelContainer/Options/Back" to="." method="_on_back_pressed"]
 [connection signal="gui_input" from="PanelContainer/DungeonSettings/SeedLabel/Seed" to="." method="_on_seed_gui_input"]
 [connection signal="text_changed" from="PanelContainer/DungeonSettings/SeedLabel/Seed" to="." method="_on_seed_text_changed"]
@@ -410,5 +477,10 @@ flat = true
 [connection signal="text_changed" from="PanelContainer/DungeonSettings/EnemySpawnLabel/EnemySpawn" to="." method="_on_enemy_spawn_text_changed"]
 [connection signal="gui_input" from="PanelContainer/DungeonSettings/EnemyRoomLabel/EnemyRoom" to="." method="_on_enemy_room_gui_input"]
 [connection signal="text_changed" from="PanelContainer/DungeonSettings/EnemyRoomLabel/EnemyRoom" to="." method="_on_enemy_room_text_changed"]
+[connection signal="gui_input" from="PanelContainer/DungeonSettings/TorchesLabel/Torches" to="." method="_on_torches_gui_input"]
+[connection signal="text_changed" from="PanelContainer/DungeonSettings/TorchesLabel/Torches" to="." method="_on_torches_text_changed"]
+[connection signal="gui_input" from="PanelContainer/DungeonSettings/GoldLabel/Gold" to="." method="_on_gold_gui_input"]
+[connection signal="text_changed" from="PanelContainer/DungeonSettings/GoldLabel/Gold" to="." method="_on_gold_text_changed"]
+[connection signal="pressed" from="PanelContainer/DungeonSettings/Next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="PanelContainer/DungeonSettings/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="PanelContainer/DungeonSettings/Back" to="." method="_on_back_pressed"]

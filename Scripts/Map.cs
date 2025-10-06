@@ -38,7 +38,11 @@ public partial class Map : Node2D
                 {
                     GetNode<TileMapLayer>("MapCreator").SetCell(position, 0, new Vector2I(0,0));    //Sets down a new tile
                     if(rnd.Next(100)<Globals.ENEMY_SPAWN)
-                        GetNode<TileMapLayer>("MapCreator").SetCell(position, 0, new Vector2I(4,0));    //Set down a dummy
+                        GetNode<TileMapLayer>("MapCreator").SetCell(position, 0, new Vector2I(4,0));    //Set down an ennemy
+                    else if(rnd.Next(100)<Globals.TORCH_SPAWN)
+                        GetNode<TileMapLayer>("MapCreator").SetCell(position, 0, new Vector2I(5,0));    //Set down a torch
+                    else if(rnd.Next(100)<Globals.GOLD_SPAWN)
+                        GetNode<TileMapLayer>("MapCreator").SetCell(position, 0, new Vector2I(6,0));    //Set down gold
                     tmpSteps--;
                 }
                 
@@ -87,9 +91,9 @@ public partial class Map : Node2D
                     GetNode<TileMapLayer>("MapCreator").SetCell(newStep, 0, new Vector2I(0,0));
                     if(rnd.Next(100)<Globals.ENEMY_ROOMS)
                         GetNode<TileMapLayer>("MapCreator").SetCell(newStep, 0, new Vector2I(4,0));    //Set down an ennemy
-                    else if(rnd.Next(100)<10)
+                    else if(rnd.Next(100)<Globals.TORCH_SPAWN)
                         GetNode<TileMapLayer>("MapCreator").SetCell(newStep, 0, new Vector2I(5,0));    //Set down a Torch
-                    else if(rnd.Next(100)<5)
+                    else if(rnd.Next(100)<Globals.GOLD_SPAWN)
                         GetNode<TileMapLayer>("MapCreator").SetCell(newStep, 0, new Vector2I(6,0));    //Set down Gold
                     steps++;
                 }

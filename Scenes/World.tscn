@@ -155,7 +155,7 @@ show_percentage = false
 visible = false
 
 [node name="Label" type="Label" parent="UI"]
+visible = false
 offset_right = 40.0
 offset_bottom = 23.0
-text = "FPS"
 script = ExtResource("8_o02by")
