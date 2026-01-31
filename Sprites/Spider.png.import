@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://dnvgqps06461h"
+path="res://.godot/imported/Spider.png-a91b4a20ae03aaf711194de362a5eee2.image"
+
+[deps]
+
+source_file="res://Sprites/Spider.png"
+dest_files=["res://.godot/imported/Spider.png-a91b4a20ae03aaf711194de362a5eee2.image"]
+
+[params]
+

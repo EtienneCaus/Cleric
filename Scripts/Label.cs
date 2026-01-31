@@ -12,7 +12,7 @@ public partial class Label : Godot.Label
         if (Input.IsActionJustPressed("function"))  //Toggles showtext
         {
             Globals.showtext++;
-            if (Globals.showtext > 9)
+            if (Globals.showtext > 10)
                 Globals.showtext = 0;
         }
 
@@ -47,6 +47,9 @@ public partial class Label : Godot.Label
                 break;
             case 9:
                 Text = "FPS " + Engine.GetFramesPerSecond();
+                break;
+            case 10:
+                Text = "LEVEL " + Globals.LEVEL;
                 break;
         }
     }

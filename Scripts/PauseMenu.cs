@@ -4,7 +4,7 @@ using System;
 public partial class PauseMenu : Control
 {
     static Random rnd = new Random();
-    LineEdit seed, size, multiplier, corridors, hallways, rooms, rsMin, rsMax, espawn, esroom, torches, gold;
+    LineEdit seed, size, multiplier, corridors, hallways, rooms, rsMin, rsMax, espawn, esroom, torches, gold, spider;
     Button center, cavern;
     public override void _Ready()
     {
@@ -36,6 +36,8 @@ public partial class PauseMenu : Control
         torches.Text = Globals.TORCH_SPAWN.ToString();
         gold = GetNode<LineEdit>("PanelContainer/DungeonSettings/GoldLabel/Gold");
         gold.Text = Globals.GOLD_SPAWN.ToString();
+        spider = GetNode<LineEdit>("PanelContainer/DungeonSettings/SpiderLabel/Spider");
+        spider.Text = Globals.SPIDER_SPAWN.ToString();
     }
     public void resume()
     {
@@ -378,6 +380,28 @@ public partial class PauseMenu : Control
         }
     }
 
+    public void _on_spider_text_changed(string str)
+    {
+        int.TryParse(str, out Globals.SPIDER_SPAWN);
+    }
+    public void _on_spider_gui_input(InputEvent inputEvent)
+    {
+        if (Input.IsActionJustPressed("ui_right"))
+        {
+            Globals.SPIDER_SPAWN += 5;
+            if (Globals.SPIDER_SPAWN > 100)
+                Globals.SPIDER_SPAWN = 100;
+            spider.Text = Globals.SPIDER_SPAWN.ToString();
+        }
+        else if (Input.IsActionJustPressed("ui_left"))
+        {
+            Globals.SPIDER_SPAWN -= 5;
+            if (Globals.SPIDER_SPAWN < 0)
+                Globals.SPIDER_SPAWN = 0;
+            spider.Text = Globals.SPIDER_SPAWN.ToString();
+        }
+    }
+
     public void _on_next_pressed()
     {
         seed.GetParent<Control>().Visible = !seed.GetParent<Control>().Visible;
@@ -394,5 +418,6 @@ public partial class PauseMenu : Control
         esroom.GetParent<Control>().Visible = !esroom.GetParent<Control>().Visible;
         torches.GetParent<Control>().Visible = !torches.GetParent<Control>().Visible;
         gold.GetParent<Control>().Visible = !gold.GetParent<Control>().Visible;
+        spider.GetParent<Control>().Visible = !spider.GetParent<Control>().Visible;
     }
 }

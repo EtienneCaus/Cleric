@@ -23,7 +23,7 @@ public partial class Player : CharacterBody3D
 	string type;
 
 	string altFireMode = "Torch";
-	bool isBlocking, isSprinting, isDead = false;
+	bool isBlocking, isSprinting, isDead, isPoisoned = false;
 	protected Timer gotHit;
 
 	public override void _Ready()
@@ -188,6 +188,7 @@ public partial class Player : CharacterBody3D
 			}
 			if (Input.IsActionJustPressed("magic") && Globals.MANA >= 80 && Globals.HEALTH < 100)
 			{
+				isPoisoned = false;
 				Globals.MANA -= 80;
 				Globals.HEALTH += 40;
 				if (Globals.HEALTH > 100)
@@ -312,14 +313,28 @@ public partial class Player : CharacterBody3D
 		{
 			GetNode<AudioStreamPlayer>("AudioStreamPlayer").Play();
 			gotHit.Start();
-			Globals.HEALTH -= (int)force;
+			switch (type)
+			{
+				case "slash":
+					Globals.HEALTH -= (int)force;
+				break;
+				case "poison":
+					Globals.HEALTH -= (int)force;
+					if (!isPoisoned)
+					{
+						isPoisoned = true;
+						Poisoned(force);
+					}
+				break;
+			}
 
 			if (Globals.HEALTH <= 0)
 			{
 				GetNode<AudioStreamPlayer>("DeathPlayer").Play();
 				//GetTree().ReloadCurrentScene(); //Recharge le jeu
 				RemoveFromGroup("Player");
-				GetNode<Node>("Head/Camera3D/SubViewportContainer").QueueFree();
+				if(!isDead)
+					GetNode<Node>("Head/Camera3D/SubViewportContainer").QueueFree();
 				isDead = true;
 				Globals.STAMINA = 0;
 				Globals.MANA = 0;
@@ -329,5 +344,28 @@ public partial class Player : CharacterBody3D
 	public void GetGold()
 	{
 		GetNode<AudioStreamPlayer>("GoldPlayer").Play();
+	}
+
+	async private void Poisoned(float force)
+	{
+		if (Globals.HEALTH > 0)
+        {
+            await ToSignal(GetTree().CreateTimer(1), "timeout");
+			if (isPoisoned)
+			{
+				GetNode<AudioStreamPlayer>("PoisonedPlayer").Play();
+				Globals.HEALTH -= force/10;
+			}
+        }
+
+		if (Globals.HEALTH <= 0)
+		{
+			GetHit(0,"null");
+		}
+		else if (isPoisoned)
+		{
+			Poisoned(force);
+		}
+		
 	}
 }

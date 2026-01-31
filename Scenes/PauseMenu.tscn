@@ -27,6 +27,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MainMenu" type="VBoxContainer" parent="PanelContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
@@ -131,7 +132,6 @@ text = "Back"
 flat = true
 
 [node name="DungeonSettings" type="VBoxContainer" parent="PanelContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
@@ -415,8 +415,28 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_neighbor_top = NodePath("../../TorchesLabel/Torches")
-focus_neighbor_bottom = NodePath("../../Next")
+focus_neighbor_bottom = NodePath("../../SpiderLabel/Spider")
 text = "5"
+alignment = 2
+flat = true
+
+[node name="SpiderLabel" type="Label" parent="PanelContainer/DungeonSettings"]
+visible = false
+layout_mode = 2
+text = "spider_spawn							     %    "
+horizontal_alignment = 3
+
+[node name="Spider" type="LineEdit" parent="PanelContainer/DungeonSettings/SpiderLabel"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_top = NodePath("../../GoldLabel/Gold")
+focus_neighbor_bottom = NodePath("../../Next")
+text = "50"
 alignment = 2
 flat = true
 
@@ -481,6 +501,8 @@ flat = true
 [connection signal="text_changed" from="PanelContainer/DungeonSettings/TorchesLabel/Torches" to="." method="_on_torches_text_changed"]
 [connection signal="gui_input" from="PanelContainer/DungeonSettings/GoldLabel/Gold" to="." method="_on_gold_gui_input"]
 [connection signal="text_changed" from="PanelContainer/DungeonSettings/GoldLabel/Gold" to="." method="_on_gold_text_changed"]
+[connection signal="gui_input" from="PanelContainer/DungeonSettings/SpiderLabel/Spider" to="." method="_on_spider_gui_input"]
+[connection signal="text_changed" from="PanelContainer/DungeonSettings/SpiderLabel/Spider" to="." method="_on_spider_text_changed"]
 [connection signal="pressed" from="PanelContainer/DungeonSettings/Next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="PanelContainer/DungeonSettings/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="PanelContainer/DungeonSettings/Back" to="." method="_on_back_pressed"]
