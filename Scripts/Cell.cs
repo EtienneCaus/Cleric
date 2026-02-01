@@ -58,7 +58,7 @@ public partial class Cell : StaticBody3D
 					Globals.LEVEL == 4 && Globals.SPIDER_SPAWN > 0)
 				dummy = ResourceLoader.Load<PackedScene>("res://Scenes/Spider.tscn").Instantiate() as CharacterBody3D;
 			else
-				dummy = ResourceLoader.Load<PackedScene>("res://Scenes/Demon.tscn").Instantiate() as CharacterBody3D;
+				dummy = ResourceLoader.Load<PackedScene>("res://Scenes/Skeleton.tscn").Instantiate() as CharacterBody3D;
 			AddChild(dummy);
 			dummy.Position = new Vector3((GlobalPosition.X - Position.X) * Globals.GRID_SIZE, 0, (GlobalPosition.Y - Position.Y) * Globals.GRID_SIZE);
 		}
