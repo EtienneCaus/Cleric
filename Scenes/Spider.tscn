@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cg63aim060soy"]
+[gd_scene load_steps=18 format=3 uid="uid://cg63aim060soy"]
 
 [ext_resource type="Script" uid="uid://egwvk8mmofaq" path="res://Scripts/Spider.cs" id="1_5ng7r"]
 [ext_resource type="Texture2D" uid="uid://ynlkbq7qvhpx" path="res://Sprites/Fire.png" id="2_5ng7r"]
@@ -80,9 +80,6 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_mo1ik")
 size = Vector2(0.1, 0.1)
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_abfcy"]
-radius = 0.4
-
 [node name="Spider" type="CharacterBody3D" groups=["Enemy"]]
 script = ExtResource("1_5ng7r")
 
@@ -138,14 +135,6 @@ light_energy = 0.2
 light_size = 0.2
 light_specular = 0.0
 
-[node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5423047, 0)
-visible = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.37843055, 0)
-shape = SubResource("SphereShape3D_abfcy")
-
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3498041, 0)
 target_position = Vector3(0, 0, 2)
@@ -161,6 +150,3 @@ stream = ExtResource("5_slyxj")
 
 [node name="BlockPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("6_wnqdq")
-
-[connection signal="body_entered" from="Area3D" to="." method="On_area_3d_body_entered"]
-[connection signal="body_exited" from="Area3D" to="." method="On_area_3d_body_exited"]

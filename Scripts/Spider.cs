@@ -5,7 +5,7 @@ using static Godot.Mathf;
 public partial class Spider : Enemy
 {
     RayCast3D raycast;
-    Player target, theTarget;
+    Player target;
     bool jumping, slashing = false;
     bool moving = true;
     float speed = 50f;
@@ -23,9 +23,9 @@ public partial class Spider : Enemy
 
         if (raycast.IsColliding())
         {
-            theTarget = raycast.GetCollider() as Player;
-            if(theTarget != null && theTarget.IsInGroup("Player")
-             && theTarget.GlobalPosition.DistanceTo(GlobalPosition) < 1.2)
+            target = raycast.GetCollider() as Player;
+            if(target != null && target.IsInGroup("Player")
+             && target.GlobalPosition.DistanceTo(GlobalPosition) < 1.2)
                 jumping = true;
         }  
     }
@@ -36,11 +36,11 @@ public partial class Spider : Enemy
         
         if (jumping && Globals.HEALTH > 0 && moving)
         {
-            if (theTarget != null && theTarget.IsInGroup("Player") && IsOnFloor())
+            if (target != null && target.IsInGroup("Player") && IsOnFloor())
             {
                 velocity.X = Lerp(velocity.X, raycast.TargetPosition.X * speed, (float)delta * 4.0f);
                 velocity.Z = Lerp(velocity.Z, raycast.TargetPosition.Z * speed, (float)delta * 4.0f);
-                velocity.Y += 2.6f; 
+                velocity.Y += 2.6f;
                 Jump();       
             }
         }
@@ -58,8 +58,8 @@ public partial class Spider : Enemy
         Velocity = velocity;
         MoveAndSlide();
 
-        if(theTarget != null && theTarget.IsInGroup("Player") && slashing && !IsOnFloor()
-             && theTarget.GlobalPosition.DistanceTo(GlobalPosition) < 0.55)
+        if(target != null && target.IsInGroup("Player") && slashing && !IsOnFloor()
+             && target.GlobalPosition.DistanceTo(GlobalPosition) < 0.55f)
         {
             if (isGettingBlocked && Globals.STAMINA >= 20)
             {
@@ -91,19 +91,6 @@ public partial class Spider : Enemy
 		}
         isGettingBlocked = false;
 	}
-
-    public void On_area_3d_body_entered(Node3D body)
-    {
-        if (body.IsInGroup("Player"))
-        {
-            target = (Player)body;
-        }
-    }
-    public void On_area_3d_body_exited(Node3D body)
-    {
-        if (body.IsInGroup("Player"))
-            target = null;
-    }
     
     async protected void Jump()     //Animation for jumping
     {
