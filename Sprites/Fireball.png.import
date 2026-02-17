@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://q7j6fglv7jig"
+path="res://.godot/imported/Fireball.png-c80536858208cc80f45e7b391b5a0b72.image"
+
+[deps]
+
+source_file="res://Sprites/Fireball.png"
+dest_files=["res://.godot/imported/Fireball.png-c80536858208cc80f45e7b391b5a0b72.image"]
+
+[params]
+

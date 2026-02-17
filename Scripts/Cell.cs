@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Security.Cryptography.X509Certificates;
 using static Godot.Mathf;
 
 public partial class Cell : StaticBody3D
@@ -46,6 +47,14 @@ public partial class Cell : StaticBody3D
 		{
 			northFace.GetChild<Wall>(0).SetWall(2); //southFace.Texture = exit
 			type = 2;
+
+			CharacterBody3D demon;
+			if(Globals.LEVEL == 5)
+			{
+				demon = ResourceLoader.Load<PackedScene>("res://Scenes/Demon.tscn").Instantiate() as CharacterBody3D;
+				demon.Position = new Vector3((GlobalPosition.X - Position.X) * Globals.GRID_SIZE, 0, (GlobalPosition.Y - Position.Y) * Globals.GRID_SIZE);
+				AddChild(demon);
+			}
 		}
 
 		if (tileMap.GetCellAtlasCoords(myGridPosition) == new Vector2I(4, 0))   //Dummy
@@ -57,6 +66,8 @@ public partial class Cell : StaticBody3D
 			else if(rnd.Next(1, 100) <= Globals.SPIDER_SPAWN && Globals.LEVEL > 2 ||
 					Globals.LEVEL == 4 && Globals.SPIDER_SPAWN > 0)
 				dummy = ResourceLoader.Load<PackedScene>("res://Scenes/Spider.tscn").Instantiate() as CharacterBody3D;
+			else if(Globals.LEVEL == 6)
+				dummy = ResourceLoader.Load<PackedScene>("res://Scenes/Demon.tscn").Instantiate() as CharacterBody3D;
 			else
 				dummy = ResourceLoader.Load<PackedScene>("res://Scenes/Skeleton.tscn").Instantiate() as CharacterBody3D;
 			AddChild(dummy);

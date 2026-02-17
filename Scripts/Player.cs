@@ -13,6 +13,7 @@ public partial class Player : CharacterBody3D
 	//Bob variables
 	public const float BobFrequency = 2.0f;
 	public const float BobAmplitude = 0.04f;
+	const int Flamability = 8;
 	float timeBob = 0f;
 	public Node3D head;
 	AnimationPlayer anim;
@@ -23,7 +24,7 @@ public partial class Player : CharacterBody3D
 	string type;
 
 	string altFireMode = "Torch";
-	bool isBlocking, isSprinting, isDead, isPoisoned = false;
+	bool isBlocking, isSprinting, isDead, isPoisoned, onFire = false;
 	protected Timer gotHit;
 
 	public override void _Ready()
@@ -315,9 +316,17 @@ public partial class Player : CharacterBody3D
 			gotHit.Start();
 			switch (type)
 			{
+				default:
 				case "slash":
 					Globals.HEALTH -= (int)force;
 				break;
+				case "fire":
+					if(!onFire)
+					{
+						OnFire(force, Flamability);
+					}
+					Globals.HEALTH -= (int)force;
+					break;
 				case "poison":
 					Globals.HEALTH -= (int)force;
 					if (!isPoisoned)
@@ -366,6 +375,35 @@ public partial class Player : CharacterBody3D
 		{
 			Poisoned(force);
 		}
-		
+	}
+
+	async private void OnFire(float force, int timer)
+	{
+		onFire = true;
+		PackedScene fire = ResourceLoader.Load("res://Scenes/Fireball.tscn") as PackedScene;	//Create Fireball
+		Fireball fireTemp = fire.Instantiate() as Fireball;
+		fireTemp.GetNode<Sprite3D>("Sprite3D").Visible = false;
+		fireTemp.Position = new Vector3(0, 0.3f, 0);
+		AddChild(fireTemp);
+
+		for(int i = timer; i>0; i--)
+		{
+			if (Globals.HEALTH > 0)
+			{
+				await ToSignal(GetTree().CreateTimer(1), "timeout");
+				if (onFire)
+				{
+					GetNode<AudioStreamPlayer>("PoisonedPlayer").Play();
+					Globals.HEALTH -= force/10;
+				}
+			}
+
+			if (Globals.HEALTH <= 0)
+			{
+				GetHit(0,"null");
+			}
+		}
+		GetNode<Fireball>("Fireball").QueueFree();
+		onFire = false;
 	}
 }

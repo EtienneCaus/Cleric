@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://clowcgjnyl2bh"]
+[gd_scene format=3 uid="uid://clowcgjnyl2bh"]
 
 [ext_resource type="Script" uid="uid://numvaqyy8bq0" path="res://Scripts/Demon.cs" id="1_qivsn"]
 [ext_resource type="Texture2D" uid="uid://ynlkbq7qvhpx" path="res://Sprites/Fire.png" id="2_qivsn"]
@@ -93,19 +93,19 @@ size = Vector2(0.1, 0.1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_abfcy"]
 
-[node name="Demon" type="CharacterBody3D" groups=["Enemy"]]
+[node name="Demon" type="CharacterBody3D" unique_id=1683473808 groups=["Enemy"]]
 script = ExtResource("1_qivsn")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=681985603]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
 visible = false
 mesh = SubResource("CapsuleMesh_tojlr")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=778115997]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.35, 0)
 shape = SubResource("ConvexPolygonShape3D_65p0d")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=60894884]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.324, 0)
 pixel_size = 0.02
 billboard = 2
@@ -116,14 +116,14 @@ texture = SubResource("ImageTexture_qivsn")
 region_enabled = true
 region_rect = Rect2(0, 64, 32, 64)
 
-[node name="GotHit" type="Timer" parent="."]
+[node name="GotHit" type="Timer" parent="." unique_id=1643834633]
 wait_time = 0.1
 one_shot = true
 
-[node name="FireHit" type="Timer" parent="."]
+[node name="FireHit" type="Timer" parent="." unique_id=1872909535]
 one_shot = true
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1743073315]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.320469, 0)
 emitting = false
 interp_to_end = 1.0
@@ -132,14 +132,14 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_b866d")
 draw_pass_1 = SubResource("QuadMesh_idkea")
 
-[node name="OnFire" type="GPUParticles3D" parent="."]
+[node name="OnFire" type="GPUParticles3D" parent="." unique_id=920044435]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.184141, 0)
 cast_shadow = 0
 emitting = false
 process_material = SubResource("ParticleProcessMaterial_f0wus")
 draw_pass_1 = SubResource("QuadMesh_6ejmx")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=2030959404]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.327794, 0)
 visible = false
 light_color = Color(1, 0.829833, 0.728891, 1)
@@ -147,27 +147,28 @@ light_energy = 0.2
 light_size = 0.2
 light_specular = 0.0
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=1401719107]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5423047, 0)
+visible = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=611488283]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.18908441, 0)
 shape = SubResource("SphereShape3D_abfcy")
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=88610063]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3498041, 0)
 target_position = Vector3(0, 0, 2)
 
-[node name="HitPlayer3D" type="AudioStreamPlayer3D" parent="."]
+[node name="HitPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=439493457]
 stream = ExtResource("3_18aqy")
 
-[node name="FlamePlayer3D" type="AudioStreamPlayer3D" parent="."]
+[node name="FlamePlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=454734655]
 stream = ExtResource("4_bas0j")
 
-[node name="DeathPlayer3D" type="AudioStreamPlayer3D" parent="."]
+[node name="DeathPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1163772219]
 stream = ExtResource("5_37nmy")
 
-[node name="BlockPlayer3D" type="AudioStreamPlayer3D" parent="."]
+[node name="BlockPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=696134363]
 stream = ExtResource("6_nwvq3")
 
 [connection signal="body_entered" from="Area3D" to="." method="On_area_3d_body_entered"]
