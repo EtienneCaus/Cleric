@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections;
 
 public partial class Fireball : Area3D
 {
@@ -107,7 +108,18 @@ public partial class Fireball : Area3D
             {
                 ((Enemy)body).GetHit(30, "fire");
             }
-            QueueFree();
+            foreach(Node3D node in GetNode<Area3D>("Explosion").GetOverlappingBodies())
+            {
+                if (node.IsInGroup("Player"))
+                {
+                    ((Player)node).GetHit(20, "fire");
+                }
+                else if (node.IsInGroup("Enemy"))
+                {
+                    ((Enemy)node).GetHit(20, "fire");
+                }
+            }
+            Destroy();
         }
     }
 
@@ -117,5 +129,17 @@ public partial class Fireball : Area3D
         {
             destructible = true;
         }
+    }
+
+    async protected void Destroy()
+    {
+        destructible = false;
+        direction = Vector3.Zero;
+        GetNode<AudioStreamPlayer3D>("ExplosionPlayer3D").Play();
+        Tween tween = GetTree().CreateTween();
+        //tween.TweenProperty(GetNode<Sprite3D>("Sprite3D"), "pixel_size", 0.01, 0.2f);
+        tween.TweenProperty(GetNode<Sprite3D>("Sprite3D"), "pixel_size", 0.08, 0.28f);
+        await ToSignal(GetTree().CreateTimer(0.28), "timeout");
+        QueueFree();
     }
 }

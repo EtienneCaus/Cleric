@@ -50,9 +50,8 @@ public abstract partial class Enemy : CharacterBody3D
 				tween.TweenProperty(GetNode<Sprite3D>("Sprite3D"), "offset", new Vector2(rnd.NextSingle()-0.5f,-rnd.NextSingle()), 0.02f);
 				tween.TweenProperty(GetNode<Sprite3D>("Sprite3D"), "offset", new Vector2(-rnd.NextSingle()+0.5f,-rnd.NextSingle()), 0.02f);
 				tween.TweenProperty(GetNode<Sprite3D>("Sprite3D"), "offset", Vector2.Zero, 0.02f);
-				if (type == "fire" && Globals.MANA >= 20)
+				if (type == "fire")
 				{
-					Globals.MANA -= 20;
 					SetOnFire();
 				}
 			}

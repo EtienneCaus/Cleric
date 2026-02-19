@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dhft66sfnbfkj"]
+[gd_scene format=3 uid="uid://dhft66sfnbfkj"]
 
 [ext_resource type="Script" uid="uid://bu5orbu3n10f8" path="res://Scripts/PauseMenu.cs" id="1_5g214"]
 
-[node name="PauseMenu" type="Control"]
+[node name="PauseMenu" type="Control" unique_id=2130932404]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -12,7 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5g214")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=899257394]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -26,33 +26,33 @@ offset_bottom = 256.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MainMenu" type="VBoxContainer" parent="PanelContainer"]
+[node name="MainMenu" type="VBoxContainer" parent="PanelContainer" unique_id=840849423]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
 
-[node name="Title" type="Label" parent="PanelContainer/MainMenu"]
+[node name="Title" type="Label" parent="PanelContainer/MainMenu" unique_id=311878507]
 layout_mode = 2
 text = "CLÉRIC
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯"
 horizontal_alignment = 1
 
-[node name="RestartLevel" type="Button" parent="PanelContainer/MainMenu"]
+[node name="RestartLevel" type="Button" parent="PanelContainer/MainMenu" unique_id=1909926701]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Quit")
 focus_neighbor_bottom = NodePath("../Continue")
 text = "Restart"
 flat = true
 
-[node name="Continue" type="Button" parent="PanelContainer/MainMenu"]
+[node name="Continue" type="Button" parent="PanelContainer/MainMenu" unique_id=316037494]
 layout_mode = 2
 focus_neighbor_top = NodePath("../RestartLevel")
 focus_neighbor_bottom = NodePath("../Start")
 text = "Continue"
 flat = true
 
-[node name="Start" type="Button" parent="PanelContainer/MainMenu"]
+[node name="Start" type="Button" parent="PanelContainer/MainMenu" unique_id=1691940420]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Continue")
 focus_neighbor_bottom = NodePath("../Options")
@@ -60,14 +60,14 @@ text = "New Game
 "
 flat = true
 
-[node name="Options" type="Button" parent="PanelContainer/MainMenu"]
+[node name="Options" type="Button" parent="PanelContainer/MainMenu" unique_id=1847377769]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Start")
 focus_neighbor_bottom = NodePath("../Quit")
 text = "Options"
 flat = true
 
-[node name="Quit" type="Button" parent="PanelContainer/MainMenu"]
+[node name="Quit" type="Button" parent="PanelContainer/MainMenu" unique_id=2085031685]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Options")
 focus_neighbor_bottom = NodePath("../RestartLevel")
@@ -75,23 +75,23 @@ text = "Quit
 "
 flat = true
 
-[node name="Options" type="VBoxContainer" parent="PanelContainer"]
+[node name="Options" type="VBoxContainer" parent="PanelContainer" unique_id=2027304705]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
 
-[node name="Title" type="Label" parent="PanelContainer/Options"]
+[node name="Title" type="Label" parent="PanelContainer/Options" unique_id=1418578911]
 layout_mode = 2
 text = "CLÉRIC
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯"
 horizontal_alignment = 1
 
-[node name="SensibilityLabel" type="Label" parent="PanelContainer/Options"]
+[node name="SensibilityLabel" type="Label" parent="PanelContainer/Options" unique_id=318461048]
 layout_mode = 2
 text = "Sensibility"
 
-[node name="Sensibility" type="HSlider" parent="PanelContainer/Options/SensibilityLabel"]
+[node name="Sensibility" type="HSlider" parent="PanelContainer/Options/SensibilityLabel" unique_id=2003784150]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -104,11 +104,11 @@ grow_vertical = 2
 focus_neighbor_top = NodePath("../../Back")
 focus_neighbor_bottom = NodePath("../../SoundLabel/Sound")
 
-[node name="SoundLabel" type="Label" parent="PanelContainer/Options"]
+[node name="SoundLabel" type="Label" parent="PanelContainer/Options" unique_id=461275683]
 layout_mode = 2
 text = "Sound"
 
-[node name="Sound" type="HSlider" parent="PanelContainer/Options/SoundLabel"]
+[node name="Sound" type="HSlider" parent="PanelContainer/Options/SoundLabel" unique_id=1126447353]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -124,30 +124,30 @@ max_value = 1.0
 step = 0.01
 value = 1.0
 
-[node name="Back" type="Button" parent="PanelContainer/Options"]
+[node name="Back" type="Button" parent="PanelContainer/Options" unique_id=1602922559]
 layout_mode = 2
 focus_neighbor_top = NodePath("../SoundLabel/Sound")
 focus_neighbor_bottom = NodePath("../SensibilityLabel/Sensibility")
 text = "Back"
 flat = true
 
-[node name="DungeonSettings" type="VBoxContainer" parent="PanelContainer"]
+[node name="DungeonSettings" type="VBoxContainer" parent="PanelContainer" unique_id=1520849259]
 layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
 
-[node name="Title" type="Label" parent="PanelContainer/DungeonSettings"]
+[node name="Title" type="Label" parent="PanelContainer/DungeonSettings" unique_id=586070598]
 layout_mode = 2
 text = "DUNGEON SETTINGS
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯"
 horizontal_alignment = 1
 
-[node name="SeedLabel" type="Label" parent="PanelContainer/DungeonSettings"]
+[node name="SeedLabel" type="Label" parent="PanelContainer/DungeonSettings" unique_id=1621610048]
 layout_mode = 2
 text = "Seed"
 horizontal_alignment = 3
 
-[node name="Seed" type="LineEdit" parent="PanelContainer/DungeonSettings/SeedLabel"]
+[node name="Seed" type="LineEdit" parent="PanelContainer/DungeonSettings/SeedLabel" unique_id=306700743]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -161,12 +161,12 @@ text = "-random-"
 alignment = 2
 flat = true
 
-[node name="SizeLabel" type="Label" parent="PanelContainer/DungeonSettings"]
+[node name="SizeLabel" type="Label" parent="PanelContainer/DungeonSettings" unique_id=785338148]
 layout_mode = 2
 text = "Size"
 horizontal_alignment = 3
 
-[node name="Size" type="LineEdit" parent="PanelContainer/DungeonSettings/SizeLabel"]
+[node name="Size" type="LineEdit" parent="PanelContainer/DungeonSettings/SizeLabel" unique_id=1928387419]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -180,12 +180,12 @@ text = "100"
 alignment = 2
 flat = true
 
-[node name="MultiplierLabel" type="Label" parent="PanelContainer/DungeonSettings"]
+[node name="MultiplierLabel" type="Label" parent="PanelContainer/DungeonSettings" unique_id=426591904]
 layout_mode = 2
 text = "Multiplier"
 horizontal_alignment = 3
 
-[node name="Multiplier" type="LineEdit" parent="PanelContainer/DungeonSettings/MultiplierLabel"]
+[node name="Multiplier" type="LineEdit" parent="PanelContainer/DungeonSettings/MultiplierLabel" unique_id=840655306]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -199,12 +199,12 @@ text = "4"
 alignment = 2
 flat = true
 
-[node name="CorridorsLabel" type="Label" parent="PanelContainer/DungeonSettings"]
+[node name="CorridorsLabel" type="Label" parent="PanelContainer/DungeonSettings" unique_id=341531016]
 layout_mode = 2
 text = "corridors_length"
 horizontal_alignment = 3
 
-[node name="Corridors" type="LineEdit" parent="PanelContainer/DungeonSettings/CorridorsLabel"]
+[node name="Corridors" type="LineEdit" parent="PanelContainer/DungeonSettings/CorridorsLabel" unique_id=1585220805]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -218,12 +218,12 @@ text = "4"
 alignment = 2
 flat = true
 
-[node name="HallwaysLabel" type="Label" parent="PanelContainer/DungeonSettings"]
+[node name="HallwaysLabel" type="Label" parent="PanelContainer/DungeonSettings" unique_id=880419537]
 layout_mode = 2
 text = "hallways_chance    %   "
 horizontal_alignment = 3
 
-[node name="Hallways" type="LineEdit" parent="PanelContainer/DungeonSettings/HallwaysLabel"]
+[node name="Hallways" type="LineEdit" parent="PanelContainer/DungeonSettings/HallwaysLabel" unique_id=2067789776]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -237,12 +237,12 @@ text = "0"
 alignment = 2
 flat = true
 
-[node name="RoomsLabel" type="Label" parent="PanelContainer/DungeonSettings"]
+[node name="RoomsLabel" type="Label" parent="PanelContainer/DungeonSettings" unique_id=1065539759]
 layout_mode = 2
 text = "rooms_chances		%		"
 horizontal_alignment = 3
 
-[node name="Rooms" type="LineEdit" parent="PanelContainer/DungeonSettings/RoomsLabel"]
+[node name="Rooms" type="LineEdit" parent="PanelContainer/DungeonSettings/RoomsLabel" unique_id=697514735]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -256,12 +256,12 @@ text = "100"
 alignment = 2
 flat = true
 
-[node name="rsMinLabel" type="Label" parent="PanelContainer/DungeonSettings"]
+[node name="rsMinLabel" type="Label" parent="PanelContainer/DungeonSettings" unique_id=2072861058]
 layout_mode = 2
 text = "rooms_size_min"
 horizontal_alignment = 3
 
-[node name="rsMin" type="LineEdit" parent="PanelContainer/DungeonSettings/rsMinLabel"]
+[node name="rsMin" type="LineEdit" parent="PanelContainer/DungeonSettings/rsMinLabel" unique_id=2098502890]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -275,12 +275,12 @@ text = "2"
 alignment = 2
 flat = true
 
-[node name="rsMaxLabel" type="Label" parent="PanelContainer/DungeonSettings"]
+[node name="rsMaxLabel" type="Label" parent="PanelContainer/DungeonSettings" unique_id=763679105]
 layout_mode = 2
 text = "rooms_size_max"
 horizontal_alignment = 3
 
-[node name="rsMax" type="LineEdit" parent="PanelContainer/DungeonSettings/rsMaxLabel"]
+[node name="rsMax" type="LineEdit" parent="PanelContainer/DungeonSettings/rsMaxLabel" unique_id=2018838531]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -294,12 +294,12 @@ text = "4"
 alignment = 2
 flat = true
 
-[node name="CenterLabel" type="Label" parent="PanelContainer/DungeonSettings"]
+[node name="CenterLabel" type="Label" parent="PanelContainer/DungeonSettings" unique_id=1662693562]
 layout_mode = 2
 text = "Center"
 horizontal_alignment = 3
 
-[node name="Center" type="Button" parent="PanelContainer/DungeonSettings/CenterLabel"]
+[node name="Center" type="Button" parent="PanelContainer/DungeonSettings/CenterLabel" unique_id=2087928113]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -317,12 +317,12 @@ toggle_mode = true
 text = "false"
 flat = true
 
-[node name="CavernLabel" type="Label" parent="PanelContainer/DungeonSettings"]
+[node name="CavernLabel" type="Label" parent="PanelContainer/DungeonSettings" unique_id=1927118424]
 layout_mode = 2
 text = "Cavern"
 horizontal_alignment = 3
 
-[node name="Cavern" type="Button" parent="PanelContainer/DungeonSettings/CavernLabel"]
+[node name="Cavern" type="Button" parent="PanelContainer/DungeonSettings/CavernLabel" unique_id=1649552683]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -340,13 +340,13 @@ toggle_mode = true
 text = "false"
 flat = true
 
-[node name="EnemySpawnLabel" type="Label" parent="PanelContainer/DungeonSettings"]
+[node name="EnemySpawnLabel" type="Label" parent="PanelContainer/DungeonSettings" unique_id=998912236]
 visible = false
 layout_mode = 2
 text = "enemy_spawn     %   "
 horizontal_alignment = 3
 
-[node name="EnemySpawn" type="LineEdit" parent="PanelContainer/DungeonSettings/EnemySpawnLabel"]
+[node name="EnemySpawn" type="LineEdit" parent="PanelContainer/DungeonSettings/EnemySpawnLabel" unique_id=1752120152]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -360,13 +360,13 @@ text = "5"
 alignment = 2
 flat = true
 
-[node name="EnemyRoomLabel" type="Label" parent="PanelContainer/DungeonSettings"]
+[node name="EnemyRoomLabel" type="Label" parent="PanelContainer/DungeonSettings" unique_id=1523508142]
 visible = false
 layout_mode = 2
 text = "enemy_sp_rooms     %    "
 horizontal_alignment = 3
 
-[node name="EnemyRoom" type="LineEdit" parent="PanelContainer/DungeonSettings/EnemyRoomLabel"]
+[node name="EnemyRoom" type="LineEdit" parent="PanelContainer/DungeonSettings/EnemyRoomLabel" unique_id=2129721166]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -380,13 +380,13 @@ text = "10"
 alignment = 2
 flat = true
 
-[node name="TorchesLabel" type="Label" parent="PanelContainer/DungeonSettings"]
+[node name="TorchesLabel" type="Label" parent="PanelContainer/DungeonSettings" unique_id=954289266]
 visible = false
 layout_mode = 2
 text = "torches_spawn  			   %    "
 horizontal_alignment = 3
 
-[node name="Torches" type="LineEdit" parent="PanelContainer/DungeonSettings/TorchesLabel"]
+[node name="Torches" type="LineEdit" parent="PanelContainer/DungeonSettings/TorchesLabel" unique_id=2003443732]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -400,13 +400,13 @@ text = "10"
 alignment = 2
 flat = true
 
-[node name="GoldLabel" type="Label" parent="PanelContainer/DungeonSettings"]
+[node name="GoldLabel" type="Label" parent="PanelContainer/DungeonSettings" unique_id=988728793]
 visible = false
 layout_mode = 2
 text = "gold_spawn							     %    "
 horizontal_alignment = 3
 
-[node name="Gold" type="LineEdit" parent="PanelContainer/DungeonSettings/GoldLabel"]
+[node name="Gold" type="LineEdit" parent="PanelContainer/DungeonSettings/GoldLabel" unique_id=417496631]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -420,13 +420,13 @@ text = "5"
 alignment = 2
 flat = true
 
-[node name="SpiderLabel" type="Label" parent="PanelContainer/DungeonSettings"]
+[node name="SpiderLabel" type="Label" parent="PanelContainer/DungeonSettings" unique_id=609924897]
 visible = false
 layout_mode = 2
 text = "spider_spawn							     %    "
 horizontal_alignment = 3
 
-[node name="Spider" type="LineEdit" parent="PanelContainer/DungeonSettings/SpiderLabel"]
+[node name="Spider" type="LineEdit" parent="PanelContainer/DungeonSettings/SpiderLabel" unique_id=1191087627]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -435,29 +435,49 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_neighbor_top = NodePath("../../GoldLabel/Gold")
+focus_neighbor_bottom = NodePath("../../DemonLabel/Demon")
+text = "50"
+alignment = 2
+flat = true
+
+[node name="DemonLabel" type="Label" parent="PanelContainer/DungeonSettings" unique_id=806313881]
+visible = false
+layout_mode = 2
+text = "demon_spawn							     %    "
+horizontal_alignment = 3
+
+[node name="Demon" type="LineEdit" parent="PanelContainer/DungeonSettings/DemonLabel" unique_id=1637647422]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_top = NodePath("../../SpiderLabel/Spider")
 focus_neighbor_bottom = NodePath("../../Next")
 text = "50"
 alignment = 2
 flat = true
 
-[node name="Next" type="Button" parent="PanelContainer/DungeonSettings"]
+[node name="Next" type="Button" parent="PanelContainer/DungeonSettings" unique_id=685768755]
 layout_mode = 2
 text = "Next"
 flat = true
 
-[node name="Line" type="Label" parent="PanelContainer/DungeonSettings"]
+[node name="Line" type="Label" parent="PanelContainer/DungeonSettings" unique_id=571523669]
 layout_mode = 2
 text = "¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯"
 horizontal_alignment = 1
 
-[node name="Restart" type="Button" parent="PanelContainer/DungeonSettings"]
+[node name="Restart" type="Button" parent="PanelContainer/DungeonSettings" unique_id=1156705233]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Next")
 focus_neighbor_bottom = NodePath("../Back")
 text = "Start"
 flat = true
 
-[node name="Back" type="Button" parent="PanelContainer/DungeonSettings"]
+[node name="Back" type="Button" parent="PanelContainer/DungeonSettings" unique_id=1574857271]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Restart")
 focus_neighbor_bottom = NodePath("../SeedLabel/Seed")
@@ -503,6 +523,8 @@ flat = true
 [connection signal="text_changed" from="PanelContainer/DungeonSettings/GoldLabel/Gold" to="." method="_on_gold_text_changed"]
 [connection signal="gui_input" from="PanelContainer/DungeonSettings/SpiderLabel/Spider" to="." method="_on_spider_gui_input"]
 [connection signal="text_changed" from="PanelContainer/DungeonSettings/SpiderLabel/Spider" to="." method="_on_spider_text_changed"]
+[connection signal="gui_input" from="PanelContainer/DungeonSettings/DemonLabel/Demon" to="." method="_on_demon_gui_input"]
+[connection signal="text_changed" from="PanelContainer/DungeonSettings/DemonLabel/Demon" to="." method="_on_demon_text_changed"]
 [connection signal="pressed" from="PanelContainer/DungeonSettings/Next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="PanelContainer/DungeonSettings/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="PanelContainer/DungeonSettings/Back" to="." method="_on_back_pressed"]

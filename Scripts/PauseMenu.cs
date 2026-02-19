@@ -4,7 +4,7 @@ using System;
 public partial class PauseMenu : Control
 {
     static Random rnd = new Random();
-    LineEdit seed, size, multiplier, corridors, hallways, rooms, rsMin, rsMax, espawn, esroom, torches, gold, spider;
+    LineEdit seed, size, multiplier, corridors, hallways, rooms, rsMin, rsMax, espawn, esroom, torches, gold, spider, demon;
     Button center, cavern;
     public override void _Ready()
     {
@@ -38,6 +38,8 @@ public partial class PauseMenu : Control
         gold.Text = Globals.GOLD_SPAWN.ToString();
         spider = GetNode<LineEdit>("PanelContainer/DungeonSettings/SpiderLabel/Spider");
         spider.Text = Globals.SPIDER_SPAWN.ToString();
+        demon = GetNode<LineEdit>("PanelContainer/DungeonSettings/DemonLabel/Demon");
+        demon.Text = Globals.DEMON_SPAWN.ToString();
     }
     public void resume()
     {
@@ -402,6 +404,28 @@ public partial class PauseMenu : Control
         }
     }
 
+    public void _on_demon_text_changed(string str)
+    {
+        int.TryParse(str, out Globals.DEMON_SPAWN);
+    }
+    public void _on_demon_gui_input(InputEvent inputEvent)
+    {
+        if (Input.IsActionJustPressed("ui_right"))
+        {
+            Globals.DEMON_SPAWN += 5;
+            if (Globals.DEMON_SPAWN > 100)
+                Globals.DEMON_SPAWN = 100;
+            demon.Text = Globals.DEMON_SPAWN.ToString();
+        }
+        else if (Input.IsActionJustPressed("ui_left"))
+        {
+            Globals.DEMON_SPAWN -= 5;
+            if (Globals.DEMON_SPAWN < 0)
+                Globals.DEMON_SPAWN = 0;
+            demon.Text = Globals.DEMON_SPAWN.ToString();
+        }
+    }
+
     public void _on_next_pressed()
     {
         seed.GetParent<Control>().Visible = !seed.GetParent<Control>().Visible;
@@ -419,5 +443,6 @@ public partial class PauseMenu : Control
         torches.GetParent<Control>().Visible = !torches.GetParent<Control>().Visible;
         gold.GetParent<Control>().Visible = !gold.GetParent<Control>().Visible;
         spider.GetParent<Control>().Visible = !spider.GetParent<Control>().Visible;
+        demon.GetParent<Control>().Visible = !demon.GetParent<Control>().Visible;
     }
 }

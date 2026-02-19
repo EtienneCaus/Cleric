@@ -5,7 +5,8 @@ using static Godot.Mathf;
 public partial class Demon : Enemy
 {
     RayCast3D raycast;
-    Player target, theTarget, tempTarget;
+    Player target, tempTarget;
+    Vector3 theTarget;
     bool slashing, walking, walkAnim = false;
     bool fireball = true;
     float speed = 0.8f;
@@ -19,7 +20,6 @@ public partial class Demon : Enemy
     }
     public override void _Process(double delta)
     {
-        Vector3 velocity = Velocity;
         raycast.TargetPosition = GetNode<Player>("/root/World/Player").GlobalPosition - GlobalPosition;
 
         if (raycast.IsColliding())
@@ -27,11 +27,11 @@ public partial class Demon : Enemy
             target = raycast.GetCollider() as Player;
             if (target != null && target.IsInGroup("Player"))
             {
+                theTarget = raycast.TargetPosition;
                 walking = true;
-                if(fireball && target.GlobalPosition.DistanceTo(GlobalPosition) > 3)
+                if(fireball && target.GlobalPosition.DistanceTo(GlobalPosition) > 1)
                     Fire();    
             }
-                
         }
 
         if (target != null && target.GlobalPosition.DistanceTo(GlobalPosition) < 0.55f
@@ -41,12 +41,13 @@ public partial class Demon : Enemy
 
         if (walking && !slashing  && Globals.HEALTH > 0)
         {
-            if (target != null && target.IsInGroup("Player"))
+            if (Position != theTarget)//(target != null && target.IsInGroup("Player"))
             {
-                velocity.X = Lerp(velocity.X, raycast.TargetPosition.X * speed, (float)delta * 3.0f);
-                velocity.Z = Lerp(velocity.Z, raycast.TargetPosition.Z * speed, (float)delta * 3.0f);
-                //velocity = Position + raycast.TargetPosition.AngleTo(Position) * speed;
-                Velocity = velocity;
+                float angle3d = Mathf.Atan2(theTarget.X, theTarget.Z);
+
+                Vector3 direction = new Vector3(Mathf.Sin(angle3d), 0, Mathf.Cos(angle3d));
+                Position += direction * 2 * (float)delta;
+
                 MoveAndSlide();
             }
             if (!walkAnim)
@@ -55,23 +56,10 @@ public partial class Demon : Enemy
         else if (!walking && health > 0 && !slashing)   //Normal sprite
         {  
             GetNode<Sprite3D>("Sprite3D").RegionRect = new Rect2(0, 64, 32, 64);
+            if(theTarget != Vector3.Zero)
+                walking = true;
         }
     }
-
-/*
-    public void On_area_3d_body_entered(Node3D body)
-    {
-        if (body.IsInGroup("Player"))
-        {
-            tempTarget = (Player)body;
-        }
-    }
-    public void On_area_3d_body_exited(Node3D body)
-    {
-        if (body.IsInGroup("Player"))
-            tempTarget = null;
-    }
-    */
 
     async protected void Slash()    //Skeleton basic attack
     {

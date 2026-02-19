@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dhon0tw4qc30x" path="res://Scripts/Fireball.cs" id="1_dju2h"]
 [ext_resource type="Texture2D" uid="uid://ynlkbq7qvhpx" path="res://Sprites/Fire.png" id="1_o53bx"]
+[ext_resource type="AudioStream" uid="uid://cf7012niibnr2" path="res://Sounds/Explosion.wav" id="3_ffurd"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_vpulw"]
 
@@ -46,6 +47,8 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_mo1ik")
 size = Vector2(0.1, 0.1)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_ffurd"]
+
 [node name="Fireball" type="Area3D" unique_id=318705908]
 script = ExtResource("1_dju2h")
 
@@ -56,7 +59,6 @@ mesh = SubResource("SphereMesh_vpulw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=87046138]
 transform = Transform3D(0.14, 0, 0, 0, 0.14, 0, 0, 0, 0.14, 0, 0, 0)
-visible = false
 shape = SubResource("SphereShape3D_o53bx")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1589416416]
@@ -75,6 +77,14 @@ light_color = Color(1, 0.829833, 0.728891, 1)
 light_energy = 0.2
 light_size = 0.2
 light_specular = 0.0
+
+[node name="Explosion" type="Area3D" parent="." unique_id=995504361]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Explosion" unique_id=632346123]
+shape = SubResource("SphereShape3D_ffurd")
+
+[node name="ExplosionPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=406572244]
+stream = ExtResource("3_ffurd")
 
 [connection signal="body_entered" from="." to="." method="On_body_entered"]
 [connection signal="body_exited" from="." to="." method="On_body_exited"]

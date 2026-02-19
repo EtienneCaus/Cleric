@@ -66,7 +66,7 @@ public partial class Cell : StaticBody3D
 			else if(rnd.Next(1, 100) <= Globals.SPIDER_SPAWN && Globals.LEVEL > 2 ||
 					Globals.LEVEL == 4 && Globals.SPIDER_SPAWN > 0)
 				dummy = ResourceLoader.Load<PackedScene>("res://Scenes/Spider.tscn").Instantiate() as CharacterBody3D;
-			else if(Globals.LEVEL == 6)
+			else if(rnd.Next(1, 100) <= Globals.DEMON_SPAWN && Globals.LEVEL >= 6)
 				dummy = ResourceLoader.Load<PackedScene>("res://Scenes/Demon.tscn").Instantiate() as CharacterBody3D;
 			else
 				dummy = ResourceLoader.Load<PackedScene>("res://Scenes/Skeleton.tscn").Instantiate() as CharacterBody3D;

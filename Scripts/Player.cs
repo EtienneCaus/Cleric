@@ -278,8 +278,14 @@ public partial class Player : CharacterBody3D
 				target = raycast.GetCollider() as Enemy;
 				if (target != null && target.IsInGroup("Enemy"))
 				{
-					if (type == "fire" && Globals.MANA < 20)
-						type = "blunt";
+					if (type == "fire")
+					{
+						if(Globals.MANA < 20)
+							type = "blunt";
+						else
+							Globals.MANA -= 20;
+					}
+						
 					target.GetHit(damage, type);
 				}
 			}

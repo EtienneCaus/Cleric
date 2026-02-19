@@ -23,6 +23,7 @@ public partial class Globals : Node
     public static int ENEMY_ROOMS = 10; //Enemy spawn rate in rooms
 
     public static int SPIDER_SPAWN = 30; //% of ennemies spawning as spiders
+    public static int DEMON_SPAWN = 20; //% of ennemies spawning as spiders
 
     public static int LEVEL = 1; //Starting level
 
