@@ -25,6 +25,7 @@ public partial class Player : CharacterBody3D
 
 	string altFireMode = "Torch";
 	bool isBlocking, isSprinting, isDead, isPoisoned, onFire = false;
+	bool manaloss = true;
 	protected Timer gotHit;
 
 	public override void _Ready()
@@ -282,8 +283,8 @@ public partial class Player : CharacterBody3D
 					{
 						if(Globals.MANA < 20)
 							type = "blunt";
-						else
-							Globals.MANA -= 20;
+						else if(manaloss)
+							ManaLoss(20);//Globals.MANA -= 20;
 					}
 						
 					target.GetHit(damage, type);
@@ -411,5 +412,13 @@ public partial class Player : CharacterBody3D
 		}
 		GetNode<Fireball>("Fireball").QueueFree();
 		onFire = false;
+	}
+
+	async private void ManaLoss(double mana)
+	{
+		manaloss = false;
+		Globals.MANA -= mana;
+		await ToSignal(GetTree().CreateTimer(0.2), "timeout");
+		manaloss = true;
 	}
 }
