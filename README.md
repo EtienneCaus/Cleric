@@ -7,6 +7,8 @@ Made in Godot using C#
 ~
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/24333fe2-9598-40cf-9977-2427a7488ac7" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/d680b914-ee5d-4725-b12d-81f35bc54d2f" />
+
 
 Use the WASD keys to move , Shift to run , CapsLock to toggle running , Space to jump, Tab to show the map, F1 to toggle info, F5 to restart the dungeon and Escape to pull up the menu.
 
