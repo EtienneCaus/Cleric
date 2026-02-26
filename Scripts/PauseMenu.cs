@@ -94,6 +94,8 @@ public partial class PauseMenu : Control
         GetNode<VBoxContainer>("PanelContainer/Options").Visible = true;
         GetNode<Button>("PanelContainer/Options/Back").GrabFocus();
         GetNode<HSlider>("PanelContainer/Options/SensibilityLabel/Sensibility").Value = Globals.Sensitivity * 12000;
+        GetNode<CheckBox>("PanelContainer/Options/SkeletonsAiLabel/SkeletonsAi").ButtonPressed = Globals.SKELETONSAI;
+        GetNode<SpinBox>("PanelContainer/Options/CurrentLevelLabel/CurrentLevel").Value = Globals.LEVEL;
     }
     public void _on_back_pressed()
     {
@@ -117,6 +119,16 @@ public partial class PauseMenu : Control
     {
         Globals.Sound = sound;
         AudioServer.SetBusVolumeLinear(0, Globals.Sound);
+    }
+
+    public void _on_skeletons_ai_toggled(bool toggle)
+    {
+        Globals.SKELETONSAI = toggle;
+    }
+
+    public void _on_current_level_value_changed(float value)
+    {
+        Globals.LEVEL = (int)value;
     }
     //----------------------------------------------------------------------------------------------------------
     public void _on_restart_pressed()

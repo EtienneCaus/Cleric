@@ -61,17 +61,20 @@ public partial class Cell : StaticBody3D
 		{
 			CharacterBody3D dummy;
 			Random rnd = new Random();
-			if (rnd.Next(0, Globals.LEVEL) < 1)
-				dummy = ResourceLoader.Load<PackedScene>("res://Scenes/Dummy.tscn").Instantiate() as CharacterBody3D;
-			else if(rnd.Next(1, 100) <= Globals.SPIDER_SPAWN && Globals.LEVEL > 2 ||
-					Globals.LEVEL == 4 && Globals.SPIDER_SPAWN > 0)
-				dummy = ResourceLoader.Load<PackedScene>("res://Scenes/Spider.tscn").Instantiate() as CharacterBody3D;
-			else if(rnd.Next(1, 100) <= Globals.DEMON_SPAWN && Globals.LEVEL >= 6)
-				dummy = ResourceLoader.Load<PackedScene>("res://Scenes/Demon.tscn").Instantiate() as CharacterBody3D;
-			else
-				dummy = ResourceLoader.Load<PackedScene>("res://Scenes/Skeleton.tscn").Instantiate() as CharacterBody3D;
-			AddChild(dummy);
-			dummy.Position = new Vector3((GlobalPosition.X - Position.X) * Globals.GRID_SIZE, 0, (GlobalPosition.Y - Position.Y) * Globals.GRID_SIZE);
+			if(Globals.LEVEL > 0)
+			{
+				if (rnd.Next(0, Globals.LEVEL) < 1)
+					dummy = ResourceLoader.Load<PackedScene>("res://Scenes/Dummy.tscn").Instantiate() as CharacterBody3D;
+				else if(rnd.Next(1, 100) <= Globals.SPIDER_SPAWN && Globals.LEVEL > 2 ||
+						Globals.LEVEL == 4 && Globals.SPIDER_SPAWN > 0)
+					dummy = ResourceLoader.Load<PackedScene>("res://Scenes/Spider.tscn").Instantiate() as CharacterBody3D;
+				else if(rnd.Next(1, 100) <= Globals.DEMON_SPAWN && Globals.LEVEL >= 6)
+					dummy = ResourceLoader.Load<PackedScene>("res://Scenes/Demon.tscn").Instantiate() as CharacterBody3D;
+				else
+					dummy = ResourceLoader.Load<PackedScene>("res://Scenes/Skeleton.tscn").Instantiate() as CharacterBody3D;
+				AddChild(dummy);
+				dummy.Position = new Vector3((GlobalPosition.X - Position.X) * Globals.GRID_SIZE, 0, (GlobalPosition.Y - Position.Y) * Globals.GRID_SIZE);
+			}
 		}
 		else if (tileMap.GetCellAtlasCoords(myGridPosition) == new Vector2I(5, 0))  //Torch
 		{

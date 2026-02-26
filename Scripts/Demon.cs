@@ -29,7 +29,7 @@ public partial class Demon : Enemy
             {
                 theTarget = raycast.TargetPosition;
                 walking = true;
-                if(fireball && target.GlobalPosition.DistanceTo(GlobalPosition) > 1)
+                if(fireball && target.GlobalPosition.DistanceTo(GlobalPosition) > 1.5f)
                     Fire();    
             }
         }
@@ -46,7 +46,7 @@ public partial class Demon : Enemy
                 float angle3d = Mathf.Atan2(theTarget.X, theTarget.Z);
 
                 Vector3 direction = new Vector3(Mathf.Sin(angle3d), 0, Mathf.Cos(angle3d));
-                Position += direction * 2 * (float)delta;
+                Position += direction * (speed * 2) * (float)delta;
 
                 MoveAndSlide();
             }

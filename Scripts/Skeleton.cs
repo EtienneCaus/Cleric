@@ -6,7 +6,8 @@ using static Godot.Mathf;
 public partial class Skeleton : Enemy
 {
     RayCast3D raycast;
-    Player target, theTarget;
+    Player target;
+    Vector3 theTarget;
     bool slashing, walking, walkAnim = false;
     float speed = 0.7f;
     public override void _Ready()
@@ -19,28 +20,41 @@ public partial class Skeleton : Enemy
     }
     public override void _Process(double delta)
     {
-        Vector3 velocity = Velocity;
+        //Vector3 velocity = Velocity;
         raycast.TargetPosition = GetNode<Player>("/root/World/Player").GlobalPosition - GlobalPosition;
 
         if (raycast.IsColliding())
         {
-            theTarget = raycast.GetCollider() as Player;
-            if (theTarget != null && theTarget.IsInGroup("Player"))
+            target = raycast.GetCollider() as Player;
+            if (target != null && target.IsInGroup("Player"))
+            {
+                theTarget = raycast.TargetPosition;
                 walking = true;
+            }
+                
         }
 
-        if (target != null && slashing == false && Globals.HEALTH > 0)
+        if (target != null && target.GlobalPosition.DistanceTo(GlobalPosition) < 0.55f
+        && slashing == false && Globals.HEALTH > 0)
             Slash();
 
 
         if (walking && !slashing  && Globals.HEALTH > 0)
         {
-            if (theTarget != null && theTarget.IsInGroup("Player"))
+            if (Position != theTarget)//target != null && target.IsInGroup("Player"))
             {
+                /*
                 velocity.X = Lerp(velocity.X, raycast.TargetPosition.X * speed, (float)delta * 3.0f);
                 velocity.Z = Lerp(velocity.Z, raycast.TargetPosition.Z * speed, (float)delta * 3.0f);
                 //velocity = Position + raycast.TargetPosition.AngleTo(Position) * speed;
                 Velocity = velocity;
+                */
+                float angle3d = Mathf.Atan2(theTarget.X, //target.GlobalPosition.X - GlobalPosition.X, 
+                                            theTarget.Z);//target.GlobalPosition.Z - GlobalPosition.Z);
+
+                Vector3 direction = new Vector3(Mathf.Sin(angle3d), 0, Mathf.Cos(angle3d));
+                Position += direction * (speed * 2) * (float)delta;
+
                 MoveAndSlide();
             }
             if (!walkAnim)
@@ -49,9 +63,12 @@ public partial class Skeleton : Enemy
         else if (!walking && health > 0 && !slashing)   //Normal sprite
         {  
             GetNode<Sprite3D>("Sprite3D").RegionRect = new Rect2(0, 64, 32, 64);
+            if(theTarget != Vector3.Zero && Globals.SKELETONSAI)
+                walking = true;
         }
     }
 
+    /*
     public void On_area_3d_body_entered(Node3D body)
     {
         if (body.IsInGroup("Player"))
@@ -64,6 +81,7 @@ public partial class Skeleton : Enemy
         if (body.IsInGroup("Player"))
             target = null;
     }
+    */
 
     async protected void Slash()    //Skeleton basic attack
     {
@@ -82,7 +100,8 @@ public partial class Skeleton : Enemy
                 Globals.STAMINA -= 40;
                 GetNode<AudioStreamPlayer3D>("BlockPlayer3D").Play();
             }
-            else if (health > 0 && target != null && target.IsInGroup("Player"))
+            else if (health > 0 && target != null && target.IsInGroup("Player")
+            && target.GlobalPosition.DistanceTo(GlobalPosition) < 0.55f)
             {
                 target.GetHit(20, "slash");  //Hits the player
             }

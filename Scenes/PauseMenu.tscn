@@ -76,7 +76,6 @@ text = "Quit
 flat = true
 
 [node name="Options" type="VBoxContainer" parent="PanelContainer" unique_id=2027304705]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
@@ -119,10 +118,44 @@ offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_neighbor_top = NodePath("../../SensibilityLabel/Sensibility")
-focus_neighbor_bottom = NodePath("../../Back")
+focus_neighbor_bottom = NodePath("../../SkeletonsAiLabel/SkeletonsAi")
 max_value = 1.0
 step = 0.01
 value = 1.0
+
+[node name="SkeletonsAiLabel" type="Label" parent="PanelContainer/Options" unique_id=127154176]
+layout_mode = 2
+text = "New skeleton AI"
+
+[node name="SkeletonsAi" type="CheckBox" parent="PanelContainer/Options/SkeletonsAiLabel" unique_id=2075377286]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+grow_horizontal = 0
+grow_vertical = 2
+focus_neighbor_top = NodePath("../../SoundLabel/Sound")
+focus_neighbor_bottom = NodePath("../../Back")
+
+[node name="CurrentLevelLabel" type="Label" parent="PanelContainer/Options" unique_id=2069060622]
+layout_mode = 2
+text = "Current Level"
+
+[node name="CurrentLevel" type="SpinBox" parent="PanelContainer/Options/CurrentLevelLabel" unique_id=334600010]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -86.5
+grow_horizontal = 0
+grow_vertical = 2
+focus_neighbor_top = NodePath("../../SoundLabel/Sound")
+focus_neighbor_bottom = NodePath("../../Back")
+alignment = 2
+prefix = "Level"
 
 [node name="Back" type="Button" parent="PanelContainer/Options" unique_id=1602922559]
 layout_mode = 2
@@ -132,6 +165,7 @@ text = "Back"
 flat = true
 
 [node name="DungeonSettings" type="VBoxContainer" parent="PanelContainer" unique_id=1520849259]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
@@ -493,6 +527,8 @@ flat = true
 [connection signal="drag_ended" from="PanelContainer/Options/SensibilityLabel/Sensibility" to="." method="_on_sensibility_drag_ended"]
 [connection signal="value_changed" from="PanelContainer/Options/SensibilityLabel/Sensibility" to="." method="_on_sensibility_value_changed"]
 [connection signal="value_changed" from="PanelContainer/Options/SoundLabel/Sound" to="." method="_on_sound_value_changed"]
+[connection signal="toggled" from="PanelContainer/Options/SkeletonsAiLabel/SkeletonsAi" to="." method="_on_skeletons_ai_toggled"]
+[connection signal="value_changed" from="PanelContainer/Options/CurrentLevelLabel/CurrentLevel" to="." method="_on_current_level_value_changed"]
 [connection signal="pressed" from="PanelContainer/Options/Back" to="." method="_on_back_pressed"]
 [connection signal="gui_input" from="PanelContainer/DungeonSettings/SeedLabel/Seed" to="." method="_on_seed_gui_input"]
 [connection signal="text_changed" from="PanelContainer/DungeonSettings/SeedLabel/Seed" to="." method="_on_seed_text_changed"]

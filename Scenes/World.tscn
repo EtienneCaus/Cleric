@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bwq7pgo4tfwcc"]
+[gd_scene format=3 uid="uid://bwq7pgo4tfwcc"]
 
 [ext_resource type="Script" uid="uid://b7o2yytad4xp8" path="res://Scripts/World.cs" id="1_o0kab"]
 [ext_resource type="PackedScene" uid="uid://fotxqhf5oe0q" path="res://Scenes/Map.tscn" id="2_bweca"]
@@ -51,18 +51,18 @@ bg_color = Color(0, 0.752941, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c2pkv"]
 bg_color = Color(0, 0, 0.752941, 1)
 
-[node name="World" type="Node3D"]
+[node name="World" type="Node3D" unique_id=1237631717]
 script = ExtResource("1_o0kab")
 Map = ExtResource("2_bweca")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=177786522]
 environment = SubResource("Environment_ooktj")
 
-[node name="Player" parent="." instance=ExtResource("2_rpgmy")]
+[node name="Player" parent="." unique_id=2034132349 instance=ExtResource("2_rpgmy")]
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="." unique_id=236257843]
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="UI"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="UI" unique_id=697944923]
 clip_contents = true
 anchors_preset = 3
 anchor_left = 1.0
@@ -74,36 +74,36 @@ offset_top = -256.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="SubViewport" type="SubViewport" parent="UI/SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="UI/SubViewportContainer" unique_id=163858185]
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(256, 256)
 render_target_update_mode = 4
 
-[node name="Minimap" type="Node2D" parent="UI/SubViewportContainer/SubViewport"]
+[node name="Minimap" type="Node2D" parent="UI/SubViewportContainer/SubViewport" unique_id=977611130]
 visible = false
 scale = Vector2(2, 2)
 script = ExtResource("4_78u08")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="UI/SubViewportContainer/SubViewport/Minimap"]
+[node name="TileMapLayer" type="TileMapLayer" parent="UI/SubViewportContainer/SubViewport/Minimap" unique_id=1201396337]
 modulate = Color(1, 1, 1, 0.486275)
 texture_filter = 1
 tile_set = SubResource("TileSet_1luwj")
 
-[node name="Cursor" type="Sprite2D" parent="UI/SubViewportContainer/SubViewport/Minimap"]
+[node name="Cursor" type="Sprite2D" parent="UI/SubViewportContainer/SubViewport/Minimap" unique_id=1820259128]
 texture = ExtResource("6_2gruk")
 
-[node name="Camera2D" type="Camera2D" parent="UI/SubViewportContainer/SubViewport/Minimap/Cursor"]
+[node name="Camera2D" type="Camera2D" parent="UI/SubViewportContainer/SubViewport/Minimap/Cursor" unique_id=401185329]
 ignore_rotation = false
 rotation_smoothing_enabled = true
 
-[node name="HUD" type="SubViewport" parent="UI/SubViewportContainer"]
+[node name="HUD" type="SubViewport" parent="UI/SubViewportContainer" unique_id=1338836947]
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(256, 256)
 render_target_update_mode = 4
 
-[node name="HUD" type="SubViewportContainer" parent="UI"]
+[node name="HUD" type="SubViewportContainer" parent="UI" unique_id=421810530]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -112,13 +112,13 @@ offset_right = 256.0
 grow_vertical = 0
 script = ExtResource("7_ubf3b")
 
-[node name="SubViewport" type="SubViewport" parent="UI/HUD"]
+[node name="SubViewport" type="SubViewport" parent="UI/HUD" unique_id=1432442997]
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(256, 256)
 render_target_update_mode = 4
 
-[node name="HealthBar" type="ProgressBar" parent="UI/HUD/SubViewport"]
+[node name="HealthBar" type="ProgressBar" parent="UI/HUD/SubViewport" unique_id=355116357]
 offset_left = 30.0
 offset_top = 80.0
 offset_right = 60.0
@@ -129,7 +129,7 @@ value = 100.0
 fill_mode = 3
 show_percentage = false
 
-[node name="StaminaBar" type="ProgressBar" parent="UI/HUD/SubViewport"]
+[node name="StaminaBar" type="ProgressBar" parent="UI/HUD/SubViewport" unique_id=347661501]
 offset_left = 80.0
 offset_top = 80.0
 offset_right = 110.0
@@ -140,7 +140,7 @@ value = 100.0
 fill_mode = 3
 show_percentage = false
 
-[node name="ManaBar" type="ProgressBar" parent="UI/HUD/SubViewport"]
+[node name="ManaBar" type="ProgressBar" parent="UI/HUD/SubViewport" unique_id=819245999]
 offset_left = 130.0
 offset_top = 80.0
 offset_right = 160.0
@@ -151,10 +151,10 @@ value = 100.0
 fill_mode = 3
 show_percentage = false
 
-[node name="PauseMenu" parent="UI" instance=ExtResource("7_2boqy")]
+[node name="PauseMenu" parent="UI" unique_id=379632783 instance=ExtResource("7_2boqy")]
 visible = false
 
-[node name="Label" type="Label" parent="UI"]
+[node name="Label" type="Label" parent="UI" unique_id=1744563239]
 visible = false
 offset_right = 40.0
 offset_bottom = 23.0
