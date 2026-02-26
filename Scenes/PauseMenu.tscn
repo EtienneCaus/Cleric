@@ -137,7 +137,7 @@ offset_left = -24.0
 grow_horizontal = 0
 grow_vertical = 2
 focus_neighbor_top = NodePath("../../SoundLabel/Sound")
-focus_neighbor_bottom = NodePath("../../Back")
+focus_neighbor_bottom = NodePath("../../CurrentLevelLabel/CurrentLevel")
 
 [node name="CurrentLevelLabel" type="Label" parent="PanelContainer/Options" unique_id=2069060622]
 layout_mode = 2
@@ -152,14 +152,14 @@ anchor_bottom = 1.0
 offset_left = -86.5
 grow_horizontal = 0
 grow_vertical = 2
-focus_neighbor_top = NodePath("../../SoundLabel/Sound")
+focus_neighbor_top = NodePath("../../SkeletonsAiLabel/SkeletonsAi")
 focus_neighbor_bottom = NodePath("../../Back")
 alignment = 2
 prefix = "Level"
 
 [node name="Back" type="Button" parent="PanelContainer/Options" unique_id=1602922559]
 layout_mode = 2
-focus_neighbor_top = NodePath("../SoundLabel/Sound")
+focus_neighbor_top = NodePath("../CurrentLevelLabel/CurrentLevel")
 focus_neighbor_bottom = NodePath("../SensibilityLabel/Sensibility")
 text = "Back"
 flat = true
