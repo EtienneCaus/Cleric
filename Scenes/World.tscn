@@ -91,6 +91,7 @@ texture_filter = 1
 tile_set = SubResource("TileSet_1luwj")
 
 [node name="Cursor" type="Sprite2D" parent="UI/SubViewportContainer/SubViewport/Minimap" unique_id=1820259128]
+texture_filter = 1
 texture = ExtResource("6_2gruk")
 
 [node name="Camera2D" type="Camera2D" parent="UI/SubViewportContainer/SubViewport/Minimap/Cursor" unique_id=401185329]

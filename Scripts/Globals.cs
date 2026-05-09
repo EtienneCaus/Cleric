@@ -10,9 +10,9 @@ public partial class Globals : Node
 
     public static int WALKERS = 4;  //Size multiplier
     public static int STEPS = 100;  //Numbers of tiles
-    public static int CORRIDORS_LENGTH = 4; //Max lenght of corridors
-    public static int HALLWAYS_CHANCES = 0;//Chances of generating long hallways
-    public static int ROOMS_CHANCES = 100;   //Chances of generating a room
+    public static int CORRIDORS_LENGTH = 6; //Max lenght of corridors
+    public static int HALLWAYS_CHANCES = 25;//Chances of generating long hallways
+    public static int ROOMS_CHANCES = 75;   //Chances of generating a room
     public static int ROOMS_SIZE_MIN = 2;  //Minimum size of rooms
     public static int ROOMS_SIZE_MAX = 4;  //Maximum size of rooms
     public static bool CENTER_ON = false;   //Creates a center connection

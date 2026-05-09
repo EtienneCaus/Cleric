@@ -48,8 +48,8 @@ public partial class Map : Node2D
                 
                 position += direction;  //moves one tile
                 stepsTurn++;
-                if( (Globals.CAVERN && (rnd.Next(100) > Globals.HALLWAYS_CHANCES || stepsTurn > Globals.CORRIDORS_LENGTH)) || //If Cavern
-                    (!Globals.CAVERN && rnd.Next(100) > Globals.HALLWAYS_CHANCES && stepsTurn > Globals.CORRIDORS_LENGTH))   //If Dungeon
+                if( (Globals.CAVERN && (rnd.Next(100) > Globals.HALLWAYS_CHANCES || stepsTurn >= Globals.CORRIDORS_LENGTH)) || //If Cavern
+                    (!Globals.CAVERN && rnd.Next(100) > Globals.HALLWAYS_CHANCES && stepsTurn >= Globals.CORRIDORS_LENGTH))   //If Dungeon
                 {
                     if(rnd.Next(100) < Globals.ROOMS_CHANCES)    //If it's a dungeon...
                         tmpSteps -= CreateRoom();   //Creates a room
