@@ -153,7 +153,7 @@ offset_left = -86.5
 grow_horizontal = 0
 grow_vertical = 2
 focus_neighbor_top = NodePath("../../SkeletonsAiLabel/SkeletonsAi")
-focus_neighbor_bottom = NodePath("../../Back")
+focus_neighbor_bottom = NodePath("../../FullScreenLabel/FullScreen")
 alignment = 2
 prefix = "Level"
 
@@ -170,12 +170,11 @@ anchor_bottom = 1.0
 offset_left = -24.0
 grow_horizontal = 0
 grow_vertical = 2
-focus_neighbor_top = NodePath("../../SoundLabel/Sound")
-focus_neighbor_bottom = NodePath("../../CurrentLevelLabel/CurrentLevel")
+focus_neighbor_top = NodePath("../../CurrentLevelLabel/CurrentLevel")
+focus_neighbor_bottom = NodePath("../../ScaleLabel/Scale")
 button_pressed = true
 
 [node name="ScaleLabel" type="Label" parent="PanelContainer/Options" unique_id=1462755430]
-visible = false
 layout_mode = 2
 text = "Scale"
 
@@ -189,8 +188,8 @@ offset_top = -2.0
 offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
-focus_neighbor_top = NodePath("../../SensibilityLabel/Sensibility")
-focus_neighbor_bottom = NodePath("../../SkeletonsAiLabel/SkeletonsAi")
+focus_neighbor_top = NodePath("../../FullScreenLabel/FullScreen")
+focus_neighbor_bottom = NodePath("../../Back")
 min_value = 1.0
 max_value = 3.0
 step = 0.25
@@ -198,7 +197,7 @@ value = 1.0
 
 [node name="Back" type="Button" parent="PanelContainer/Options" unique_id=1602922559]
 layout_mode = 2
-focus_neighbor_top = NodePath("../CurrentLevelLabel/CurrentLevel")
+focus_neighbor_top = NodePath("../ScaleLabel/Scale")
 focus_neighbor_bottom = NodePath("../SensibilityLabel/Sensibility")
 text = "Back"
 flat = true

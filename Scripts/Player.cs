@@ -39,7 +39,7 @@ public partial class Player : CharacterBody3D
 
 		camera = GetNode<Camera3D>("Head/Camera3D");
 		weaponCam = GetNode<Camera3D>("Head/Camera3D/SubViewportContainer/SubViewport/Camera3D");
-		GetNode<SubViewport>("Head/Camera3D/SubViewportContainer/SubViewport").Size = DisplayServer.WindowGetSize();
+		//GetNode<SubViewport>("Head/Camera3D/SubViewportContainer/SubViewport").Size = DisplayServer.WindowGetSize();
 		spotLight = GetNode<SpotLight3D>("Head/SpotLight3D");
 		Input.MouseMode = Input.MouseModeEnum.Captured; //Capture the mouse
 		base._Ready();
@@ -104,8 +104,8 @@ public partial class Player : CharacterBody3D
 			spotLight.Rotation = camera.Rotation;
 
 			//weaponCam.GlobalTransform = camera.GlobalTransform;		//Weapon camera
-			if (!isDead)
-				GetNode<SubViewport>("Head/Camera3D/SubViewportContainer/SubViewport").Size = DisplayServer.WindowGetSize();
+			//if (!isDead)
+			//	GetNode<SubViewport>("Head/Camera3D/SubViewportContainer/SubViewport").Size = DisplayServer.WindowGetSize();
 
 			if (IsOnFloor())
 			{

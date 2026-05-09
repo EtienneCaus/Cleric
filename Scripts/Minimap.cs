@@ -60,12 +60,15 @@ public partial class Minimap : Node2D
                     Visible = true;
                     GetNode<Camera2D>("Cursor/Camera2D").IgnoreRotation = false;
                     (FindParent("SubViewport") as SubViewport).Size = new Vector2I(256,256);
+                    //(FindParent("SubViewportContainer") as SubViewportContainer).SetAnchorsPreset(Control.LayoutPreset.BottomRight);
                     mapStatus++;
                     break;
                 case 2:
                     Visible = true;
                     GetNode<Camera2D>("Cursor/Camera2D").IgnoreRotation = true;
-                    (FindParent("SubViewport") as SubViewport).Size = DisplayServer.WindowGetSize();
+                    //(FindParent("SubViewportContainer") as SubViewportContainer).SetAnchorsPreset(Control.LayoutPreset.Center);
+                    (FindParent("SubViewport") as SubViewport).Size = new Vector2I((int)(DisplayServer.WindowGetSize().X / GetWindow().ContentScaleFactor) ,
+                                                                                   (int)(DisplayServer.WindowGetSize().Y / GetWindow().ContentScaleFactor));
                     mapStatus = 0;
                     break;
             }
