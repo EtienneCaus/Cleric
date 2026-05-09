@@ -421,7 +421,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52, 0)
 cull_mask = 2
 
 [node name="RightHand" type="Node3D" parent="Head/Camera3D/SubViewportContainer/SubViewport/Camera3D" unique_id=427790108]
-transform = Transform3D(-0.15080516, 0.20456432, -0.9671661, 0.07011143, 0.9781045, 0.19594584, 0.986074, -0.03825976, -0.16184556, 0.195, -0.154, -0.295)
+transform = Transform3D(-0.15080516, 0.2045643, -0.9671661, 0.07011143, 0.9781044, 0.19594584, 0.986074, -0.038259756, -0.16184556, 0.195, -0.154, -0.295)
 
 [node name="Torch" parent="Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/RightHand" unique_id=410162976 instance=ExtResource("2_06wmx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
@@ -431,7 +431,7 @@ skeleton = NodePath("../../../../../../SpotLight3D")
 [node name="Mace" parent="Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/RightHand" unique_id=1785534817 instance=ExtResource("2_c3wh7")]
 
 [node name="LeftHand" type="Node3D" parent="Head/Camera3D/SubViewportContainer/SubViewport/Camera3D" unique_id=897248071]
-transform = Transform3D(0.15424816, -0.20469671, -0.9665951, 0.07011142, 0.9781046, -0.19594586, 0.9855409, -0.037545063, 0.16522253, -0.195, -0.154, -0.295)
+transform = Transform3D(0.15424816, -0.20469671, -0.9665951, 0.07011142, 0.97810453, -0.19594586, 0.9855409, -0.037545063, 0.16522253, -0.195, -0.154, -0.295)
 
 [node name="Torch" parent="Head/Camera3D/SubViewportContainer/SubViewport/Camera3D/LeftHand" unique_id=1877181937 instance=ExtResource("2_06wmx")]
 
@@ -446,6 +446,10 @@ target_position = Vector3(0, 0, -0.5)
 [node name="RayBlock" type="RayCast3D" parent="Head/Camera3D" unique_id=1048569017]
 enabled = false
 target_position = Vector3(0, 0, -0.5)
+
+[node name="RayBlock2" type="RayCast3D" parent="Head/Camera3D/RayBlock" unique_id=1794408469]
+exclude_parent = false
+target_position = Vector3(0, -0.4, -0.4)
 
 [node name="RayInteract" type="RayCast3D" parent="Head/Camera3D" unique_id=1259107833]
 target_position = Vector3(0, 0, -0.5)

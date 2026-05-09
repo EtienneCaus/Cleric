@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Numerics;
 
 public partial class PauseMenu : Control
 {
@@ -129,6 +130,20 @@ public partial class PauseMenu : Control
     public void _on_current_level_value_changed(float value)
     {
         Globals.LEVEL = (int)value;
+    }
+
+    public void _on_full_screen_toggled(bool toggle)
+    {
+        if(toggle)
+            DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
+        else
+            DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed);
+    }
+
+    public void _on_scale_value_changed(float scale)
+    {
+        GetWindow().ContentScaleFactor = scale;
+        //DisplayServer.WindowSetSize(new Vector2I((int)(1920*scale), (int)(1080*scale)));
     }
     //----------------------------------------------------------------------------------------------------------
     public void _on_restart_pressed()

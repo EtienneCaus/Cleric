@@ -157,6 +157,45 @@ focus_neighbor_bottom = NodePath("../../Back")
 alignment = 2
 prefix = "Level"
 
+[node name="FullScreenLabel" type="Label" parent="PanelContainer/Options" unique_id=508431623]
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="FullScreen" type="CheckBox" parent="PanelContainer/Options/FullScreenLabel" unique_id=1815018081]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+grow_horizontal = 0
+grow_vertical = 2
+focus_neighbor_top = NodePath("../../SoundLabel/Sound")
+focus_neighbor_bottom = NodePath("../../CurrentLevelLabel/CurrentLevel")
+button_pressed = true
+
+[node name="ScaleLabel" type="Label" parent="PanelContainer/Options" unique_id=1462755430]
+visible = false
+layout_mode = 2
+text = "Scale"
+
+[node name="Scale" type="HSlider" parent="PanelContainer/Options/ScaleLabel" unique_id=149189654]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 96.0
+offset_top = -2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_top = NodePath("../../SensibilityLabel/Sensibility")
+focus_neighbor_bottom = NodePath("../../SkeletonsAiLabel/SkeletonsAi")
+min_value = 1.0
+max_value = 3.0
+step = 0.25
+value = 1.0
+
 [node name="Back" type="Button" parent="PanelContainer/Options" unique_id=1602922559]
 layout_mode = 2
 focus_neighbor_top = NodePath("../CurrentLevelLabel/CurrentLevel")
@@ -529,6 +568,8 @@ flat = true
 [connection signal="value_changed" from="PanelContainer/Options/SoundLabel/Sound" to="." method="_on_sound_value_changed"]
 [connection signal="toggled" from="PanelContainer/Options/SkeletonsAiLabel/SkeletonsAi" to="." method="_on_skeletons_ai_toggled"]
 [connection signal="value_changed" from="PanelContainer/Options/CurrentLevelLabel/CurrentLevel" to="." method="_on_current_level_value_changed"]
+[connection signal="toggled" from="PanelContainer/Options/FullScreenLabel/FullScreen" to="." method="_on_full_screen_toggled"]
+[connection signal="value_changed" from="PanelContainer/Options/ScaleLabel/Scale" to="." method="_on_scale_value_changed"]
 [connection signal="pressed" from="PanelContainer/Options/Back" to="." method="_on_back_pressed"]
 [connection signal="gui_input" from="PanelContainer/DungeonSettings/SeedLabel/Seed" to="." method="_on_seed_gui_input"]
 [connection signal="text_changed" from="PanelContainer/DungeonSettings/SeedLabel/Seed" to="." method="_on_seed_text_changed"]
