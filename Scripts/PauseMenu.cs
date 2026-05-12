@@ -97,6 +97,8 @@ public partial class PauseMenu : Control
         GetNode<HSlider>("PanelContainer/Options/SensibilityLabel/Sensibility").Value = Globals.Sensitivity * 12000;
         GetNode<CheckBox>("PanelContainer/Options/SkeletonsAiLabel/SkeletonsAi").ButtonPressed = Globals.SKELETONSAI;
         GetNode<SpinBox>("PanelContainer/Options/CurrentLevelLabel/CurrentLevel").Value = Globals.LEVEL;
+        GetNode<CheckBox>("PanelContainer/Options/FullScreenLabel/FullScreen").ButtonPressed = (DisplayServer.WindowGetMode() != 0);
+        GetNode<HSlider>("PanelContainer/Options/ScaleLabel/Scale").Value = GetWindow().ContentScaleFactor;
     }
     public void _on_back_pressed()
     {

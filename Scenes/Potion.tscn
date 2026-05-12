@@ -54,7 +54,7 @@ shaded = true
 texture_filter = 0
 texture = SubResource("ImageTexture_5ig8w")
 region_enabled = true
-region_rect = Rect2(0, 0, 16, 16)
+region_rect = Rect2(16, 0, 16, 16)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1498988042]
 shape = SubResource("SphereShape3D_drt2p")

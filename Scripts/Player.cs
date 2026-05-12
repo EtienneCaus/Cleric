@@ -384,15 +384,23 @@ public partial class Player : CharacterBody3D
 			switch (Globals.INVENTORY[position].GetPotionType())
 			{
 				case "health":
+					if(Globals.HEALTH >= 100)
+						return;
 					Globals.HEALTH += 20;
 					break;
 				case "stamina":
+					if(Globals.STAMINA >= 100)
+						return;
 					Globals.STAMINA += 20;
 					break;
 				case "mana":
+					if(Globals.MANA >= 100)
+						return;
 					Globals.MANA += 20;
 					break;
 				case "antidote":
+					if(!isPoisoned && !onFire)
+						return;
 					isPoisoned = false;
 					onFire = false;
 					break;
@@ -408,7 +416,7 @@ public partial class Player : CharacterBody3D
 			potionTemp.Position += new Vector3(0,0.4f,0);
             GetTree().CurrentScene.AddChild(potionTemp);
 
-			GetParent().AddChild(new Potion(Globals.INVENTORY[position]));	//Puts the bottle on the ground
+			//GetParent().AddChild(new Potion(Globals.INVENTORY[position]));	//Puts the bottle on the ground
 			Globals.INVENTORY[position] = null;								//Remove the bottle from the inventory
 		}
         GetNode<Inventory>("%InvViewport").Update(position);

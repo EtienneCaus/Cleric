@@ -10,7 +10,8 @@ public partial class Potion : RigidBody3D
 
     public override void _Ready()
     {
-        //GetNode<Sprite3D>("Sprite3D/Fluid").Modulate = color;
+        GetNode<Sprite3D>("Sprite3D/Fluid").RegionRect = region;
+        GetNode<Sprite3D>("Sprite3D/Fluid").Modulate = color;
     }
     public Potion(){}
     public Potion(string type = null, byte quantity = 5)
@@ -54,14 +55,7 @@ public partial class Potion : RigidBody3D
 
     public bool Drink()
     {
-        //GD.Print(type + " : " + quantity);
         --quantity;
-
-        /*
-        Rect2 region = GetNode<Sprite3D>("Sprite3D/Fluid").RegionRect;
-        region.Position -= new Vector2(16, 0);
-        GetNode<Sprite3D>("Sprite3D/Fluid").RegionRect = region;
-        */
         region.Position -= new Vector2(16, 0);
 
         if(quantity <= 0)
