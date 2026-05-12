@@ -41,4 +41,5 @@ public partial class Globals : Node
     public static double STAMINA = 100;
     public static double MANA = 100;
     public static int GOLD = 0;
+	public static Potion[] INVENTORY = new Potion[4];
 }

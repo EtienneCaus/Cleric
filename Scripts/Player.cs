@@ -43,6 +43,15 @@ public partial class Player : CharacterBody3D
 		spotLight = GetNode<SpotLight3D>("Head/SpotLight3D");
 		Input.MouseMode = Input.MouseModeEnum.Captured; //Capture the mouse
 		base._Ready();
+		
+		Globals.INVENTORY[0] = new Potion("health");
+		Globals.INVENTORY[1] = new Potion("stamina");
+		Globals.INVENTORY[2] = new Potion("mana");
+		Globals.INVENTORY[3] = new Potion("antidote");
+		GetNode<Inventory>("%InvViewport").Update(0);
+		GetNode<Inventory>("%InvViewport").Update(1);
+		GetNode<Inventory>("%InvViewport").Update(2);
+		GetNode<Inventory>("%InvViewport").Update(3);
 	}
 
 	public override void _UnhandledInput(InputEvent @event)
@@ -199,6 +208,14 @@ public partial class Player : CharacterBody3D
 					Globals.HEALTH = 100;
 				}
 			}
+			if(Input.IsActionJustPressed("inv1") && Globals.INVENTORY[0] != null)
+				Drink(0);
+			if(Input.IsActionJustPressed("inv2") && Globals.INVENTORY[1] != null)
+				Drink(1);
+			if(Input.IsActionJustPressed("inv3") && Globals.INVENTORY[2] != null)
+				Drink(2);
+			if(Input.IsActionJustPressed("inv4") && Globals.INVENTORY[3] != null)
+				Drink(3);
 		}
 	}
 
@@ -360,6 +377,41 @@ public partial class Player : CharacterBody3D
 	public void GetGold()
 	{
 		GetNode<AudioStreamPlayer>("GoldPlayer").Play();
+	}
+	public void Drink(byte position)
+	{
+		if(Globals.INVENTORY[position].GetPotionType() != null)
+			switch (Globals.INVENTORY[position].GetPotionType())
+			{
+				case "health":
+					Globals.HEALTH += 20;
+					break;
+				case "stamina":
+					Globals.STAMINA += 20;
+					break;
+				case "mana":
+					Globals.MANA += 20;
+					break;
+				case "antidote":
+					isPoisoned = false;
+					onFire = false;
+					break;
+				default:
+					break;
+			}
+		if(Globals.INVENTORY[position].Drink())
+		{
+			PackedScene bottle = ResourceLoader.Load("res://Scenes/Potion.tscn") as PackedScene;	//Create empty bottle
+            Potion potionTemp = bottle.Instantiate() as Potion;
+            //potionTemp.Position = new Vector3(GlobalPosition.X, 0.3f, GlobalPosition.Z);
+			potionTemp.Position = GlobalPosition + (-GlobalTransform.Basis.Z.Normalized() * 0.2f); //Spawn bottel in front of player
+			potionTemp.Position += new Vector3(0,0.4f,0);
+            GetTree().CurrentScene.AddChild(potionTemp);
+
+			GetParent().AddChild(new Potion(Globals.INVENTORY[position]));	//Puts the bottle on the ground
+			Globals.INVENTORY[position] = null;								//Remove the bottle from the inventory
+		}
+        GetNode<Inventory>("%InvViewport").Update(position);
 	}
 
 	async private void Poisoned(float force)
