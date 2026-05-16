@@ -43,15 +43,6 @@ public partial class Player : CharacterBody3D
 		spotLight = GetNode<SpotLight3D>("Head/SpotLight3D");
 		Input.MouseMode = Input.MouseModeEnum.Captured; //Capture the mouse
 		base._Ready();
-		
-		Globals.INVENTORY[0] = new Potion("health");
-		Globals.INVENTORY[1] = new Potion("stamina");
-		Globals.INVENTORY[2] = new Potion("mana");
-		Globals.INVENTORY[3] = new Potion("antidote");
-		GetNode<Inventory>("%InvViewport").Update(0);
-		GetNode<Inventory>("%InvViewport").Update(1);
-		GetNode<Inventory>("%InvViewport").Update(2);
-		GetNode<Inventory>("%InvViewport").Update(3);
 	}
 
 	public override void _UnhandledInput(InputEvent @event)

@@ -63,4 +63,11 @@ public partial class Potion : RigidBody3D
         else
             return false;
     }
+
+    public int GetPrice()
+    {
+        int price = Globals.PRIX[type];
+        price *= quantity / 5;
+        return price;
+    }
 }

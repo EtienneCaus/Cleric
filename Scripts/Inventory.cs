@@ -3,6 +3,11 @@ using System;
 
 public partial class Inventory : SubViewportContainer
 {
+    public override void _Ready()
+    {
+        for(int i = 0; i < Globals.INVENTORY.Length; ++i)
+            Update(i);
+    }
     public void Update(int position)
     {
         if(Globals.INVENTORY[position] == null)

@@ -167,6 +167,7 @@ show_percentage = false
 
 [node name="InvViewport" type="SubViewportContainer" parent="UI" unique_id=2023677987]
 unique_name_in_owner = true
+process_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -296,6 +297,7 @@ region_rect = Rect2(0, 0, 15.999992, 16)
 visible = false
 
 [node name="Label" type="Label" parent="UI" unique_id=1744563239]
+process_mode = 3
 visible = false
 offset_right = 40.0
 offset_bottom = 23.0

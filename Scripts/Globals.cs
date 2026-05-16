@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 using System;
 
 public partial class Globals : Node
@@ -42,4 +43,12 @@ public partial class Globals : Node
     public static double MANA = 100;
     public static int GOLD = 0;
 	public static Potion[] INVENTORY = new Potion[4];
+    public static Dictionary<string, int> PRIX = new Dictionary<string, int>()
+    {  
+        {"health" , 20},
+        {"stamina", 10},
+        {"mana"   , 30},
+        {"antidote",40}
+    };
 }
+

@@ -127,10 +127,8 @@ public partial class Cell : StaticBody3D
 	{
 		if(type == 2)
 		{
-			Random rnd = new Random();
-			Globals.SEED = rnd.Next();
-			GetTree().ReloadCurrentScene();	//Recharge le jeu
-			Globals.LEVEL++;
+			PackedScene ShopMenu = ResourceLoader.Load("res://Scenes/ShopMenu.tscn") as PackedScene;	//Spawn Shop
+            GetTree().CurrentScene.FindChild("UI").AddChild(ShopMenu.Instantiate() as ShopMenu);
 		}
 	}
 }

@@ -1,12 +1,16 @@
 [gd_scene format=3 uid="uid://c1i6gqhykqeip"]
 
+[ext_resource type="Script" uid="uid://dorrqan34b5yd" path="res://Scripts/ShopMenu.cs" id="1_1ifay"]
+
 [node name="ShopMenu" type="Control" unique_id=651389278]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_1ifay")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1347659006]
 layout_mode = 1
@@ -24,7 +28,6 @@ grow_vertical = 2
 
 [node name="Shop" type="VBoxContainer" parent="PanelContainer" unique_id=1580573627]
 layout_mode = 2
-size_flags_horizontal = 4
 alignment = 1
 
 [node name="Title" type="Label" parent="PanelContainer/Shop" unique_id=1163302789]
@@ -33,7 +36,292 @@ text = "SHOP
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯"
 horizontal_alignment = 1
 
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/Shop" unique_id=525962614]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxLeft" type="VBoxContainer" parent="PanelContainer/Shop/HBoxContainer" unique_id=895416579]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="PanelContainer/Shop/HBoxContainer/VBoxLeft" unique_id=873846752]
+layout_mode = 2
+text = "CHARACTER
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯"
+horizontal_alignment = 1
+
+[node name="Class" type="Label" parent="PanelContainer/Shop/HBoxContainer/VBoxLeft" unique_id=1827155739]
+layout_mode = 2
+text = "  Class :"
+
+[node name="Label" type="Label" parent="PanelContainer/Shop/HBoxContainer/VBoxLeft/Class" unique_id=1103721492]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "Cleric   "
+
+[node name="Health" type="Label" parent="PanelContainer/Shop/HBoxContainer/VBoxLeft" unique_id=1273915400]
+layout_mode = 2
+text = "  Health :"
+
+[node name="Label" type="Label" parent="PanelContainer/Shop/HBoxContainer/VBoxLeft/Health" unique_id=1135213823]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "100/100   "
+
+[node name="Stamina" type="Label" parent="PanelContainer/Shop/HBoxContainer/VBoxLeft" unique_id=2043535623]
+layout_mode = 2
+text = "  Stamina :"
+
+[node name="Label" type="Label" parent="PanelContainer/Shop/HBoxContainer/VBoxLeft/Stamina" unique_id=1845168364]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "100/100   "
+
+[node name="Mana" type="Label" parent="PanelContainer/Shop/HBoxContainer/VBoxLeft" unique_id=2081043762]
+layout_mode = 2
+text = "  Mana :"
+
+[node name="Label" type="Label" parent="PanelContainer/Shop/HBoxContainer/VBoxLeft/Mana" unique_id=1275659570]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "100/100   "
+
+[node name="Torch" type="Label" parent="PanelContainer/Shop/HBoxContainer/VBoxLeft" unique_id=325296353]
+layout_mode = 2
+text = "  Torch :"
+
+[node name="Label" type="Label" parent="PanelContainer/Shop/HBoxContainer/VBoxLeft/Torch" unique_id=1877751406]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "Owned   "
+
+[node name="Mace" type="Label" parent="PanelContainer/Shop/HBoxContainer/VBoxLeft" unique_id=1992772573]
+layout_mode = 2
+text = "  Mace :"
+
+[node name="Label" type="Label" parent="PanelContainer/Shop/HBoxContainer/VBoxLeft/Mace" unique_id=62417085]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "Equipped   "
+
+[node name="Shield" type="Label" parent="PanelContainer/Shop/HBoxContainer/VBoxLeft" unique_id=1393869072]
+layout_mode = 2
+text = "  Shield :"
+
+[node name="Label" type="Label" parent="PanelContainer/Shop/HBoxContainer/VBoxLeft/Shield" unique_id=742376256]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "Equipped   "
+
+[node name="VBoxRight" type="VBoxContainer" parent="PanelContainer/Shop/HBoxContainer" unique_id=725705400]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="PanelContainer/Shop/HBoxContainer/VBoxRight" unique_id=1327856902]
+layout_mode = 2
+text = "ITEMS
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯"
+horizontal_alignment = 1
+
+[node name="Antidote" type="Label" parent="PanelContainer/Shop/HBoxContainer/VBoxRight" unique_id=559868643]
+layout_mode = 2
+text = "   Antidote"
+
+[node name="Button" type="Button" parent="PanelContainer/Shop/HBoxContainer/VBoxRight/Antidote" unique_id=875550178]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 0
+grow_vertical = 2
+focus_neighbor_top = NodePath("../../../../Continue")
+focus_neighbor_bottom = NodePath("../../HPotion/Button")
+text = "BUY  "
+
+[node name="HPotion" type="Label" parent="PanelContainer/Shop/HBoxContainer/VBoxRight" unique_id=81906182]
+layout_mode = 2
+text = "   Health Potion"
+
+[node name="Button" type="Button" parent="PanelContainer/Shop/HBoxContainer/VBoxRight/HPotion" unique_id=651721342]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "BUY  "
+
+[node name="SPotion" type="Label" parent="PanelContainer/Shop/HBoxContainer/VBoxRight" unique_id=2016397073]
+layout_mode = 2
+text = "   Stamina Potion"
+
+[node name="Button" type="Button" parent="PanelContainer/Shop/HBoxContainer/VBoxRight/SPotion" unique_id=387429886]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "BUY  "
+
+[node name="MPotion" type="Label" parent="PanelContainer/Shop/HBoxContainer/VBoxRight" unique_id=579518560]
+layout_mode = 2
+text = "   Mana Potion"
+
+[node name="Button" type="Button" parent="PanelContainer/Shop/HBoxContainer/VBoxRight/MPotion" unique_id=1799284270]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "BUY  "
+
+[node name="HScroll" type="Label" parent="PanelContainer/Shop/HBoxContainer/VBoxRight" unique_id=298011905]
+layout_mode = 2
+text = "   Healing Scroll"
+
+[node name="Button" type="Button" parent="PanelContainer/Shop/HBoxContainer/VBoxRight/HScroll" unique_id=735268505]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "BUY  "
+flat = true
+
+[node name="FScroll" type="Label" parent="PanelContainer/Shop/HBoxContainer/VBoxRight" unique_id=110400868]
+layout_mode = 2
+text = "   Fireball Scroll"
+
+[node name="Button" type="Button" parent="PanelContainer/Shop/HBoxContainer/VBoxRight/FScroll" unique_id=1629097858]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "BUY  "
+flat = true
+
+[node name="LScroll" type="Label" parent="PanelContainer/Shop/HBoxContainer/VBoxRight" unique_id=1810710001]
+layout_mode = 2
+text = "   Light Scroll"
+
+[node name="Button" type="Button" parent="PanelContainer/Shop/HBoxContainer/VBoxRight/LScroll" unique_id=245084307]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "BUY  "
+flat = true
+
 [node name="Continue" type="Button" parent="PanelContainer/Shop" unique_id=502197016]
 layout_mode = 2
+focus_neighbor_top = NodePath("../HBoxContainer/VBoxRight/LScroll/Button")
+focus_neighbor_bottom = NodePath("../HBoxContainer/VBoxRight/Antidote/Button")
 text = "Continue"
 flat = true
+
+[connection signal="pressed" from="PanelContainer/Shop/Continue" to="." method="_on_continue_pressed"]
