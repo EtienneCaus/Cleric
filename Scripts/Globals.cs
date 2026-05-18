@@ -35,6 +35,7 @@ public partial class Globals : Node
     public static float Sensitivity = 0.002f;
     public static float Sound = 1f;
     public static byte showtext = 0;
+    public static string spellType = "healing";
 
     //--------------------------------------------------------------------------------
 
@@ -48,7 +49,8 @@ public partial class Globals : Node
         {"health" , 20},
         {"stamina", 10},
         {"mana"   , 30},
-        {"antidote",40}
+        {"antidote",40},
+        {"scroll", 50}
     };
 }
 

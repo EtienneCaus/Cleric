@@ -17,6 +17,10 @@ public partial class Inventory : SubViewportContainer
             GetNode<Sprite2D>("SubViewport/Inv"+(position+1)+"/Sprite2D").Visible = true;
             GetNode<Sprite2D>("SubViewport/Inv"+(position+1)+"/Sprite2D/Fluid").RegionRect = Globals.INVENTORY[position].region;
             GetNode<Sprite2D>("SubViewport/Inv"+(position+1)+"/Sprite2D/Fluid").Modulate = Globals.INVENTORY[position].color;
+            
+            ImageTexture tex = ImageTexture.CreateFromImage(Globals.INVENTORY[position].texture);
+            GetNode<Sprite2D>("SubViewport/Inv"+(position+1)+"/Sprite2D").Texture = tex;
+            GetNode<Sprite2D>("SubViewport/Inv"+(position+1)+"/Sprite2D/Fluid").Texture = tex;
         }
 
         if(CheckEmpty(Globals.INVENTORY))

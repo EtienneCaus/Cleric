@@ -277,7 +277,6 @@ offset_bottom = 15.5
 grow_horizontal = 0
 grow_vertical = 2
 text = "BUY  "
-flat = true
 
 [node name="FScroll" type="Label" parent="PanelContainer/Shop/HBoxContainer/VBoxRight" unique_id=110400868]
 layout_mode = 2
@@ -296,7 +295,6 @@ offset_bottom = 15.5
 grow_horizontal = 0
 grow_vertical = 2
 text = "BUY  "
-flat = true
 
 [node name="LScroll" type="Label" parent="PanelContainer/Shop/HBoxContainer/VBoxRight" unique_id=1810710001]
 layout_mode = 2
@@ -315,7 +313,6 @@ offset_bottom = 15.5
 grow_horizontal = 0
 grow_vertical = 2
 text = "BUY  "
-flat = true
 
 [node name="Continue" type="Button" parent="PanelContainer/Shop" unique_id=502197016]
 layout_mode = 2

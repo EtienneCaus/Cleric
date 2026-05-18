@@ -90,10 +90,10 @@ public partial class Fireball : Area3D
 
         // Calculer l'angle initial vers le joueur (sur le plan XZ)
         Vector3 directionToTarget = target;// - GlobalPosition;
-        float angle3d = Mathf.Atan2(directionToTarget.X, directionToTarget.Z);
+        float angle3d = Mathf.Atan2(directionToTarget.Z, directionToTarget.X);
 
         // Puis utilisez votre formule dans le Process :
-        direction = new Vector3(Mathf.Sin(angle3d), 0, Mathf.Cos(angle3d));
+        direction = new Vector3(Mathf.Cos(angle3d), 0, Mathf.Sin(angle3d)).Normalized();
     }
 
     public void On_body_entered(PhysicsBody3D body)
@@ -125,7 +125,7 @@ public partial class Fireball : Area3D
 
     public void On_body_exited(PhysicsBody3D body)
     {
-        if (body.IsInGroup("Enemy"))
+        if (body.IsInGroup("Enemy") || body.IsInGroup("Player"))
         {
             destructible = true;
         }

@@ -5,6 +5,7 @@ public partial class Potion : RigidBody3D
 {
     string type = null;
     int quantity = 0;
+    public Image texture = GD.Load<Image>("res://Sprites/Potion.png");
     public Color color = new Color(0xFFFFFFFF);
     public Rect2 region = new Rect2(0,0, new Vector2(16,16));
 
@@ -12,6 +13,10 @@ public partial class Potion : RigidBody3D
     {
         GetNode<Sprite3D>("Sprite3D/Fluid").RegionRect = region;
         GetNode<Sprite3D>("Sprite3D/Fluid").Modulate = color;
+        
+        ImageTexture tex = ImageTexture.CreateFromImage(texture);
+        GetNode<Sprite3D>("Sprite3D").Texture = tex;
+        GetNode<Sprite3D>("Sprite3D/Fluid").Texture = tex;
     }
     public Potion(){}
     public Potion(string type = null, byte quantity = 5)
@@ -36,6 +41,9 @@ public partial class Potion : RigidBody3D
             default:
                 color = new Color(0xFFFFFFFF);
                 break;
+            case "scroll":
+                texture = GD.Load<Image>("res://Sprites/Sroll.png");
+                break;
         }
         region.Position = new Vector2(16*quantity, 0);
     }
@@ -53,6 +61,42 @@ public partial class Potion : RigidBody3D
         return type;
     }
 
+    public string GetScrollType()
+    {
+        switch(quantity)
+        {
+            case 1:
+                return "healing";
+            case 2:
+                return "fireball";
+            case 3:
+                return "light";
+            default:
+                return null;
+        }
+    }
+
+    public void SetScrollType(string type)
+    {
+        this.type = "scroll";
+        switch(type)
+        {
+            case "healing":
+                quantity = 1;
+                break;
+            case "fireball":
+                quantity = 2;
+                break;
+            case "light":
+                quantity = 3;
+                break;
+            default:
+                quantity = 0;
+                break;
+        }
+        region.Position = new Vector2(16*quantity, 0);
+    }
+
     public bool Drink()
     {
         --quantity;
@@ -67,7 +111,7 @@ public partial class Potion : RigidBody3D
     public int GetPrice()
     {
         int price = Globals.PRIX[type];
-        price *= quantity / 5;
+        price = (int)(price * (quantity / 5f));
         return price;
     }
 }

@@ -32,7 +32,7 @@ image = SubResource("Image_n5lv6")
 [sub_resource type="SphereShape3D" id="SphereShape3D_drt2p"]
 radius = 0.1
 
-[node name="RigidBody3D" type="RigidBody3D" unique_id=1092768879]
+[node name="Potion" type="RigidBody3D" unique_id=1092768879]
 collision_layer = 2
 axis_lock_angular_x = true
 axis_lock_angular_y = true

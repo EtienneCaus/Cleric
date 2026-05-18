@@ -188,25 +188,16 @@ public partial class Player : CharacterBody3D
 					GetNode<OmniLight3D>("Head/OmniLight3D").LightEnergy = 0.5f;
 				}
 			}
-			if (Input.IsActionJustPressed("magic") && Globals.MANA >= 80 && Globals.HEALTH < 100)
-			{
-				isPoisoned = false;
-				Globals.MANA -= 80;
-				Globals.HEALTH += 40;
-				if (Globals.HEALTH > 100)
-				{
-					Globals.MANA += (Globals.HEALTH - 100) * 2;	//refunds the lost mana
-					Globals.HEALTH = 100;
-				}
-			}
+			if(Input.IsActionJustPressed("magic"))
+				CastSpell();
 			if(Input.IsActionJustPressed("inv1") && Globals.INVENTORY[0] != null)
-				Drink(0);
+				Use(0);
 			if(Input.IsActionJustPressed("inv2") && Globals.INVENTORY[1] != null)
-				Drink(1);
+				Use(1);
 			if(Input.IsActionJustPressed("inv3") && Globals.INVENTORY[2] != null)
-				Drink(2);
+				Use(2);
 			if(Input.IsActionJustPressed("inv4") && Globals.INVENTORY[3] != null)
-				Drink(3);
+				Use(3);
 		}
 	}
 
@@ -369,6 +360,55 @@ public partial class Player : CharacterBody3D
 	{
 		GetNode<AudioStreamPlayer>("GoldPlayer").Play();
 	}
+
+	public string GetAltFireMode()
+	{
+		return altFireMode;
+	}
+
+	public void CastSpell()
+	{
+		if(Globals.spellType == "healing" && Globals.MANA >= 80 && Globals.HEALTH < 100)
+		{
+			isPoisoned = false;
+			Globals.MANA -= 80;
+			Globals.HEALTH += 40;
+			if (Globals.HEALTH > 100)
+			{
+				Globals.MANA += (Globals.HEALTH - 100) * 2;	//refunds the lost mana
+				Globals.HEALTH = 100;
+			}
+		}
+		else if(Globals.spellType == "fireball" && Globals.MANA >= 40)
+		{
+			Globals.MANA -= 40;
+			PackedScene fire = ResourceLoader.Load("res://Scenes/Fireball.tscn") as PackedScene;	//Create Fireball
+            Fireball fireTemp = fire.Instantiate() as Fireball;
+            fireTemp.Position = new Vector3(GlobalPosition.X, 0.3f, GlobalPosition.Z);
+            fireTemp.setTarget((raycast.ToGlobal(raycast.TargetPosition) - GlobalPosition).Normalized());
+            GetTree().CurrentScene.AddChild(fireTemp);
+		}
+	}
+
+	public void Use(byte position)
+	{
+		if(Globals.INVENTORY[position].GetPotionType() != null)
+			if(Globals.INVENTORY[position].GetPotionType() == "scroll")
+				Read(position);
+			else Drink(position);
+	}
+
+	public void Read(byte position)
+	{
+		string temp;
+		if(Globals.INVENTORY[position].GetPotionType() != null)
+		{
+			temp = Globals.INVENTORY[position].GetScrollType();
+			Globals.INVENTORY[position].SetScrollType(Globals.spellType);
+			Globals.spellType = temp;
+			GetNode<Inventory>("%InvViewport").Update(position);
+		}
+	}
 	public void Drink(byte position)
 	{
 		if(Globals.INVENTORY[position].GetPotionType() != null)
@@ -407,7 +447,7 @@ public partial class Player : CharacterBody3D
 			potionTemp.Position += new Vector3(0,0.4f,0);
             GetTree().CurrentScene.AddChild(potionTemp);
 
-			//GetParent().AddChild(new Potion(Globals.INVENTORY[position]));	//Puts the bottle on the ground
+			//GetTree().CurrentScene.AddChild(new Potion(Globals.INVENTORY[position]));	//Puts the bottle on the ground
 			Globals.INVENTORY[position] = null;								//Remove the bottle from the inventory
 		}
         GetNode<Inventory>("%InvViewport").Update(position);
