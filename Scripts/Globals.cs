@@ -28,7 +28,7 @@ public partial class Globals : Node
 
     public static bool SKELETONSAI = true;
 
-    public static int LEVEL = 0; //Starting level
+    public static int LEVEL = 1; //Starting level
 
     //--------------------------------------------------------------------------------
 
@@ -39,9 +39,13 @@ public partial class Globals : Node
 
     //--------------------------------------------------------------------------------
 
+    public static int PLAYER_LEVEL = 1;
     public static double HEALTH = 100;
     public static double STAMINA = 100;
     public static double MANA = 100;
+    public static double MAX_HEALTH = 100;
+    public static double MAX_STAMINA = 100;
+    public static double MAX_MANA = 100;
     public static int GOLD = 0;
 	public static Potion[] INVENTORY = new Potion[4];
     public static Dictionary<string, int> PRIX = new Dictionary<string, int>()

@@ -84,7 +84,21 @@ offset_top = -11.5
 offset_bottom = 11.5
 grow_horizontal = 0
 grow_vertical = 2
-text = "100/100   "
+text = "100/          "
+
+[node name="Button" type="Button" parent="PanelContainer/Shop/HBoxContainer/VBoxLeft/Health" unique_id=85530598]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "100"
 
 [node name="Stamina" type="Label" parent="PanelContainer/Shop/HBoxContainer/VBoxLeft" unique_id=2043535623]
 layout_mode = 2
@@ -102,7 +116,21 @@ offset_top = -11.5
 offset_bottom = 11.5
 grow_horizontal = 0
 grow_vertical = 2
-text = "100/100   "
+text = "100/          "
+
+[node name="Button" type="Button" parent="PanelContainer/Shop/HBoxContainer/VBoxLeft/Stamina" unique_id=179518761]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "100"
 
 [node name="Mana" type="Label" parent="PanelContainer/Shop/HBoxContainer/VBoxLeft" unique_id=2081043762]
 layout_mode = 2
@@ -120,25 +148,21 @@ offset_top = -11.5
 offset_bottom = 11.5
 grow_horizontal = 0
 grow_vertical = 2
-text = "100/100   "
+text = "100/          "
 
-[node name="Torch" type="Label" parent="PanelContainer/Shop/HBoxContainer/VBoxLeft" unique_id=325296353]
-layout_mode = 2
-text = "  Torch :"
-
-[node name="Label" type="Label" parent="PanelContainer/Shop/HBoxContainer/VBoxLeft/Torch" unique_id=1877751406]
+[node name="Button" type="Button" parent="PanelContainer/Shop/HBoxContainer/VBoxLeft/Mana" unique_id=968699326]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -44.0
-offset_top = -11.5
-offset_bottom = 11.5
+offset_left = -40.0
+offset_top = -15.5
+offset_bottom = 15.5
 grow_horizontal = 0
 grow_vertical = 2
-text = "Owned   "
+text = "100"
 
 [node name="Mace" type="Label" parent="PanelContainer/Shop/HBoxContainer/VBoxLeft" unique_id=1992772573]
 layout_mode = 2
@@ -175,6 +199,24 @@ offset_bottom = 11.5
 grow_horizontal = 0
 grow_vertical = 2
 text = "Equipped   "
+
+[node name="Torch" type="Label" parent="PanelContainer/Shop/HBoxContainer/VBoxLeft" unique_id=325296353]
+layout_mode = 2
+text = "  Torch :"
+
+[node name="Label" type="Label" parent="PanelContainer/Shop/HBoxContainer/VBoxLeft/Torch" unique_id=1877751406]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "Owned   "
 
 [node name="VBoxRight" type="VBoxContainer" parent="PanelContainer/Shop/HBoxContainer" unique_id=725705400]
 layout_mode = 2

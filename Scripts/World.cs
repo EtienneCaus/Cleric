@@ -21,7 +21,9 @@ public partial class World : Node3D
 		{
 			Random rnd = new Random();
 			Globals.SEED = rnd.Next();
-			Globals.HEALTH = 100;
+			Globals.HEALTH = Globals.MAX_HEALTH;
+        	Globals.STAMINA = Globals.MAX_STAMINA;
+        	Globals.MANA = Globals.MAX_MANA;
 			GetTree().ReloadCurrentScene();	//Recharge le jeu
 		}
 			

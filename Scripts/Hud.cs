@@ -6,8 +6,11 @@ public partial class Hud : SubViewportContainer
     public override void _Process(double delta)
     {
         GetNode<ProgressBar>("SubViewport/HealthBar").Value = Globals.HEALTH;
+        GetNode<ProgressBar>("SubViewport/HealthBar").MaxValue = Globals.MAX_HEALTH;
         GetNode<ProgressBar>("SubViewport/StaminaBar").Value = Globals.STAMINA;
+        GetNode<ProgressBar>("SubViewport/StaminaBar").MaxValue = Globals.MAX_STAMINA;
         GetNode<ProgressBar>("SubViewport/ManaBar").Value = Globals.MANA;
+        GetNode<ProgressBar>("SubViewport/ManaBar").MaxValue = Globals.MAX_MANA;
 
         switch(Globals.spellType)
         {

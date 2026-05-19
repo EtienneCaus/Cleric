@@ -159,10 +159,10 @@ public partial class Player : CharacterBody3D
 
 			if (Globals.STAMINA > 0)
 				WeaponHit();
-			if (Globals.STAMINA < 100)
+			if (Globals.STAMINA < Globals.MAX_STAMINA)
 				Globals.STAMINA++;
 
-			if (Globals.MANA < 100)
+			if (Globals.MANA < Globals.MAX_MANA)
 				Globals.MANA += 0.1;
 
 			if (Input.IsActionJustPressed("interact") && rayinteract.IsColliding())
@@ -308,13 +308,13 @@ public partial class Player : CharacterBody3D
 
 	public void Interact(GodotObject obj)
 	{
-		GD.Print(obj.GetType());
+		//GD.Print(obj.GetType());
 		if (obj.GetType().ToString() == "Cell")
 		{
 			((Cell)obj).Interact();
 		}
 	}
-	public void GetHit(float force, String type)
+	public void GetHit(float force, string type)
 	{
 		if (gotHit.IsStopped())
 		{
@@ -368,15 +368,15 @@ public partial class Player : CharacterBody3D
 
 	public void CastSpell()
 	{
-		if(Globals.spellType == "healing" && Globals.MANA >= 80 && Globals.HEALTH < 100)
+		if(Globals.spellType == "healing" && Globals.MANA >= 80 && Globals.HEALTH < Globals.MAX_HEALTH)
 		{
 			isPoisoned = false;
 			Globals.MANA -= 80;
 			Globals.HEALTH += 40;
-			if (Globals.HEALTH > 100)
+			if (Globals.HEALTH > Globals.MAX_HEALTH)
 			{
-				Globals.MANA += (Globals.HEALTH - 100) * 2;	//refunds the lost mana
-				Globals.HEALTH = 100;
+				Globals.MANA += (Globals.HEALTH - Globals.MAX_HEALTH) * 2;	//refunds the lost mana
+				Globals.HEALTH = Globals.MAX_HEALTH;
 			}
 		}
 		else if(Globals.spellType == "fireball" && Globals.MANA >= 40)
@@ -387,6 +387,16 @@ public partial class Player : CharacterBody3D
             fireTemp.Position = new Vector3(GlobalPosition.X, 0.3f, GlobalPosition.Z);
             fireTemp.setTarget((raycast.ToGlobal(raycast.TargetPosition) - GlobalPosition).Normalized());
             GetTree().CurrentScene.AddChild(fireTemp);
+		}
+		else if(Globals.spellType == "light" && Globals.MANA >= 60)
+		{
+			Globals.MANA -= 60;
+			PackedScene light = ResourceLoader.Load("res://Scenes/Light.tscn") as PackedScene;	//Create Light
+            Light lightTemp = light.Instantiate() as Light;
+            lightTemp.Position = GlobalPosition + (-GlobalTransform.Basis.Z.Normalized() * 0.2f);
+			lightTemp.Position += new Vector3(0,0.75f,0);
+            lightTemp.setTarget(this);
+            GetTree().CurrentScene.AddChild(lightTemp);
 		}
 	}
 
@@ -415,17 +425,17 @@ public partial class Player : CharacterBody3D
 			switch (Globals.INVENTORY[position].GetPotionType())
 			{
 				case "health":
-					if(Globals.HEALTH >= 100)
+					if(Globals.HEALTH >= Globals.MAX_HEALTH)
 						return;
 					Globals.HEALTH += 20;
 					break;
 				case "stamina":
-					if(Globals.STAMINA >= 100)
+					if(Globals.STAMINA >= Globals.MAX_STAMINA)
 						return;
-					Globals.STAMINA += 20;
+					Globals.STAMINA += 40;
 					break;
 				case "mana":
-					if(Globals.MANA >= 100)
+					if(Globals.MANA >= Globals.MAX_MANA)
 						return;
 					Globals.MANA += 20;
 					break;

@@ -70,9 +70,9 @@ public partial class PauseMenu : Control
     public void _on_restart_level_pressed()
     {
         Random rnd = new Random();
-        Globals.MANA = 100;
-        Globals.STAMINA = 100;
-        Globals.HEALTH = 100;
+        Globals.MANA = Globals.MAX_MANA;
+        Globals.STAMINA = Globals.MAX_STAMINA;
+        Globals.HEALTH = Globals.MAX_HEALTH;
         resume();
         GetTree().ReloadCurrentScene(); //Recharge le jeu
     }
@@ -151,9 +151,9 @@ public partial class PauseMenu : Control
     public void _on_restart_pressed()
     {
         Globals.LEVEL = 1;
-        Globals.HEALTH = 100;
-        Globals.STAMINA = 100;
-        Globals.MANA = 100;
+        Globals.HEALTH = Globals.MAX_HEALTH;
+        Globals.STAMINA = Globals.MAX_STAMINA;
+        Globals.MANA = Globals.MAX_MANA;
         Globals.GOLD = 0;
         resume();
         GetTree().ReloadCurrentScene(); //Recharge le jeu
