@@ -3,8 +3,8 @@ using System;
 
 public partial class Potion : RigidBody3D
 {
-    string type = null;
-    int quantity = 0;
+    public string type = null;
+    public int quantity = 0;
     public Image texture = GD.Load<Image>("res://Sprites/Potion.png");
     public Color color = new Color(0xFFFFFFFF);
     public Rect2 region = new Rect2(0,0, new Vector2(16,16));
@@ -97,6 +97,16 @@ public partial class Potion : RigidBody3D
         region.Position = new Vector2(16*quantity, 0);
     }
 
+    public string GetTexture()
+    {
+        return texture.ResourcePath;
+    }
+
+    public void SetTexture(string imagepath)
+    {
+        texture = GD.Load<Image>(imagepath);
+    }
+
     public bool Drink()
     {
         --quantity;
@@ -114,4 +124,13 @@ public partial class Potion : RigidBody3D
         price = (int)(price * (quantity / 5f));
         return price;
     }
+}
+
+public partial class PotionData : RefCounted
+{
+    [Export] public string type {get; set;}
+    [Export] public int quantity {get; set;}
+    [Export] public Image texture {get; set;}
+    [Export] public Color color {get; set;}
+    [Export] public Rect2 region {get; set;}
 }

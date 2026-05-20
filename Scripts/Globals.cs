@@ -54,7 +54,14 @@ public partial class Globals : Node
         {"stamina", 10},
         {"mana"   , 30},
         {"antidote",40},
-        {"scroll", 50}
+        {"scroll" , 50}
     };
-}
 
+    public override void _Ready()
+    {
+		SaveManager saveManager = new SaveManager();
+		saveManager.LoadGame();
+		for(int i = 0; i < Globals.INVENTORY.Length; ++i)
+            GetTree().CurrentScene.GetNode<Inventory>("%InvViewport").Update(i);
+    }
+}

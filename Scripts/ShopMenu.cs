@@ -94,6 +94,9 @@ public partial class ShopMenu : Control
         Globals.SEED = rnd.Next();
         GetTree().ReloadCurrentScene();	//Recharge le jeu
         Globals.LEVEL++;
+
+        SaveManager saveManager = new SaveManager();
+		saveManager.SaveGame();
     }
 
     private void SellAll()

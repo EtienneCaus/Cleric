@@ -150,11 +150,21 @@ public partial class PauseMenu : Control
     //----------------------------------------------------------------------------------------------------------
     public void _on_restart_pressed()
     {
+        Globals.PLAYER_LEVEL = 1;
+        Globals.MAX_HEALTH = 100;
+        Globals.MAX_STAMINA = 100;
+        Globals.MAX_MANA = 100;
         Globals.LEVEL = 1;
         Globals.HEALTH = Globals.MAX_HEALTH;
         Globals.STAMINA = Globals.MAX_STAMINA;
         Globals.MANA = Globals.MAX_MANA;
         Globals.GOLD = 0;
+        Globals.spellType = "healing";
+        for(int i = 0; i < Globals.INVENTORY.Length; ++i)
+        {
+            Globals.INVENTORY[i] = null;
+            GetTree().CurrentScene.GetNode<Inventory>("%InvViewport").Update(i);           
+        }
         resume();
         GetTree().ReloadCurrentScene(); //Recharge le jeu
     }
