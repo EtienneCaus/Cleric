@@ -98,6 +98,10 @@ offset_top = -15.5
 offset_bottom = 15.5
 grow_horizontal = 0
 grow_vertical = 2
+focus_neighbor_left = NodePath("../../../VBoxRight/HPotion/Button")
+focus_neighbor_top = NodePath("../../../VBoxRight/Antidote/Button")
+focus_neighbor_right = NodePath("../../../VBoxRight/HPotion/Button")
+focus_neighbor_bottom = NodePath("../../Stamina/Button")
 text = "100"
 
 [node name="Stamina" type="Label" parent="PanelContainer/Shop/HBoxContainer/VBoxLeft" unique_id=2043535623]
@@ -130,6 +134,10 @@ offset_top = -15.5
 offset_bottom = 15.5
 grow_horizontal = 0
 grow_vertical = 2
+focus_neighbor_left = NodePath("../../../VBoxRight/SPotion/Button")
+focus_neighbor_top = NodePath("../../Health/Button")
+focus_neighbor_right = NodePath("../../../VBoxRight/SPotion/Button")
+focus_neighbor_bottom = NodePath("../../Mana/Button")
 text = "100"
 
 [node name="Mana" type="Label" parent="PanelContainer/Shop/HBoxContainer/VBoxLeft" unique_id=2081043762]
@@ -162,6 +170,10 @@ offset_top = -15.5
 offset_bottom = 15.5
 grow_horizontal = 0
 grow_vertical = 2
+focus_neighbor_left = NodePath("../../../VBoxRight/MPotion/Button")
+focus_neighbor_top = NodePath("../../Stamina/Button")
+focus_neighbor_right = NodePath("../../../VBoxRight/MPotion/Button")
+focus_neighbor_bottom = NodePath("../../../VBoxRight/LScroll/Button")
 text = "100"
 
 [node name="Mace" type="Label" parent="PanelContainer/Shop/HBoxContainer/VBoxLeft" unique_id=1992772573]
@@ -244,7 +256,9 @@ offset_top = -15.5
 offset_bottom = 15.5
 grow_horizontal = 0
 grow_vertical = 2
+focus_neighbor_left = NodePath("../../../VBoxLeft/Health/Button")
 focus_neighbor_top = NodePath("../../../../Continue")
+focus_neighbor_right = NodePath("../../../VBoxLeft/Health/Button")
 focus_neighbor_bottom = NodePath("../../HPotion/Button")
 text = "BUY  "
 
@@ -264,6 +278,10 @@ offset_top = -15.5
 offset_bottom = 15.5
 grow_horizontal = 0
 grow_vertical = 2
+focus_neighbor_left = NodePath("../../../VBoxLeft/Health/Button")
+focus_neighbor_top = NodePath("../../Antidote/Button")
+focus_neighbor_right = NodePath("../../../VBoxLeft/Health/Button")
+focus_neighbor_bottom = NodePath("../../SPotion/Button")
 text = "BUY  "
 
 [node name="SPotion" type="Label" parent="PanelContainer/Shop/HBoxContainer/VBoxRight" unique_id=2016397073]
@@ -282,6 +300,10 @@ offset_top = -15.5
 offset_bottom = 15.5
 grow_horizontal = 0
 grow_vertical = 2
+focus_neighbor_left = NodePath("../../../VBoxLeft/Stamina/Button")
+focus_neighbor_top = NodePath("../../HPotion/Button")
+focus_neighbor_right = NodePath("../../../VBoxLeft/Stamina/Button")
+focus_neighbor_bottom = NodePath("../../MPotion/Button")
 text = "BUY  "
 
 [node name="MPotion" type="Label" parent="PanelContainer/Shop/HBoxContainer/VBoxRight" unique_id=579518560]
@@ -300,6 +322,10 @@ offset_top = -15.5
 offset_bottom = 15.5
 grow_horizontal = 0
 grow_vertical = 2
+focus_neighbor_left = NodePath("../../../VBoxLeft/Mana/Button")
+focus_neighbor_top = NodePath("../../SPotion/Button")
+focus_neighbor_right = NodePath("../../../VBoxLeft/Mana/Button")
+focus_neighbor_bottom = NodePath("../../HScroll/Button")
 text = "BUY  "
 
 [node name="HScroll" type="Label" parent="PanelContainer/Shop/HBoxContainer/VBoxRight" unique_id=298011905]
@@ -318,6 +344,10 @@ offset_top = -15.5
 offset_bottom = 15.5
 grow_horizontal = 0
 grow_vertical = 2
+focus_neighbor_left = NodePath("../../../VBoxLeft/Mana/Button")
+focus_neighbor_top = NodePath("../../MPotion/Button")
+focus_neighbor_right = NodePath("../../../VBoxLeft/Mana/Button")
+focus_neighbor_bottom = NodePath("../../FScroll/Button")
 text = "BUY  "
 
 [node name="FScroll" type="Label" parent="PanelContainer/Shop/HBoxContainer/VBoxRight" unique_id=110400868]
@@ -336,6 +366,10 @@ offset_top = -15.5
 offset_bottom = 15.5
 grow_horizontal = 0
 grow_vertical = 2
+focus_neighbor_left = NodePath("../../../VBoxLeft/Mana/Button")
+focus_neighbor_top = NodePath("../../HScroll/Button")
+focus_neighbor_right = NodePath("../../../VBoxLeft/Mana/Button")
+focus_neighbor_bottom = NodePath("../../LScroll/Button")
 text = "BUY  "
 
 [node name="LScroll" type="Label" parent="PanelContainer/Shop/HBoxContainer/VBoxRight" unique_id=1810710001]
@@ -354,11 +388,17 @@ offset_top = -15.5
 offset_bottom = 15.5
 grow_horizontal = 0
 grow_vertical = 2
+focus_neighbor_left = NodePath("../../../VBoxLeft/Mana/Button")
+focus_neighbor_top = NodePath("../../FScroll/Button")
+focus_neighbor_right = NodePath("../../../VBoxLeft/Mana/Button")
+focus_neighbor_bottom = NodePath("../../../../Continue")
 text = "BUY  "
 
 [node name="Continue" type="Button" parent="PanelContainer/Shop" unique_id=502197016]
 layout_mode = 2
+focus_neighbor_left = NodePath("../HBoxContainer/VBoxLeft/Mana/Button")
 focus_neighbor_top = NodePath("../HBoxContainer/VBoxRight/LScroll/Button")
+focus_neighbor_right = NodePath("../HBoxContainer/VBoxRight/LScroll/Button")
 focus_neighbor_bottom = NodePath("../HBoxContainer/VBoxRight/Antidote/Button")
 text = "Continue"
 flat = true

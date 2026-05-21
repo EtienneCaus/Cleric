@@ -69,10 +69,10 @@ public partial class PauseMenu : Control
     }
     public void _on_restart_level_pressed()
     {
-        Random rnd = new Random();
-        Globals.MANA = Globals.MAX_MANA;
-        Globals.STAMINA = Globals.MAX_STAMINA;
-        Globals.HEALTH = Globals.MAX_HEALTH;
+        SaveManager saveManager = new SaveManager();
+		saveManager.LoadGame();
+		for(int i = 0; i < Globals.INVENTORY.Length; ++i)
+            GetTree().CurrentScene.GetNode<Inventory>("%InvViewport").Update(i);
         resume();
         GetTree().ReloadCurrentScene(); //Recharge le jeu
     }

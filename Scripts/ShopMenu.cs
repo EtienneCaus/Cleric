@@ -89,6 +89,10 @@ public partial class ShopMenu : Control
 
     public void _on_continue_pressed()
     {
+        Globals.HEALTH = Globals.MAX_HEALTH;
+        Globals.STAMINA = Globals.MAX_STAMINA;
+        Globals.MANA = Globals.MAX_MANA;
+        
         GetTree().Paused = false;
         Random rnd = new Random();
         Globals.SEED = rnd.Next();
