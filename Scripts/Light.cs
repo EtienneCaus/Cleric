@@ -15,7 +15,7 @@ public partial class Light : Area3D
        
         
         position.X = Mathf.Lerp(Position.X, direction.GlobalPosition.X, (float)delta * 3.0f);
-        position.Y = newY;
+        position.Y = Mathf.Lerp(Position.Y, newY, (float)delta * 3.0f);
         position.Z = Mathf.Lerp(Position.Z, direction.GlobalPosition.Z, (float)delta * 3.0f);
         
         Position = position;

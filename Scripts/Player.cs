@@ -407,8 +407,8 @@ public partial class Player : CharacterBody3D
 			Globals.MANA -= 40;
 			PackedScene light = ResourceLoader.Load("res://Scenes/Light.tscn") as PackedScene;	//Create Light
             Light lightTemp = light.Instantiate() as Light;
-            lightTemp.Position = GlobalPosition + (-GlobalTransform.Basis.Z.Normalized() * 0.2f);
-			lightTemp.Position += new Vector3(0,0.75f,0);
+            lightTemp.Position = GlobalPosition + (-camera.GlobalTransform.Basis.Z.Normalized() * 0.2f);
+			lightTemp.Position += new Vector3(0,0.4f,0);
             lightTemp.setTarget(this);
             GetTree().CurrentScene.AddChild(lightTemp);
 		}
@@ -467,7 +467,7 @@ public partial class Player : CharacterBody3D
 			PackedScene bottle = ResourceLoader.Load("res://Scenes/Potion.tscn") as PackedScene;	//Create empty bottle
             Potion potionTemp = bottle.Instantiate() as Potion;
             //potionTemp.Position = new Vector3(GlobalPosition.X, 0.3f, GlobalPosition.Z);
-			potionTemp.Position = GlobalPosition + (-GlobalTransform.Basis.Z.Normalized() * 0.2f); //Spawn bottel in front of player
+			potionTemp.Position = GlobalPosition + (-camera.GlobalTransform.Basis.Z.Normalized() * 0.2f); //Spawn bottel in front of player
 			potionTemp.Position += new Vector3(0,0.4f,0);
             GetTree().CurrentScene.AddChild(potionTemp);
 

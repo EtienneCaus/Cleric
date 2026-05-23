@@ -12,7 +12,7 @@ public partial class Label : Godot.Label
         if (Input.IsActionJustPressed("function"))  //Toggles showtext
         {
             Globals.showtext++;
-            if (Globals.showtext > 8)
+            if (Globals.showtext > 7)
                 Globals.showtext = 0;
         }
 
@@ -25,24 +25,21 @@ public partial class Label : Godot.Label
                 Text = "COINS " + Globals.GOLD;
                 break;
             case 2:
-                Text = "\nCOINS " + Globals.GOLD;
-                break;
-            case 3:
                 Text = "LEVEL " + Globals.LEVEL + "\nCOINS " + Globals.GOLD;
                 break;
-            case 4:
+            case 3:
                 Text = "FPS " + Engine.GetFramesPerSecond() + "\nLEVEL " + Globals.LEVEL + "\nCOINS " + Globals.GOLD;
                 break;
-            case 5:
+            case 4:
                 Text = "FPS " + Engine.GetFramesPerSecond() + "\nLEVEL " + Globals.LEVEL;
                 break;
-            case 6:
+            case 5:
                 Text = "FPS " + Engine.GetFramesPerSecond() + "\nCOINS " + Globals.GOLD;
                 break;
-            case 7:
+            case 6:
                 Text = "FPS " + Engine.GetFramesPerSecond();
                 break;
-            case 8:
+            case 7:
                 Text = "LEVEL " + Globals.LEVEL;
                 break;
 

@@ -51,13 +51,19 @@ public partial class ShopMenu : Control
 
         healing = GetNode<Button>("PanelContainer/Shop/HBoxContainer/VBoxRight/HScroll/Button");
         healing.Text = (Globals.PRIX["scroll"] * (Globals.LEVEL / 2)).ToString() + "¢  ";
-        healing.Pressed += () => _on_button_pressed("scroll",1);
+        healing.Pressed += () => _on_button_pressed("scroll",1, healing);
+        if(Globals.spellType == "healing")
+            healing.Disabled = true;
         fireball = GetNode<Button>("PanelContainer/Shop/HBoxContainer/VBoxRight/FScroll/Button");
         fireball.Text = (Globals.PRIX["scroll"] * (Globals.LEVEL / 2)).ToString() + "¢  ";
-        fireball.Pressed += () => _on_button_pressed("scroll",2);
+        fireball.Pressed += () => _on_button_pressed("scroll",2, fireball);
+        if(Globals.spellType == "fireball")
+            fireball.Disabled = true;
         light = GetNode<Button>("PanelContainer/Shop/HBoxContainer/VBoxRight/LScroll/Button");
         light.Text = (Globals.PRIX["scroll"] * (Globals.LEVEL / 2)).ToString() + "¢  ";
-        light.Pressed += () => _on_button_pressed("scroll",3);
+        light.Pressed += () => _on_button_pressed("scroll",3, light);
+        if(Globals.spellType == "light")
+            light.Disabled = true;
     }
 
     public void _left_button_pressed(ref double value, ref Button button)
@@ -73,7 +79,7 @@ public partial class ShopMenu : Control
         }
     }
 
-    public void _on_button_pressed(string type, byte quantity = 5)
+    public void _on_button_pressed(string type, byte quantity = 5, Button button = null)
     {
         for(int i = 0; i < Globals.INVENTORY.Length; ++i)
         {
@@ -82,6 +88,8 @@ public partial class ShopMenu : Control
                 Globals.INVENTORY[i] = new Potion(type, quantity);
                 GetTree().CurrentScene.GetNode<Inventory>("%InvViewport").Update(i);
                 Globals.GOLD -= Globals.PRIX[type] * (Globals.LEVEL / 2);
+                if(type == "scroll")
+                    button.Disabled = true;
                 break;
             }
         }
