@@ -84,8 +84,17 @@ public partial class Player : CharacterBody3D
 					isSprinting = true;
 			}
 
+			if(Input.IsActionPressed("sprint"))
+			{
+				isSprinting = true;
+			}
+			else if(Input.IsActionJustReleased("sprint"))
+			{
+				isSprinting = false;
+			}
+
 			//Handles Sprinting
-			if (Input.IsActionPressed("sprint") || isSprinting)
+			if (isSprinting) //Input.IsActionPressed("sprint") || isSprinting)
 				speed = SprintSpeed;
 			else
 				speed = WalkSpeed;
@@ -154,13 +163,18 @@ public partial class Player : CharacterBody3D
 
 			if (inputDir != Vector2.Zero && (Input.IsActionPressed("sprint") || isSprinting))
 			{
-				Globals.STAMINA--;
+				if(Globals.STAMINA > 0)
+					Globals.STAMINA--;
+				else {
+					Input.ActionRelease("sprint");
+					isSprinting = false;
+				}
 			}
 
 			if (Globals.STAMINA > 0)
 				WeaponHit();
 			if (Globals.STAMINA < Globals.MAX_STAMINA)
-				Globals.STAMINA++;
+				Globals.STAMINA += 0.8;
 
 			if (Globals.MANA < Globals.MAX_MANA)
 				Globals.MANA += 0.1;
@@ -241,7 +255,7 @@ public partial class Player : CharacterBody3D
 
 		if (!anim.IsPlaying())  //If no animation is playing
 		{
-			if (Input.IsActionPressed("fire") && Globals.STAMINA > 50)
+			if (Input.IsActionPressed("fire") && Globals.STAMINA > 30)
 			{
 				Globals.STAMINA -= 30;
 				anim.Play("Mace_Hit");
@@ -250,7 +264,7 @@ public partial class Player : CharacterBody3D
 			}
 			else if (Input.IsActionPressed("altfire"))
 			{
-				if (altFireMode == "Torch" && Globals.STAMINA > 25)
+				if (altFireMode == "Torch" && Globals.STAMINA > 15)
 				{
 					Globals.STAMINA -= 15;
 					anim.Play("Alt_Weapon_Hit");
@@ -372,25 +386,25 @@ public partial class Player : CharacterBody3D
 		{
 			isPoisoned = false;
 			Globals.MANA -= 80;
-			Globals.HEALTH += 40;
+			Globals.HEALTH += Globals.MAX_HEALTH/2.5; //40;
 			if (Globals.HEALTH > Globals.MAX_HEALTH)
 			{
 				Globals.MANA += (Globals.HEALTH - Globals.MAX_HEALTH) * 2;	//refunds the lost mana
 				Globals.HEALTH = Globals.MAX_HEALTH;
 			}
 		}
-		else if(Globals.spellType == "fireball" && Globals.MANA >= 40)
+		else if(Globals.spellType == "fireball" && Globals.MANA >= 60)
 		{
-			Globals.MANA -= 40;
+			Globals.MANA -= 60;
 			PackedScene fire = ResourceLoader.Load("res://Scenes/Fireball.tscn") as PackedScene;	//Create Fireball
             Fireball fireTemp = fire.Instantiate() as Fireball;
             fireTemp.Position = new Vector3(GlobalPosition.X, 0.3f, GlobalPosition.Z);
             fireTemp.setTarget((raycast.ToGlobal(raycast.TargetPosition) - GlobalPosition).Normalized());
             GetTree().CurrentScene.AddChild(fireTemp);
 		}
-		else if(Globals.spellType == "light" && Globals.MANA >= 60)
+		else if(Globals.spellType == "light" && Globals.MANA >= 40)
 		{
-			Globals.MANA -= 60;
+			Globals.MANA -= 40;
 			PackedScene light = ResourceLoader.Load("res://Scenes/Light.tscn") as PackedScene;	//Create Light
             Light lightTemp = light.Instantiate() as Light;
             lightTemp.Position = GlobalPosition + (-GlobalTransform.Basis.Z.Normalized() * 0.2f);
@@ -427,17 +441,17 @@ public partial class Player : CharacterBody3D
 				case "health":
 					if(Globals.HEALTH >= Globals.MAX_HEALTH)
 						return;
-					Globals.HEALTH += 20;
+					Globals.HEALTH += Globals.MAX_HEALTH/5; //20;
 					break;
 				case "stamina":
 					if(Globals.STAMINA >= Globals.MAX_STAMINA)
 						return;
-					Globals.STAMINA += 40;
+					Globals.STAMINA += Globals.MAX_STAMINA/2.5; //40;
 					break;
 				case "mana":
 					if(Globals.MANA >= Globals.MAX_MANA)
 						return;
-					Globals.MANA += 20;
+					Globals.MANA += Globals.MAX_MANA/5; //20;
 					break;
 				case "antidote":
 					if(!isPoisoned && !onFire)

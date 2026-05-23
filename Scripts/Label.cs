@@ -12,7 +12,7 @@ public partial class Label : Godot.Label
         if (Input.IsActionJustPressed("function"))  //Toggles showtext
         {
             Globals.showtext++;
-            if (Globals.showtext > 10)
+            if (Globals.showtext > 8)
                 Globals.showtext = 0;
         }
 
@@ -22,25 +22,53 @@ public partial class Label : Godot.Label
                 Text = "";
                 break;
             case 1:
-                Text = "GOLD " + Globals.GOLD;
+                Text = "COINS " + Globals.GOLD;
                 break;
             case 2:
-                Text = "\nGOLD " + Globals.GOLD;
+                Text = "\nCOINS " + Globals.GOLD;
                 break;
             case 3:
-                Text = "LEVEL " + Globals.LEVEL + "\nGOLD " + Globals.GOLD;
+                Text = "LEVEL " + Globals.LEVEL + "\nCOINS " + Globals.GOLD;
                 break;
             case 4:
-                Text = "\nLEVEL " + Globals.LEVEL + "\nGOLD " + Globals.GOLD;
+                Text = "FPS " + Engine.GetFramesPerSecond() + "\nLEVEL " + Globals.LEVEL + "\nCOINS " + Globals.GOLD;
                 break;
             case 5:
-                Text = "FPS " + Engine.GetFramesPerSecond() + "\nLEVEL " + Globals.LEVEL + "\nGOLD " + Globals.GOLD;
+                Text = "FPS " + Engine.GetFramesPerSecond() + "\nLEVEL " + Globals.LEVEL;
                 break;
             case 6:
-                Text = "FPS " + Engine.GetFramesPerSecond() + "\n\nGOLD " + Globals.GOLD;
+                Text = "FPS " + Engine.GetFramesPerSecond() + "\nCOINS " + Globals.GOLD;
                 break;
             case 7:
-                Text = "FPS " + Engine.GetFramesPerSecond() + "\nGOLD " + Globals.GOLD;
+                Text = "FPS " + Engine.GetFramesPerSecond();
+                break;
+            case 8:
+                Text = "LEVEL " + Globals.LEVEL;
+                break;
+
+/*          case 0:
+                Text = "";
+                break;
+            case 1:
+                Text = "COINS " + Globals.GOLD;
+                break;
+            case 2:
+                Text = "\nCOINS " + Globals.GOLD;
+                break;
+            case 3:
+                Text = "LEVEL " + Globals.LEVEL + "\nCOINS " + Globals.GOLD;
+                break;
+            case 4:
+                Text = "\nLEVEL " + Globals.LEVEL + "\nCOINS " + Globals.GOLD;
+                break;
+            case 5:
+                Text = "FPS " + Engine.GetFramesPerSecond() + "\nLEVEL " + Globals.LEVEL + "\nCOINS " + Globals.GOLD;
+                break;
+            case 6:
+                Text = "FPS " + Engine.GetFramesPerSecond() + "\n\nCOINS " + Globals.GOLD;
+                break;
+            case 7:
+                Text = "FPS " + Engine.GetFramesPerSecond() + "\nCOINS " + Globals.GOLD;
                 break;
             case 8:
                 Text = "FPS " + Engine.GetFramesPerSecond() + "\nLEVEL " + Globals.LEVEL;
@@ -51,6 +79,6 @@ public partial class Label : Godot.Label
             case 10:
                 Text = "LEVEL " + Globals.LEVEL;
                 break;
-        }
+*/      }
     }
 }

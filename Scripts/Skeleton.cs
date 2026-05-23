@@ -95,9 +95,9 @@ public partial class Skeleton : Enemy
         if (health > 0)
         {
             GetNode<Sprite3D>("Sprite3D").RegionRect = new Rect2(64, 64, 32, 64);
-            if (isGettingBlocked && Globals.STAMINA >= 40)
+            if (isGettingBlocked && Globals.STAMINA >= 30)
             {
-                Globals.STAMINA -= 40;
+                Globals.STAMINA -= 30;
                 GetNode<AudioStreamPlayer3D>("BlockPlayer3D").Play();
             }
             else if (health > 0 && target != null && target.IsInGroup("Player")
