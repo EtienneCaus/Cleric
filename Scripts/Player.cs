@@ -408,7 +408,7 @@ public partial class Player : CharacterBody3D
 			PackedScene light = ResourceLoader.Load("res://Scenes/Light.tscn") as PackedScene;	//Create Light
             Light lightTemp = light.Instantiate() as Light;
             lightTemp.Position = GlobalPosition + (-camera.GlobalTransform.Basis.Z.Normalized() * 0.2f);
-			lightTemp.Position += new Vector3(0,0.4f,0);
+			lightTemp.Position += new Vector3(0,0.3f,0);
             lightTemp.setTarget(this);
             GetTree().CurrentScene.AddChild(lightTemp);
 		}
